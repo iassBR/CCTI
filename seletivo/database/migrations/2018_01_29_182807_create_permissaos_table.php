@@ -13,10 +13,13 @@ class CreatePermissaosTable extends Migration
      */
     public function up()
     {
-        Schema::create('permissaos', function (Blueprint $table) {
+        Schema::create('permissoes', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nome');
+            $table->string('descricao')->nullable();
             $table->timestamps();
         });
+        
     }
 
     /**
@@ -26,6 +29,7 @@ class CreatePermissaosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('permissaos');
+       
+        Schema::dropIfExists('permissoes');
     }
 }

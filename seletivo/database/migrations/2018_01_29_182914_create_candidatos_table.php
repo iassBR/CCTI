@@ -12,9 +12,14 @@ class CreateCandidatosTable extends Migration
      * @return void
      */
     public function up()
-    {
+    {   
         Schema::create('candidatos', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('formacao');
+            $table->string('cargoPretendido');
+            $table->string('profissaoAtual');
+            $table->string('curso');
+            $table->integer('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
