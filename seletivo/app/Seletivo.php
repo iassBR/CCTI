@@ -15,3 +15,4 @@ class Seletivo extends Model
         return $this->belongsTO('App\Candidato');
     }
 }
+
