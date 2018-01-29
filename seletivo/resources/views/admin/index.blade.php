@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
 <div class="main">
 		<div class="menu">
 			<ul>
@@ -13,6 +13,6 @@
 			</ul>
         </div>
 
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        
         
 @endsection        
