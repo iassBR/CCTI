@@ -3,19 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\User;
 class AdminController extends Controller
 {
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
 
     public function index()
     {
-      $caminhos = [
-          ['url'=>'','titulo'=>'Admin']
-      ];
-      return view('admin.index',compact('caminhos'));
+
+      $users = User::all();  
+    
+      return view('/admin/index',compact('users'));
     }
 }

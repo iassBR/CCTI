@@ -17,12 +17,21 @@ Route::get('/', function () {
 
 Route::get('/home','HomeController@index');
 Auth::routes();
-Route::get('/Admin', 'AdminController@index');
+
+Route::get('/Admin', [
+    'uses'=>'AdminController@index'
+])->name('admin.index');
+
+Route::resource('admin', 'AdminController');
+Route::get('/', 'Admin\AdminController@index');
+Route::get('/admin', 'AdminController@index');
+
 Route::resource('usuarios', 'Admin\UsuarioController');
 
 Route::group(['middleware' => 'auth','prefix' => 'admin'], function () {
-    
-      Route::get('/', 'Admin\AdminController@index');
+      
+      //Route::get('/admin', 'AdminController@index');
+      Route::get('/admin', 'Admin\AdminController@index');
       Route::resource('usuarios', 'Admin\UsuarioController');
     
       Route::get('usuarios/papel/{id}', ['as'=>'usuarios.papel','uses'=>'Admin\UsuarioController@papel']);
