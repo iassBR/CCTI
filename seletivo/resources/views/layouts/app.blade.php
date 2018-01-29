@@ -121,11 +121,12 @@
 </div>
     <!-- Scripts -->
    
-	<script src="{{ asset('js/bootstrap.js') }}"></script>
+	
 
-
+    
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/script.js') }}"</script>
 	<script src="bower_components/jquery/dist/jquery.min.js"></script>
-	<script type="text/javascript" src="js/script.js"></script>
 </body>
 
 </html>
