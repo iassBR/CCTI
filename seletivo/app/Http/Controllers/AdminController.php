@@ -33,7 +33,9 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::all();
+        $papeis = Papel::all();            
+        return view('admin.usuarios.create',compact('users','papeis'));
     }
 
     /**

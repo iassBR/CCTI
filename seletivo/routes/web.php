@@ -22,6 +22,7 @@ Auth::routes();
 //Route::group(['prefix' => 'admin'], function () {
  //   Route::get('/', 'AdminController@index');
    Route::resource('admin', 'AdminController');
+   Route::resource('usuarios', 'AdminController');
 //});
 
 

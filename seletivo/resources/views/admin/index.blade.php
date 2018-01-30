@@ -51,7 +51,7 @@
                 </table> 
             </div> 
         </div>
-        <a href="#"><button class="btn btn-primary">Novo Usuário</button></a> 
+        <a href="{{route('usuarios.create')}}"><button class="btn btn-primary">Novo Usuário</button></a> 
     </div>
    
   
