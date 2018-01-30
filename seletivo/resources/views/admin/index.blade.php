@@ -2,22 +2,10 @@
 
 @section('content')
 
-<div class="main">
-		<div class="menu">
-			<ul>
-				<li class="visible-xs"><a href="#">Sair</a></li>
-				<li class="active"><a href="#">Admin</a></li>
-				<li><a href="#">Usuários</a></li>
-				<li><a href="#">Papéis</a></li>
-				<li><a href="#">Permissões</a></li>
-			</ul>
-        </div>
-</div>
-
 
 <div class="panel panel-default">    
         <div class="panel-heading">Lista de Usuários</div>
-        <form method="GET" action="{{route('Admin')}}">
+        <form  action="{{route('admin.index')}}" method="GET">
         <div class="row">
             <div class="col-md-12">
                 <div class="input-group">
@@ -47,10 +35,10 @@
                         @foreach($users as $user)
                             <tr>
                                 <td>{{$user->name}}</td>
-                                <td>{{$user->CPF}}</td>
+                                <td>{{$user->cpf}}</td>
 								<td> {{$user->email}} </td>
 								<td>{{ $user->bairro }} </td>
-								<td> {{ $user->papel_id }}</td>
+								<td> {{$user->papel->nome }}</td>
                                
                                 <td>
                                     <a href="#"><i class="glyphicon glyphicon-pencil"></i></a>
@@ -63,11 +51,9 @@
                 </table> 
             </div> 
         </div>
-        <div align="center" class="row">
-        	{{ $users->links() }}
-	    </div>
+        <a href="#"><button class="btn btn-primary">Novo Usuário</button></a> 
     </div>
-    <a href="#"><button class="btn btn-primary">Adicionar</button></a>
+   
   
         
 @endsection        

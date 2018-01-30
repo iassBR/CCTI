@@ -7,10 +7,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>SELETIVOS</title>
-	<link rel="stylesheet" href="css/bootstrap.min.css">
+	
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-	<link rel="stylesheet" href="css/style.css">
+	
 	
 	<style>
 .navbar{
@@ -86,7 +86,10 @@
 				</button>
 				<a class="navbar-brand" href="#">ADMIN</a>
 			</div>
-			</div>
+           
+		</div>
+
+            
 			
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
@@ -118,8 +121,22 @@
                 </ul>
 			</div>
 		</div>
+        
 	</nav>
-	@yield('content')		
+    <div class="main">
+		        <div class="menu">
+                    <ul>
+                        <li class="visible-xs"><a href="#">Sair</a></li>
+                        <li class="active"><a href="#">Admin</a></li>
+                        <li><a href="#">Usuários</a></li>
+                        <li><a href="#">Papéis</a></li>
+                        <li><a href="#">Permissões</a></li>
+                    </ul>
+                </div>
+    	
+            
+	@yield('content')	
+    </div>
 							
 </div>
     <!-- Scripts -->

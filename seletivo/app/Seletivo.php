@@ -12,7 +12,7 @@ class Seletivo extends Model
     ];
 
     public function candidato(){
-        return $this->belongsTO('App\Candidato');
+        return $this->hasOne('App\Candidato','candidato_id');
     }
 }
 

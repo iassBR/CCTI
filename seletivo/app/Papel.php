@@ -10,7 +10,7 @@ class Papel extends Model
     protected $fillable = ['nome', 'descricao'];   
 
     public function users(){
-        return $this->belongsTo('App\User');
+        return $this->hasOne('App\User','user_id');
     }
 
     public function permissoes(){

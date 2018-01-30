@@ -29,10 +29,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
     public function papel(){
-        return $this->hasOne('App\Papel');
+        return $this->belongsTO('App\Papel','papel_id');
     }
     public function candidatos(){
-        return $this->belongsTo('App\Candidato');
+        return $this->hasOne('App\Candidato','user_id');
     }
 
     

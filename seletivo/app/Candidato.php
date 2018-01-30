@@ -13,10 +13,10 @@ class Candidato extends Model
 
 
     public function users(){
-        return $this->hasOne('App\User');
+        return $this->belongsTo('App\User','user_id');
     }
 
     public function seletivo(){
-        return $this->hasOne('App\Seletivo');
+        return $this->belongsTO('App\Seletivo','seletivo_id');
     }
 }
