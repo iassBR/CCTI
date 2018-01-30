@@ -18,7 +18,7 @@
                 @endforeach
             </div>
         @endif
-        <form method="post" action="{{route ('projetos.store')}}" enctype="multipart/form-data">
+        <form method="post" action="{{route ('seletivos.store')}}" enctype="multipart/form-data">
         {{ csrf_field() }}
 
         <div class="form-group">
@@ -47,24 +47,13 @@
 <input type="text" class="form-control" name="tempoExperiencia" placeholder="Tempo de Experiência" required>
         </div>     
         
-      
         <div class="form-group">
-            <label for="aluno_id">Selecione o aluno desse projeto</label>
-            <select class="form-control" name="aluno_id" required>
-            @foreach($alunos as $aluno)            
-                <option value="{{$aluno->id}}">{{$aluno->nome}}</option>            
-            @endforeach
-            </select>
-        </div>     
-        <h4>Área de Pesquisa</h4>
-        
-        <div class="form-group">
-            <label for="area_pesquisa_id">Selecione a area de pesquisa desse projeto</label>
-            <select class="form-control" name="area_pesquisa_id" required>
-            @foreach($areaPesquisas as $area)            
-                <option value="{{$area->id}}">{{$area->descricao}}</option>            
-            @endforeach
-            </select>
+            <label for="modalidade_id">Selecione a escolaridade</label>
+            <select class="form-control" name="modalidade_id" required>
+                @foreach($escolaridades as $escolaridade)            
+                    <option value="{{$escolaridade->id}}"> {{$escolaridade->tipo}} </option>            
+                @endforeach
+            </select> 
         </div>   
         <span class="pull-right">
             <a href="{{ url()->previous() }}" class="btn btn-default">Voltar</a>
