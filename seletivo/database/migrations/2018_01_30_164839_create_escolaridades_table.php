@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSeletivosTable extends Migration
+class CreateEscolaridadesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateSeletivosTable extends Migration
      */
     public function up()
     {
-        Schema::create('seletivos', function (Blueprint $table) {
+        Schema::create('escolaridades', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nomeSeletivo');
-            $table->string('dataInicio');
-            $table->string('dataTermino');
-            $table->string('tempoExperiencia');      
+            $table->string('tipo')->unique();
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateSeletivosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('seletivos');
+        Schema::dropIfExists('escolaridades');
     }
 }
