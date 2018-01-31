@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\User;
 use App\Papel;
+use App\Http\Controllers\Controller;
 class AdminController extends Controller
 {
     /**
@@ -38,9 +39,9 @@ class AdminController extends Controller
      */
     public function create()
     {
-        $users = User::all();
-        $papeis = Papel::all();            
-        return view('admin.usuarios.create',compact('users','papeis'));
+       // $users = User::all();
+       // $papeis = Papel::all();            
+       // return view('admin.usuarios.create',compact('users','papeis'));
     }
 
     /**

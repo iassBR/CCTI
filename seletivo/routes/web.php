@@ -21,13 +21,23 @@ Auth::routes();
 
 //Route::group(['prefix' => 'admin'], function () {
   //Route::get('/', 'Admin\AdminController@index');
- // Route::resource('admin', 'Admin\AdminController');
- //  Route::resource('usuarios', 'AdminController');
+ ///Route::resource('admin', 'Admin\AdminController');
+ // Route::resource('usuarios', 'AdminController');
+//});
+//Route::group(['namespace'=>'Admin','prefix'=>'admin'],
+//function() {
+     // Route::get('admin', 'Admin\AdminController@index');
+      Route::resource('admin', 'Admin\AdminController');
+      Route::resource('usuarios', 'Admin\UsuarioController');
+      Route::get('/usuarios/remove/{id}',  [
+            'uses'=>'Admin\UsuarioController@remover'
+        ]
+    )->name('usuarios.remove');
+
+//define your route here
 //});
 
 
-Route::resource('admin', 'Admin\AdminController');
-Route::resource('usuarios', 'Admin\AdminController');
 
 
 //Route::get('admin', 'AdminController@index');

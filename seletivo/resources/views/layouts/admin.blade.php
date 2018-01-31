@@ -84,7 +84,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">ADMIN</a>
+				<a class="navbar-brand" href="admin">ADMIN</a>
 			</div>
            
 		</div>
@@ -127,10 +127,10 @@
 		        <div class="menu">
                     <ul>
                         <li class="visible-xs"><a href="#">Sair</a></li>
-                        <li class="active"><a href="#">Admin</a></li>
-                        <li><a href="#">Usuários</a></li>
+                       
+                        <li><a href="usuarios">Usuários</a></li>
                         <li><a href="#">Papéis</a></li>
-                        <li><a href="#">Permissões</a></li>
+                        
                     </ul>
                 </div>
             <div class="content">
