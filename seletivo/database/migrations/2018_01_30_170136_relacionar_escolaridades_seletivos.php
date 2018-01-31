@@ -13,7 +13,7 @@ class RelacionarEscolaridadesSeletivos extends Migration
      */
     public function up()
     {
-        Schema::table('cursos', 
+        Schema::table('seletivos', 
 
             function(Blueprint $table){
                 $table->integer('escolaridade_id')->unsigned();

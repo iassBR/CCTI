@@ -1,16 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="box">
-    <div class="box-header with-border">
-        <h3 class="box-title">Adicionar novo projeto</h3>
-        <div class="box-tools pull-right">
-        <!-- Buttons, labels, and many other things can be placed here! -->
-        </div>
-        <!-- /.box-tools -->
-    </div>
-    <!-- /.box-header -->
-    <div class="box-body">
+    
         @if($errors->any())
             <div class="alert alert-danger" role="alert">
                 @foreach ($errors->all() as $error)
@@ -18,7 +9,11 @@
                 @endforeach
             </div>
         @endif
-        <form method="post" action="{{route ('seletivos.store')}}" enctype="multipart/form-data">
+<div class="panel panel-default">
+ 
+    <div class="panel-heading"><h3>Cadastre o Seletivo</h3></div>
+        <div class="panel-body">
+        <form method="post" action="{{route ('seletivos.store')}}">
         {{ csrf_field() }}
 
         <div class="form-group">
@@ -40,16 +35,24 @@
                 </div>
             </div>
            
-        </div>   
-               
+        </div> 
+        <div class="row">  
+            <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="nomeSeletivo">Cargo desejado</label>
+                        <input type="text" class="form-control" placeholder="Cargo Desejado" name="cargoDesejado" required>  
+                    </div>
+            </div> 
+        </div>          
         <div class="form-group">
+            
             <label for="tempoxp">Tempo de experiência</label>
-<input type="text" class="form-control" name="tempoExperiencia" placeholder="Tempo de Experiência" required>
+            <input type="text" class="form-control" name="tempoExperiencia" placeholder="Tempo de Experiência" required>
         </div>     
         
         <div class="form-group">
             <label for="modalidade_id">Selecione a escolaridade</label>
-            <select class="form-control" name="modalidade_id" required>
+            <select class="form-control" name="escolaridade_id" required>
                 @foreach($escolaridades as $escolaridade)            
                     <option value="{{$escolaridade->id}}"> {{$escolaridade->tipo}} </option>            
                 @endforeach
@@ -60,12 +63,7 @@
             <button type="submit" class="btn btn-primary">Cadastrar</button>
         </span>
     </form>
-    
     </div>
-    <!-- /.box-body -->
-    <div class="box-footer">
-    </div>
-    <!-- box-footer -->
-    </div>
-    <!-- /.box -->
+</div>
+
 @endsection

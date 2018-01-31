@@ -30,6 +30,8 @@
                         @foreach($escolaridades as $escolaridade)
                             <tr>
                                 <td>{{$escolaridade->tipo}}</td>
+
+                                
                                 <td>
                                     <a href="{{route('escolaridades.edit', $escolaridade->id)}}"><i class="glyphicon glyphicon-pencil"></i></a>
                                     <a href="{{route('escolaridades.remove', $escolaridade->id)}}"><i class="glyphicon glyphicon-trash"></i></a>
