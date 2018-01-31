@@ -37,14 +37,8 @@ Route::resource('escolaridades','EscolaridadeController');
         ]
     )->name('usuarios.remove');
 
-<<<<<<< HEAD
-Route::resource('seletivos', "SeletivoController");
-=======
-//define your route here
-//});
->>>>>>> 785822962ed2cf0ac24ac8a972d0d9aa05be17f9
 
-
+Route::resource('seletivos', 'SeletivoController');
 
 
 //Route::get('admin', 'AdminController@index');
