@@ -34,7 +34,7 @@
                                 
                                 <td>
                                     <a href="{{route('escolaridades.edit', $escolaridade->id)}}"><i class="glyphicon glyphicon-pencil"></i></a>
-                                    <a href="{{route('escolaridades.remove', $escolaridade->id)}}"><i class="glyphicon glyphicon-trash"></i></a>
+                                   
                                     <a href="{{route('escolaridades.show', $escolaridade->id)}}"><i class="glyphicon glyphicon-zoom-in"></i></a>
                                 </td>                                
                             </tr>                         
@@ -44,8 +44,8 @@
             </div> 
         </div>
         <div align="center" class="row">
-        	{{ $modalidades->links() }}
+        	{{ $escolaridades->links() }}
 	    </div>
     </div>
-    <a href="{{route('modalidades.create')}}"><button class="btn btn-primary">Adicionar</button></a>
+    <a href="{{route('escolaridades.create')}}"><button class="btn btn-primary">Adicionar</button></a>
 @endsection
