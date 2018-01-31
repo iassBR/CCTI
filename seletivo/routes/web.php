@@ -20,13 +20,14 @@ Auth::routes();
 
 
 //Route::group(['prefix' => 'admin'], function () {
- //   Route::get('/', 'AdminController@index');
-   Route::resource('admin', 'AdminController');
-   Route::resource('usuarios', 'AdminController');
+  //Route::get('/', 'Admin\AdminController@index');
+ // Route::resource('admin', 'Admin\AdminController');
+ //  Route::resource('usuarios', 'AdminController');
 //});
 
 
-
+Route::resource('admin', 'Admin\AdminController');
+Route::resource('usuarios', 'Admin\AdminController');
 
 
 //Route::get('admin', 'AdminController@index');
@@ -34,7 +35,8 @@ Auth::routes();
 
 
 //Route::group(['middleware' => 'auth','prefix' => 'admin'], function () {
-      
+   //   Route::resource('admin', 'Admin\AdminController');
+  //    Route::resource('usuarios', 'Admin\AdminController');
      // Route::get('/', 'AdminController@index');
       //Route::get('/admin', 'Admin\AdminController@index');
       //Route::resource('usuarios', 'Admin\UsuarioController');

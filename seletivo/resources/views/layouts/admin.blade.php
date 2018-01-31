@@ -133,9 +133,12 @@
                         <li><a href="#">Permissões</a></li>
                     </ul>
                 </div>
-    	
+            <div class="content">
+			    <div class="container-fluid">
             
-	@yield('content')	
+	                @yield('content')
+                </div>
+            </div>	
     </div>
 							
 </div>

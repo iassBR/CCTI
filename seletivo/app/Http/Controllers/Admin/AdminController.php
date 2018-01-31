@@ -15,7 +15,12 @@ class AdminController extends Controller
      * 
      * 
      */ 
-    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+     
     public function index()
     {
        
@@ -46,7 +51,9 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dados = $request->all();
+        $user = User::create($dados);
+        return redirect()->route('admin.index');
     }
 
     /**
