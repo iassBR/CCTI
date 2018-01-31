@@ -40,9 +40,9 @@
 								<td> {{$user->papel->nome }}</td>
                                
                                 <td>
-                                    <a href="#"><i class="glyphicon glyphicon-pencil"></i></a>
+                                    <a href="{{route('usuarios.edit', $user->id)}}"><i class="glyphicon glyphicon-pencil"></i></a>
                                     <a href="{{route('usuarios.remove', $user->id)}}"><i class="glyphicon glyphicon-trash"></i></a>
-                                    <a href="#"><i class="glyphicon glyphicon-zoom-in"></i></a>
+                                    
                                 </td>                                
                             </tr>                         
                         @endforeach                                 

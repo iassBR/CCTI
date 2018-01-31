@@ -97,7 +97,11 @@ class UsuarioController extends Controller
      */
     public function edit($id)
     {
-        //
+       
+
+        $user = User::find($id);
+        $papeis = Papel::all();
+        return view('admin.usuarios.edit', compact('user','papeis'));
     }
 
     /**
@@ -109,7 +113,23 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       
+
+        $user = User::find($id);
+        $data = $request->all();
+        $user->update([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+            'cpf' => $data['cpf'],
+            'bairro' => $data['bairro'],
+            'logradouro' => $data['logradouro'],
+            'num' => $data['num'],
+            'telefone' => $data['telefone'],
+            'papel_id' => $data['papel_id']
+        
+        ]);
+        return redirect()->route('usuarios.index');
     }
 
     /**

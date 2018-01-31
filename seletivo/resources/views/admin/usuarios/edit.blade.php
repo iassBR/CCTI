@@ -33,95 +33,80 @@
                 <label for="password" class="col-md-4 control-label">Senha</label>
 
                 <div class="col-md-6">
-                    <input id="password" type="password" class="form-control" name="password" required>
+                    <input id="password" type="password" class="form-control" name="password" required value="{{$user->password}}">
+
+                   
+                </div>
+            </div>
+
+            
+            <div class="form-group">
+                <label for="cpf" class="col-md-4 control-label">CPF</label>
+
+                <div class="col-md-6">
+                    <input id="cpf" type="text" class="form-control" name="cpf"  required value="{{$user->cpf}}">
+
+                    
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="bairro" class="col-md-4 control-label">Bairro</label>
+
+                <div class="col-md-6">
+                    <input id="bairro" type="text" class="form-control" name="bairro"  required value="{{$user->bairro}}">
+
+                   
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="logradouro" class="col-md-4 control-label">Logradouro</label>
+
+                <div class="col-md-6">
+                    <input id="logradouro" type="text" class="form-control" name="logradouro" required value="{{$user->logradouro}}">
+
+                   
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="num" class="col-md-4 control-label">Numero</label>
+
+                <div class="col-md-6">
+                    <input id="num" type="number" class="form-control" name="num" required value="{{$user->num}}">
 
                    
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="password-confirm" class="col-md-4 control-label">Confirmar Senha</label>
-
-                <div class="col-md-6">
-                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="cpf" class="col-md-4 control-label">CPF</label>
-
-                <div class="col-md-6">
-                    <input id="cpf" type="text" class="form-control" name="cpf" value="{{ old('cpf') }}" required>
-
-                    
-                </div>
-            </div>
-            <div class="form-group{{ $errors->has('bairro') ? ' has-error' : '' }}">
-                <label for="bairro" class="col-md-4 control-label">Bairro</label>
-
-                <div class="col-md-6">
-                    <input id="bairro" type="text" class="form-control" name="bairro" value="{{ old('bairro') }}" required>
-
-                    @if ($errors->has('bairro'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('bairro') }}</strong>
-                        </span>
-                    @endif
-                </div>
-            </div>
-            <div class="form-group{{ $errors->has('logradouro') ? ' has-error' : '' }}">
-                <label for="logradouro" class="col-md-4 control-label">Logradouro</label>
-
-                <div class="col-md-6">
-                    <input id="logradouro" type="text" class="form-control" name="logradouro" value="{{ old('logradouro') }}" required>
-
-                    @if ($errors->has('logradouro'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('logradouro') }}</strong>
-                        </span>
-                    @endif
-                </div>
-            </div>
-            <div class="form-group{{ $errors->has('num') ? ' has-error' : '' }}">
-                <label for="num" class="col-md-4 control-label">Numero</label>
-
-                <div class="col-md-6">
-                    <input id="num" type="number" class="form-control" name="num" value="{{ old('num') }}" required>
-
-                    @if ($errors->has('num'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('num') }}</strong>
-                        </span>
-                    @endif
-                </div>
-            </div>
-
-            <div class="form-group{{ $errors->has('telefone') ? ' has-error' : '' }}">
                 <label for="telefone" class="col-md-4 control-label">telefone</label>
 
                 <div class="col-md-6">
-                    <input id="telefone" type="string" class="form-control" name="telefone" value="{{ old('telefone') }}" required>
+                    <input id="telefone" type="string" class="form-control" name="telefone"  required value="{{$user->telefone}}">
 
-                    @if ($errors->has('telefone'))
-                        <span class="help-block">
-                            <strong>{{ $errors->first('num') }}</strong>
-                        </span>
-                    @endif
+                  
                 </div>
             </div>
-                <h4>Curso</h4>
+            <div class="form-group" >
+                
                 <div class="form-group">
-                    <label for="curso_id">Selecione o curso deste aluno</label>
-                    <select class="form-control" name="curso_id" required>
-                            @foreach($cursos as $curso)            
-                                <option value="{{$curso->id}}" 
-                                        {{(isset($aluno->curso_id) && $aluno->curso_id == $curso->id ? 
-                                        'selected' : '')}}>{{$curso->nome}}
+                    <label for="papel_id" class="col-md-4 control-label">Selecione o papel deste usuário</label>
+                    <div  class="col-md-6">
+                    <select class="form-control" name="papel_id" required>
+                            @foreach($papeis as $papel)            
+                                <option value="{{$papel->id}}" 
+                                        {{(isset($user->papel_id) && $user->papel_id == $papel->id ? 
+                                        'selected' : '')}}>{{$papel->nome}}
                                 </option>
                             @endforeach
                     </select>
+                    </div>
                 </div>     
-                <a href="{{ url()->previous() }}" class="btn btn-default">Voltar</a>
-                <button type="submit" class="btn btn-primary">Editar</button>
+            </div>
+          
+               
+                    <a href="{{ url()->previous() }}" class="btn btn-primary">Voltar</a>
+                    <button type="submit" class="btn btn-primary">Editar</button>
+            
             </form>
         </div>
     </div>

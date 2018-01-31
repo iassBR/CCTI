@@ -142,8 +142,7 @@
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
                         <a href="{{ url()->previous() }}" class="btn btn-primary">Voltar</a>
-                            <button type="submit" class="btn btn-primary">
-                                Registrar
+                            <button href="{{ url()->previous() }}" type="submit" class="btn btn-primary">Registrar                               
                             </button>
                             
                         </div>
