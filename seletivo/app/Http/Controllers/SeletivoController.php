@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Seletivo;
+use App\Escolaridade;
+use Validator;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\Paginator;
 
 class SeletivoController extends Controller
 {
@@ -23,7 +28,7 @@ class SeletivoController extends Controller
      */
     public function create()
     {
-        //
+        return view('seletivos.create');
     }
 
     /**
@@ -34,7 +39,10 @@ class SeletivoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dados = $request->all();
+        Seletivo::create($dados);
+
+        return redirect()->route('seletivos.index');
     }
 
     /**

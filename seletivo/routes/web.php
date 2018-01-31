@@ -17,6 +17,9 @@ Route::get('/home','HomeController@index');
 
 Auth::routes();
 
+Route::get('/escolaridades/remove/{id}','EscolaridadeController@remover')->name('escolaridade.remove');
+
+Route::resource('escolaridades','EscolaridadeController');
 
 
 //Route::group(['prefix' => 'admin'], function () {
@@ -34,10 +37,8 @@ Auth::routes();
         ]
     )->name('usuarios.remove');
 
-//define your route here
-//});
 
-
+Route::resource('seletivos', 'SeletivoController');
 
 
 //Route::get('admin', 'AdminController@index');
