@@ -36,7 +36,7 @@ class LoginController extends Controller
     protected function authenticated($request, $user)
     {
         if($user->papel_id === 1) {
-            return redirect()->intended('/Admin');
+            return redirect()->intended('/admin');
         }
 
         return redirect()->intended('/home');

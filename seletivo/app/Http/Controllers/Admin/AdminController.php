@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\User;
 use App\Papel;
+use App\Http\Controllers\Controller;
 class AdminController extends Controller
 {
     /**
@@ -15,7 +16,12 @@ class AdminController extends Controller
      * 
      * 
      */ 
-    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+     
     public function index()
     {
        
@@ -33,7 +39,9 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+       // $users = User::all();
+       // $papeis = Papel::all();            
+       // return view('admin.usuarios.create',compact('users','papeis'));
     }
 
     /**
@@ -44,7 +52,9 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dados = $request->all();
+        $user = User::create($dados);
+        return redirect()->route('admin.index');
     }
 
     /**

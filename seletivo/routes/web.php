@@ -23,11 +23,26 @@ Route::resource('escolaridades','EscolaridadeController');
 
 
 //Route::group(['prefix' => 'admin'], function () {
- //   Route::get('/', 'AdminController@index');
-   Route::resource('admin', 'AdminController');
+  //Route::get('/', 'Admin\AdminController@index');
+ ///Route::resource('admin', 'Admin\AdminController');
+ // Route::resource('usuarios', 'AdminController');
 //});
+//Route::group(['namespace'=>'Admin','prefix'=>'admin'],
+//function() {
+     // Route::get('admin', 'Admin\AdminController@index');
+      Route::resource('admin', 'Admin\AdminController');
+      Route::resource('usuarios', 'Admin\UsuarioController');
+      Route::get('/usuarios/remove/{id}',  [
+            'uses'=>'Admin\UsuarioController@remover'
+        ]
+    )->name('usuarios.remove');
 
+<<<<<<< HEAD
 Route::resource('seletivos', "SeletivoController");
+=======
+//define your route here
+//});
+>>>>>>> 785822962ed2cf0ac24ac8a972d0d9aa05be17f9
 
 
 
@@ -37,7 +52,8 @@ Route::resource('seletivos', "SeletivoController");
 
 
 //Route::group(['middleware' => 'auth','prefix' => 'admin'], function () {
-      
+   //   Route::resource('admin', 'Admin\AdminController');
+  //    Route::resource('usuarios', 'Admin\AdminController');
      // Route::get('/', 'AdminController@index');
       //Route::get('/admin', 'Admin\AdminController@index');
       //Route::resource('usuarios', 'Admin\UsuarioController');
