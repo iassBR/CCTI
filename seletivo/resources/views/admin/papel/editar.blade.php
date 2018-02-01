@@ -11,7 +11,7 @@
 		{{ method_field('PUT') }}
 		@include('admin.papel._form')
 
-		<button class="btn blue">Atualizar</button>
+		<button class="btn btn-primary">Atualizar</button>
 
 			
 		</form>

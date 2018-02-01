@@ -32,6 +32,7 @@ protected function validarSeletivo($request){
      */
     public function index(Request $request)
     {
+<<<<<<< HEAD
         $qtd = $request['qtd'] ?: 8;
         $page = $request['page'] ?: 1;
         $buscar = $request['buscar'];
@@ -48,6 +49,9 @@ protected function validarSeletivo($request){
         }
         $seletivos = $seletivos->appends(Request::capture()->except('page'));
         return view('seletivos.index', compact('seletivos'));
+=======
+        //
+>>>>>>> e315abe1611cc35c75be8388f47f5617c1c898b0
     }
 
     /**

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @extends ('layouts.app')
 
 @section('content')
@@ -22,3 +23,5 @@
     </div>
         <a href="{{ url()->previous() }}" class="btn btn-default">Voltar</a>
 @endsection    
+=======
+>>>>>>> e315abe1611cc35c75be8388f47f5617c1c898b0
