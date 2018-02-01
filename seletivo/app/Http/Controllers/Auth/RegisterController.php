@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '{{ url()->previous() }}';
+    protected $redirectTo = '\home';
 
     /**
      * Create a new controller instance.
@@ -56,7 +56,7 @@ class RegisterController extends Controller
             'logradouro' => 'required',
             'num' => 'required',
             'telefone' =>'required',
-            'papel_id' => 'required'
+            
         ]);
     }
 

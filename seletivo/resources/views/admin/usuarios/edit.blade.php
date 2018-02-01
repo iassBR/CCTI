@@ -81,7 +81,7 @@
                 <label for="telefone" class="col-md-4 control-label">telefone</label>
 
                 <div class="col-md-6">
-                    <input id="telefone" type="string" class="form-control" name="telefone"  required value="{{$user->telefone}}">
+                    <input id="telefone" type="text" class="form-control" name="telefone"  required value="{{$user->telefone}}">
 
                   
                 </div>
@@ -105,7 +105,7 @@
           
                
                     <a href="{{ url()->previous() }}" class="btn btn-primary">Voltar</a>
-                    <button type="submit" class="btn btn-primary">Editar</button>
+                    <button class="btn blue">Atualizar</button>
             
             </form>
         </div>

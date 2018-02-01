@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Papel;
+use Illuminate\Support\Facades\Gate;
 class UsuarioController extends Controller
 {
     /**
@@ -30,6 +31,9 @@ class UsuarioController extends Controller
 
     public function index()
     {
+        if(Gate::denies('usuario-view')){
+            abort(403,"Não autorizado!");
+          }
         $users = User::all();
         $papeis = Papel::all();            
         return view('admin.usuarios.index',compact('users','papeis'));
@@ -42,9 +46,10 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        $users = User::all();
-        $papeis = Papel::all();            
-        return view('admin.usuarios.create',compact('users','papeis'));
+        if(Gate::denies('usuario-create')){
+            abort(403,"Não autorizado!");
+          }
+       
     }
 
     /**
@@ -55,27 +60,11 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        
+        if(Gate::denies('usuario-store')){
+            abort(403,"Não autorizado!");
+          }
 
-        $validator = $this->validarUsuario($request);
-        if($validator->fails()) {
-            return redirect()->back()->withErrors($validator->errors());
-        }
-
-        $data = $request->all();
-        $user = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'cpf' => $data['cpf'],
-            'bairro' => $data['bairro'],
-            'logradouro' => $data['logradouro'],
-            'num' => $data['num'],
-            'telefone' => $data['telefone'],
-            'papel_id' => $data['papel_id']
         
-        ]);
-        return redirect()->route('admin.index');
     }
 
     /**
@@ -97,11 +86,11 @@ class UsuarioController extends Controller
      */
     public function edit($id)
     {
-       
+        if(Gate::denies('usuario-edit')){
+            abort(403,"Não autorizado!");
+          }
 
-        $user = User::find($id);
-        $papeis = Papel::all();
-        return view('admin.usuarios.edit', compact('user','papeis'));
+       
     }
 
     /**
@@ -113,23 +102,10 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(Gate::denies('usuario-update')){
+            abort(403,"Não autorizado!");
+          }
        
-
-        $user = User::find($id);
-        $data = $request->all();
-        $user->update([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-            'cpf' => $data['cpf'],
-            'bairro' => $data['bairro'],
-            'logradouro' => $data['logradouro'],
-            'num' => $data['num'],
-            'telefone' => $data['telefone'],
-            'papel_id' => $data['papel_id']
-        
-        ]);
-        return redirect()->route('usuarios.index');
     }
 
     /**
@@ -139,12 +115,52 @@ class UsuarioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        User::find($id)->delete();
-        return redirect()->route('admin.index');
+    {   
+        if(Gate::denies('usuario-delete')){
+            abort(403,"Não autorizado!");
+          }
+      
     }
     public function remover($id){
-        $user = User::find($id);
-       return view('admin.usuarios.remove', compact('user'));
+        if(Gate::denies('usuario-delete')){
+            abort(403,"Não autorizado!");
+          }
+      
    }
+
+   public function papel($id)
+   {
+     if(Gate::denies('usuario-edit')){
+       abort(403,"Não autorizado!");
+     }
+
+     $usuario = User::find($id);
+     $papel = Papel::all();
+     
+     return view('admin.usuarios.papel',compact('usuario','papel'));
+   }
+
+   public function papelStore(Request $request,$id)
+   {
+       if(Gate::denies('usuario-edit')){
+         abort(403,"Não autorizado!");
+       }
+       $usuario = User::find($id);
+       $dados = $request->all();
+       $papel = Papel::find($dados['papel_id']);
+       $usuario->adicionaPapel($papel);
+       return redirect()->back();
+   }
+
+   public function papelDestroy($id,$papel_id)
+   {
+     if(Gate::denies('usuario-edit')){
+       abort(403,"Não autorizado!");
+     }
+     $usuario = User::find($id);
+     $papel = Papel::find($papel_id);
+     $usuario->removePapel($papel);
+     return redirect()->back();
+   }
+
 }

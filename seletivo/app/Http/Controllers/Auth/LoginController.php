@@ -25,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    //protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -35,7 +35,7 @@ class LoginController extends Controller
 
     protected function authenticated($request, $user)
     {
-        if($user->papel_id === 1) {
+        if($user->papel_id != 4) {
             return redirect()->intended('/admin');
         }
 

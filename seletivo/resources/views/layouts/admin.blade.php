@@ -129,7 +129,7 @@
                         <li class="visible-xs"><a href="#">Sair</a></li>
                        
                         <li><a href="usuarios">Usuários</a></li>
-                        <li><a href="#">Papéis</a></li>
+                        <li><a href="papeis">Papéis</a></li>
                         
                     </ul>
                 </div>

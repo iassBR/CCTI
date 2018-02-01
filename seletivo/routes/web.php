@@ -27,17 +27,28 @@ Route::resource('escolaridades','EscolaridadeController');
  ///Route::resource('admin', 'Admin\AdminController');
  // Route::resource('usuarios', 'AdminController');
 //});
-//Route::group(['namespace'=>'Admin','prefix'=>'admin'],
-//function() {
-     // Route::get('admin', 'Admin\AdminController@index');
-      Route::resource('admin', 'Admin\AdminController');
-      Route::resource('usuarios', 'Admin\UsuarioController');
-      Route::get('/usuarios/remove/{id}',  [
-            'uses'=>'Admin\UsuarioController@remover'
-        ]
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('admin', 'Admin\AdminController');
+    Route::resource('usuarios', 'Admin\UsuarioController');
+    Route::resource('papeis','Admin\PapelController');
+    Route::get('/usuarios/remove/{id}',  [
+          'uses'=>'Admin\UsuarioController@remover'
+      ]
     )->name('usuarios.remove');
+    
+    Route::get('usuarios/papel/{id}', ['as'=>'usuarios.papel','uses'=>'Admin\UsuarioController@papel']);
+    Route::post('usuarios/papel/{papel}', ['as'=>'usuarios.papel.store','uses'=>'Admin\UsuarioController@papelStore']);
+    Route::delete('usuarios/papel/{usuario}/{papel}', ['as'=>'usuarios.papel.destroy','uses'=>'Admin\UsuarioController@papelDestroy']);
+  
+    Route::resource('papeis', 'Admin\PapelController');
 
-
+    Route::get('papeis/permissao/{id}', ['as'=>'papeis.permissao','uses'=>'Admin\PapelController@permissao']);
+    Route::post('papeis/permissao/{permissao}', ['as'=>'papeis.permissao.store','uses'=>'Admin\PapelController@permissaoStore']);
+    Route::delete('papeis/permissao/{papel}/{permissao}', ['as'=>'papeis.permissao.destroy','uses'=>'Admin\PapelController@permissaoDestroy']);
+    
+     
+    
+});
 Route::resource('seletivos', 'SeletivoController');
 
 

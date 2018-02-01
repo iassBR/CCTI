@@ -11,8 +11,17 @@ class PermissaoSeeder extends Seeder
      */
     public function run()
     {
+
+        $admin = Permissao::firstOrCreate([
+            'nome' => 'admin-view',
+            'descricao' =>'index admin'
+        ]);
         $usuarios1 = Permissao::firstOrCreate([
             'nome' =>'usuario-view',
+            'descricao' =>'Acesso a lista de Usuários'
+        ]);
+        $usuario = Permissao::firstOrCreate([
+            'nome' =>'usuario-update',
             'descricao' =>'Acesso a lista de Usuários'
         ]);
         $usuarios2 = Permissao::firstOrCreate([
@@ -38,6 +47,10 @@ class PermissaoSeeder extends Seeder
         ]);
         $papeis3 = Permissao::firstOrCreate([
             'nome' =>'papel-edit',
+            'descricao' =>'Editar Papéis'
+        ]);
+        $papeis = Permissao::firstOrCreate([
+            'nome' =>'papel-update',
             'descricao' =>'Editar Papéis'
         ]);
   

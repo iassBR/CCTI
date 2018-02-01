@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Papel;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 class AdminController extends Controller
 {
     /**
@@ -24,6 +25,9 @@ class AdminController extends Controller
      
     public function index()
     {
+        if(Gate::denies('admin-view')){
+            abort(403,"Não autorizado!");
+          }
        
         $users = User::all();
         $papeis = Papel::all();            

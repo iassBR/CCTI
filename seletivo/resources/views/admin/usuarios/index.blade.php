@@ -25,7 +25,7 @@
                             <th>CPF</th>
                             <th>Email</th>
 							<th>Bairro</th>
-							<th>Papel</th>
+							
                             
                             
                         </tr>
@@ -37,7 +37,7 @@
                                 <td>{{$user->cpf}}</td>
 								<td> {{$user->email}} </td>
 								<td>{{ $user->bairro }} </td>
-								<td> {{$user->papel->nome }}</td>
+								
                                
                                 <td>
                                     <a href="{{route('usuarios.edit', $user->id)}}"><i class="glyphicon glyphicon-pencil"></i></a>

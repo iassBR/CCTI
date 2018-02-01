@@ -39,10 +39,7 @@ class papel_permissao_Seeder extends Seeder
             'papel_id' => 1,
             'permissao_id' => 7
         ]);
-        DB::table('papel_permissao')->insert([
-            'papel_id' => 1,
-            'permissao_id' => 1
-        ]);
+        
         DB::table('papel_permissao')->insert([
             'papel_id' => 1,
             'permissao_id' => 8
