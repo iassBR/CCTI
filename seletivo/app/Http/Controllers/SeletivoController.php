@@ -11,6 +11,19 @@ use Illuminate\Pagination\Paginator;
 
 class SeletivoController extends Controller
 {
+protected function validarSeletivo($request){
+    $validator = Validator::make($request->all(), [
+            "nomeSeletivo" => "required",
+            "dataInicio"=> "required",
+            "dataTermino" => "required",
+            "tempoExperiencia" => "required",
+            "cargoDesejado" => "required"
+
+   ]);
+   return $validator;
+}
+
+
     /**
      * Display a listing of the resource.
      *
@@ -39,6 +52,11 @@ class SeletivoController extends Controller
      */
     public function store(Request $request)
     {
+    $validator = $this->validarSeletivo($request);
+    if($validator->fails()){
+        return redirect()->back()->withErrors($validator->errors());
+    }
+
         $dados = $request->all();
         Seletivo::create($dados);
 
@@ -53,7 +71,9 @@ class SeletivoController extends Controller
      */
     public function show($id)
     {
-        //
+        $imovel = Seletivo::find($id);
+ 
+        return view('seletivos.show', compact('seletivo'));
     }
 
     /**
@@ -64,7 +84,9 @@ class SeletivoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $imovel = Seletivo::find($id);
+ 
+        return view('seletivos.edit', compact('seletivo'));
     }
 
     /**
@@ -76,7 +98,18 @@ class SeletivoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = $this->validarSeletivo($request);
+         
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator->errors());
+        }
+ 
+        $seletivo = Seletivo::find($id);
+        $dados = $request->all();
+        $seletivo->update($dados);
+         
+        return redirect()->route('seletivo.index');
+    
     }
 
     /**
@@ -87,6 +120,13 @@ class SeletivoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Seletivo::find($id)->delete();
+        return redirect()->route('seletivos.index');
+    }
+    public function remover($id)
+    {
+        $seletivo = Seletivo::find($id);
+ 
+        return view('seletivos.remove', compact('seletivo'));
     }
 }

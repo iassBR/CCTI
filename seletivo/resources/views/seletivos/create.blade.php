@@ -27,7 +27,7 @@
                     <input type="date" class="form-control" name="dataInicio" required>
                 </div>
             </div>
-       <div class="row">
+       
             <div class="col-md-4">
                 <div class="form-group">
                     <label for="preco">Data Termino</label>
@@ -43,21 +43,17 @@
                         <input type="text" class="form-control" placeholder="Cargo Desejado" name="cargoDesejado" required>  
                     </div>
             </div> 
-        </div>          
-        <div class="form-group">
-            
-            <label for="tempoxp">Tempo de experiência</label>
-            <input type="text" class="form-control" name="tempoExperiencia" placeholder="Tempo de Experiência" required>
-        </div>     
         
-        <div class="form-group">
-            <label for="escolaridade_id">Selecione a escolaridade</label>
-            <select class="form-control" name="escolaridade_id" required>
-                @foreach($escolaridades as $escolaridade)            
-                    <option value="{{$escolaridade->id}}"> {{$escolaridade->tipo}} </option>            
-                @endforeach
-            </select> 
-        </div>   
+          
+            <div class="col-md-6">          
+                <div class="form-group">
+                    
+                    <label for="tempoxp">Tempo de experiência</label>
+                    <input type="text" class="form-control" name="tempoExperiencia" placeholder="Tempo de Experiência" required>
+                </div>     
+            </div> 
+        </div>
+        
         <span class="pull-right">
             <a href="{{ url()->previous() }}" class="btn btn-default">Voltar</a>
             <button type="submit" class="btn btn-primary">Cadastrar</button>

@@ -17,7 +17,7 @@ Route::get('/home','HomeController@index');
 
 Auth::routes();
 
-Route::get('/escolaridades/remove/{id}','EscolaridadeController@remover')->name('escolaridade.remove');
+//Route::get('/escolaridades/remove/{id}','EscolaridadeController@remover')->name('escolaridade.remove');
 
 Route::resource('escolaridades','EscolaridadeController');
 
