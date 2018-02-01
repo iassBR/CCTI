@@ -13,13 +13,10 @@ class RelacionarEscolaridadesSeletivos extends Migration
      */
     public function up()
     {
-        Schema::table('seletivos', 
-
-            function(Blueprint $table){
+        Schema::table('seletivos', function(Blueprint $table){
                 $table->integer('escolaridade_id')->unsigned();
                 $table->foreign('escolaridade_id')->references('id')->on('escolaridades');
-            }
-            );
+            });
     }
 
     /**
@@ -29,8 +26,7 @@ class RelacionarEscolaridadesSeletivos extends Migration
      */
     public function down()
     {
-        Schema::table('seletivos', 
-        function(Blueprint $table){
+        Schema::table('seletivos', function(Blueprint $table){
             $table->dropForeign('seletivos_escolaridade_id_foreign');
             $table->dropColumn('escolaridade_id');
         }
