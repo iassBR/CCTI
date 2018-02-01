@@ -17,7 +17,7 @@ class PapelController extends Controller
      */
     public function index()
     {
-
+      
       if(Gate::denies('papel-view')){
         abort(403,"Não autorizado!");
       }
@@ -93,6 +93,7 @@ class PapelController extends Controller
       if(Gate::denies('papel-create')){
         abort(403,"Não autorizado!");
       }
+
       if($request['nome'] && $request['nome'] != "Admin"){
           Papel::create($request->all());
 

@@ -35,11 +35,14 @@ Route::group(['middleware' => 'auth'], function () {
           'uses'=>'Admin\UsuarioController@remover'
       ]
     )->name('usuarios.remove');
-    
+    Route::put('usuarios/{id}/edit', ['as'=>'usuarios.edit','uses' => 'Admin\UsuarioController@update']);
     Route::get('usuarios/papel/{id}', ['as'=>'usuarios.papel','uses'=>'Admin\UsuarioController@papel']);
     Route::post('usuarios/papel/{papel}', ['as'=>'usuarios.papel.store','uses'=>'Admin\UsuarioController@papelStore']);
     Route::delete('usuarios/papel/{usuario}/{papel}', ['as'=>'usuarios.papel.destroy','uses'=>'Admin\UsuarioController@papelDestroy']);
-  
+    //usuarios/{id}/edit
+   // usuarios/create
+   // usuarios/remove/{id}
+
     Route::resource('papeis', 'Admin\PapelController');
 
     Route::get('papeis/permissao/{id}', ['as'=>'papeis.permissao','uses'=>'Admin\PapelController@permissao']);

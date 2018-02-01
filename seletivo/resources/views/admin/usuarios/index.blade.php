@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+@can('usuario-view')
 <div class="panel panel-default">    
         <div class="panel-heading">Lista de Usuários</div>
         
@@ -25,7 +26,7 @@
                             <th>CPF</th>
                             <th>Email</th>
 							<th>Bairro</th>
-							
+							<th>Papéis</th>
                             
                             
                         </tr>
@@ -37,7 +38,11 @@
                                 <td>{{$user->cpf}}</td>
 								<td> {{$user->email}} </td>
 								<td>{{ $user->bairro }} </td>
-								
+								<td>
+
+							    <a title="Papel" class="btn btn-primary" href="{{route('usuarios.papel',$user->id)}}">Papél</a>
+
+						        </td>
                                
                                 <td>
                                     <a href="{{route('usuarios.edit', $user->id)}}"><i class="glyphicon glyphicon-pencil"></i></a>
@@ -52,5 +57,5 @@
         </div>
         <a href="{{route('usuarios.create')}}"><button class="btn btn-primary">Novo Usuário</button></a> 
     </div>
-
+@endcan
 @endsection

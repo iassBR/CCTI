@@ -14,6 +14,20 @@ class UsuarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected function validarEdit($request){
+        $validator = Validator::make($request->all(),
+            ['name' => 'required|string|max:255',
+            'email' => 'nullable',
+            'password' => 'nullable',
+            'cpf' => 'nullable',
+            'bairro' => 'required',
+            'logradouro' => 'required',
+            'num' => 'required',
+            'telefone' =>'required',
+            'papel_id' => 'nullable'
+        ]);
+        return $validator;
+    }
     protected function validarUsuario($request){
         $validator = Validator::make($request->all(),
             ['name' => 'required|string|max:255',
@@ -50,6 +64,10 @@ class UsuarioController extends Controller
             abort(403,"Não autorizado!");
           }
        
+        
+        $papeis= Papel::all();
+        return view('admin.usuarios.create', compact('papeis'));
+
     }
 
     /**
@@ -60,9 +78,27 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        if(Gate::denies('usuario-store')){
-            abort(403,"Não autorizado!");
-          }
+       // if(Gate::denies('usuario-store')){
+       //     abort(403,"Não autorizado!");
+       //   }
+       $validator = $this->validarUsuario($request);
+       if($validator->fails()){
+           return redirect()->back()->withErrors($validator->errors());
+       }
+          $data = $request->all(); 
+          $user = User::create(
+              ['name' => $data['name'],
+              'email' => $data['email'],
+              'password' => bcrypt($data['password']),
+              'cpf' => $data['cpf'],
+              'bairro' => $data['bairro'],
+              'logradouro' => $data['logradouro'],
+              'num' => $data['num'],
+              'telefone' => $data['telefone'],
+              'papel_id' => $data['papel_id']
+                ]);
+
+                return redirect()->back();
 
         
     }
@@ -89,7 +125,12 @@ class UsuarioController extends Controller
         if(Gate::denies('usuario-edit')){
             abort(403,"Não autorizado!");
           }
+         
+          $user = User::find($id);
+          
 
+    
+          return view('admin.usuarios.edit',compact('user'));
        
     }
 
@@ -105,7 +146,19 @@ class UsuarioController extends Controller
         if(Gate::denies('usuario-update')){
             abort(403,"Não autorizado!");
           }
-       
+        $validator = $this->validarEdit($request);
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator->errors());
+        }
+
+        if($request['name'] != "Admin"){
+            User::find($id)->update($request->all());
+        }
+        
+        return redirect()->route('usuarios.index');
+         
+        
+              
     }
 
     /**
@@ -119,12 +172,18 @@ class UsuarioController extends Controller
         if(Gate::denies('usuario-delete')){
             abort(403,"Não autorizado!");
           }
+
+          User::find($id)->delete();
+          return redirect()->back();
       
     }
     public function remover($id){
         if(Gate::denies('usuario-delete')){
             abort(403,"Não autorizado!");
           }
+
+          $user = User::find($id);
+          return view('admin.usuarios.remove',compact('user'));
       
    }
 
