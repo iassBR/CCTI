@@ -39,7 +39,7 @@
         <div class="row">  
             <div class="col-md-6">
                     <div class="form-group">
-                        <label for="nomeSeletivo">Cargo desejado</label>
+                        <label for="cargoDesejado">Cargo desejado</label>
                         <input type="text" class="form-control" placeholder="Cargo Desejado" name="cargoDesejado" required>  
                     </div>
             </div> 
@@ -48,7 +48,7 @@
             <div class="col-md-6">          
                 <div class="form-group">
                     
-                    <label for="tempoxp">Tempo de experiência</label>
+                    <label for="tempoExperiencia">Tempo de experiência</label>
                     <input type="text" class="form-control" name="tempoExperiencia" placeholder="Tempo de Experiência" required>
                 </div>     
             </div> 

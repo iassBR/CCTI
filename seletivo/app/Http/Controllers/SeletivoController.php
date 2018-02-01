@@ -31,7 +31,8 @@ protected function validarSeletivo($request){
      */
     public function index()
     {
-        //
+        $seletivos = Seletivo::all();
+        return view('seletivos.index', compact('seletivos'));
     }
 
     /**
