@@ -30,7 +30,7 @@ protected function validarSeletivo($request){
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request){
 
         $qtd = $request['qtd'] ?: 8;
         $page = $request['page'] ?: 1;

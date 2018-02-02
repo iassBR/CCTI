@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 @extends("layouts.app")
 
 @section('content')
@@ -41,5 +41,4 @@
     </div>
     <a href="{{route('seletivos.create')}}"> <button class="btn btn-primary">Criar Seletivo</button></a>
 @endsection
-=======
->>>>>>> e315abe1611cc35c75be8388f47f5617c1c898b0
+
