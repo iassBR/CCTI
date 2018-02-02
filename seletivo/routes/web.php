@@ -17,8 +17,10 @@ Route::get('/home','HomeController@index');
 
 Auth::routes();
 
-//Route::get('/escolaridades/remove/{id}','EscolaridadeController@remover')->name('escolaridade.remove');
+Route::get('/seletivos/remove/{id}','SeletivoController@remover')->name('seletivos.remove');
+Route::resource('seletivos', 'SeletivoController');
 
+Route::get('/escolaridades/remove/{id}','EscolaridadeController@remover')->name('escolaridades.remove');
 Route::resource('escolaridades','EscolaridadeController');
 
 
@@ -52,7 +54,8 @@ Route::group(['middleware' => 'auth'], function () {
      
     
 });
-Route::resource('seletivos', 'SeletivoController');
+
+
 
 
 //Route::get('admin', 'AdminController@index');

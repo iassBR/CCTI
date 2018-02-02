@@ -9,6 +9,7 @@ use Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\Paginator;
 
+
 class SeletivoController extends Controller
 {
 protected function validarSeletivo($request){
@@ -29,9 +30,24 @@ protected function validarSeletivo($request){
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index(Request $request){
+
+        $qtd = $request['qtd'] ?: 8;
+        $page = $request['page'] ?: 1;
+        $buscar = $request['buscar'];
+ 
+        Paginator::currentPageResolver(function () use ($page){
+            return $page;
+        });
+ 
+        if($buscar){
+            $seletivos = Seletivo::where('nomeSeletivo','=', $buscar)->paginate($qtd);
+        }else{  
+            $seletivos = Seletivo::paginate($qtd);
+ 
+        }
+        $seletivos = $seletivos->appends(Request::capture()->except('page'));
+        return view('seletivos.index', compact('seletivos'));
     }
 
     /**
@@ -41,7 +57,8 @@ protected function validarSeletivo($request){
      */
     public function create()
     {
-        return view('seletivos.create');
+        $escolaridades = Escolaridade::all();
+        return view('seletivos.create', compact('escolaridades'));
     }
 
     /**
@@ -71,7 +88,7 @@ protected function validarSeletivo($request){
      */
     public function show($id)
     {
-        $imovel = Seletivo::find($id);
+        $seletivo = Seletivo::find($id);
  
         return view('seletivos.show', compact('seletivo'));
     }
@@ -84,9 +101,10 @@ protected function validarSeletivo($request){
      */
     public function edit($id)
     {
-        $imovel = Seletivo::find($id);
+       $escolaridades = Escolaridade::all();
+       $seletivo = Seletivo::find($id);
  
-        return view('seletivos.edit', compact('seletivo'));
+        return view('seletivos.edit', compact('seletivo','escolaridades'));
     }
 
     /**
@@ -108,7 +126,7 @@ protected function validarSeletivo($request){
         $dados = $request->all();
         $seletivo->update($dados);
          
-        return redirect()->route('seletivo.index');
+        return redirect()->route('seletivos.index');
     
     }
 
