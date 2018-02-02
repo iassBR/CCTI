@@ -64,8 +64,8 @@
                             <label for="cpf" class="col-md-4 control-label">CPF</label>
 
                             <div class="col-md-6">
-                                <input id="cpf" type="text" class="form-control" name="cpf" value="{{ old('cpf') }}" required>
-
+                                <input id="cpf" type="text" class="form-control" name="cpf" >
+                                
                                 @if ($errors->has('cpf'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('cpf') }}</strong>
