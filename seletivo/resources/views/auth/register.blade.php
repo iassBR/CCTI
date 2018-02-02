@@ -15,13 +15,9 @@
                             <label for="name" class="col-md-4 control-label">Nome</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="name" type="text" class="form-control" name="name"  autofocus>
 
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
+                           
                             </div>
                         </div>
 
@@ -29,7 +25,7 @@
                             <label for="email" class="col-md-4 control-label">E-Mail</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                <input id="email" type="email" class="form-control" name="email">
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -60,56 +56,48 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
+
+
                         <div class="form-group{{ $errors->has('cpf') ? ' has-error' : '' }}">
                             <label for="cpf" class="col-md-4 control-label">CPF</label>
 
                             <div class="col-md-6">
                                 <input id="cpf" type="text" class="form-control" name="cpf" >
                                 
-                                @if ($errors->has('cpf'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('cpf') }}</strong>
-                                    </span>
-                                @endif
+                            
                             </div>
                         </div>
+
+
                         <div class="form-group{{ $errors->has('bairro') ? ' has-error' : '' }}">
                             <label for="bairro" class="col-md-4 control-label">Bairro</label>
 
                             <div class="col-md-6">
-                                <input id="bairro" type="text" class="form-control" name="bairro" value="{{ old('bairro') }}" required>
+                                <input id="bairro" type="text" class="form-control" name="bairro" >
 
-                                @if ($errors->has('bairro'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('bairro') }}</strong>
-                                    </span>
-                                @endif
+                                
                             </div>
                         </div>
+
+
                         <div class="form-group{{ $errors->has('logradouro') ? ' has-error' : '' }}">
                             <label for="logradouro" class="col-md-4 control-label">Logradouro</label>
 
                             <div class="col-md-6">
-                                <input id="logradouro" type="text" class="form-control" name="logradouro" value="{{ old('logradouro') }}" required>
+                                <input id="logradouro" type="text" class="form-control" name="logradouro">
 
-                                @if ($errors->has('logradouro'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('logradouro') }}</strong>
-                                    </span>
-                                @endif
+                               
                             </div>
                         </div>
+
+
                         <div class="form-group{{ $errors->has('num') ? ' has-error' : '' }}">
                             <label for="num" class="col-md-4 control-label">Numero</label>
 
                             <div class="col-md-6">
-                                <input id="num" type="number" class="form-control" name="num" value="{{ old('num') }}" required>
+                                <input id="num" type="number" class="form-control" name="num"  >
 
-                                @if ($errors->has('num'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('num') }}</strong>
-                                    </span>
-                                @endif
+                                
                             </div>
                         </div>
 
@@ -117,13 +105,9 @@
                             <label for="telefone" class="col-md-4 control-label">telefone</label>
 
                             <div class="col-md-6">
-                                <input id="telefone" type="string" class="form-control" name="telefone" value="{{ old('telefone') }}" required>
+                                <input id="telefone" type="text" class="form-control" name="telefone" >
 
-                                @if ($errors->has('telefone'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('num') }}</strong>
-                                    </span>
-                                @endif
+                               
                             </div>
                         </div>
 
@@ -135,10 +119,23 @@
                                 </button>
                             </div>
                         </div>
+
+
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+        <script type="text/javascript" src="{{asset ('js/jquery-3.2.1.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset ('js/bootstrap.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset ('js/jquery.validate.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset ('js/additional-methods.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset ('js/localization/messages_pt_BR.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset ('js/jquery.mask.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset ('js/holder.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset ('js/localfilereader.js')}}"></script>
+        <script type="text/javascript" src="{{asset ('js/validate.js')}}"></script>
+        <script type="text/javascript" src="{{asset ('js/mask.js')}}"></script>
 @endsection
