@@ -85,7 +85,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="admin">ADMIN</a>
+				<a class="navbar-brand" >Administrador</a>
 			</div>
            
 		</div>
@@ -128,8 +128,10 @@
 		        <div class="menu">
                     <ul>
                         <li class="visible-xs"><a href="#">Sair</a></li>
-                        
+                        <h3><strong>Painel do Administrador</strong></h3>
+
                         <li><a href="{{route ('usuarios.index')}}">Usuários</a></li>
+                        
                         <li><a href="{{route ('papeis.index')}}">Papéis</a></li>
                         
                     </ul>
