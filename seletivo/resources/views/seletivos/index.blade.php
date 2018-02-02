@@ -30,7 +30,7 @@
                                 <td>
                                     <a href="{{route('seletivos.edit',$seletivo->id)}}"> <i class="glyphicon glyphicon-pencil"></i></a>
                                     <a href="{{route('seletivos.remove',$seletivo->id)}}"> <i class="glyphicon glyphicon-trash"></i></a>
-                                    <a href="{{route('seletivos.show',$seletivo->id)}}"> <i class="glyphicon glyphicon-pencil"></i></a>
+                                    <a href="{{route('seletivos.show',$seletivo->id)}}"> <i class="glyphicon glyphicon-zoom-in"></i></a>
                                 </td>
                             </tr>
                         @endforeach
