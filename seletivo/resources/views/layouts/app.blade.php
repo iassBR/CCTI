@@ -120,10 +120,17 @@
 </div>
     <!-- Scripts -->
    
-	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="{{asset ('js/app.js')}}"></script>
     <script type="text/javascript" src="js/script.js"></script>    
-	<script type="text/javascript" src="js/jquery-3.1.1.js"></script>
-	
+    <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="{{asset ('js/jquery.validate.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset ('js/additional-methods.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset ('js/localization/messages_pt_BR.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset ('js/jquery.mask.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset ('js/holder.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset ('js/localfilereader.js')}}"></script>
+    <script type="text/javascript" src="{{asset ('js/validate.js')}}"></script>
+    <script type="text/javascript" src="{{asset ('js/mask.js')}}"></script>
 </body>
 
 </html>

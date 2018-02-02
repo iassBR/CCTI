@@ -105,7 +105,7 @@
                             <label for="telefone" class="col-md-4 control-label">telefone</label>
 
                             <div class="col-md-6">
-                                <input id="telefone" type="text" class="form-control" name="telefone" >
+                                <input id="telefone" type="telefone" class="form-control" name="telefone" >
 
                                
                             </div>
@@ -119,7 +119,7 @@
                                 </button>
                             </div>
                         </div>
-
+                    
 
                     </form>
                 </div>
@@ -130,12 +130,5 @@
 
         <script type="text/javascript" src="{{asset ('js/jquery-3.2.1.min.js')}}"></script>
         <script type="text/javascript" src="{{asset ('js/bootstrap.min.js')}}"></script>
-        <script type="text/javascript" src="{{asset ('js/jquery.validate.min.js')}}"></script>
-        <script type="text/javascript" src="{{asset ('js/additional-methods.min.js')}}"></script>
-        <script type="text/javascript" src="{{asset ('js/localization/messages_pt_BR.min.js')}}"></script>
-        <script type="text/javascript" src="{{asset ('js/jquery.mask.min.js')}}"></script>
-        <script type="text/javascript" src="{{asset ('js/holder.min.js')}}"></script>
-        <script type="text/javascript" src="{{asset ('js/localfilereader.js')}}"></script>
-        <script type="text/javascript" src="{{asset ('js/validate.js')}}"></script>
-        <script type="text/javascript" src="{{asset ('js/mask.js')}}"></script>
+       
 @endsection
