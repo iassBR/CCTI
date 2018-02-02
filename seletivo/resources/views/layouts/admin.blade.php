@@ -128,9 +128,9 @@
 		        <div class="menu">
                     <ul>
                         <li class="visible-xs"><a href="#">Sair</a></li>
-                       
-                        <li><a href="usuarios">Usuários</a></li>
-                        <li><a href="papeis">Papéis</a></li>
+                        
+                        <li><a href="{{route ('usuarios.index')}}">Usuários</a></li>
+                        <li><a href="{{route ('papeis.index')}}">Papéis</a></li>
                         
                     </ul>
                 </div>
