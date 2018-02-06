@@ -12,7 +12,7 @@
 		@include('admin.papel._form')
 
 		<button class="btn btn-primary">Atualizar</button>
-
+		<a href="{{ route('papeis.index') }}" class="btn btn-primary">Voltar</a>
 			
 		</form>
 			

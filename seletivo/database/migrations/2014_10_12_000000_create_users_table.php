@@ -13,21 +13,40 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+       
+        Schema::create('enderecos', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('cep');
+            $table->string('uf');
+            $table->string('cidade');
+            $table->string('complemento');
+            $table->string('bairro');
+            $table->string('logradouro');
+            $table->string('num');
+
+            //$table->integer('user_id')->unsigned()->nullable(); 
+            //$table->integer('canidato_id')->unsigned()->nullable(); 
+            
+           // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+           
+            //$table->foreign('candidato_id')->references('id')->on('candidatos')->onDelete('cascade');
+            
+            $table->timestamps();     
+
+        });
+
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('cpf')->unique();
-            $table->string('bairro');
-            $table->string('logradouro');
-            $table->string('num');
-            $table->string('telefone');
-            $table->string('password');
-            $table->integer('papel_id')->references('id')->on('papeis')->onDelete('cascade')->default(4);
-            
+            $table->string('password');    
+            $table->integer('endereco_id')->unsigned(); 
+            $table->foreign('endereco_id')->references('id')->on('enderecos')->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
         });
+
+
     }
 
     /**
@@ -36,7 +55,10 @@ class CreateUsersTable extends Migration
      * @return void
      */
     public function down()
-    {
+    {   
+       
+        
         Schema::dropIfExists('users');
+        Schema::dropIfExists('enderecos');
     }
 }

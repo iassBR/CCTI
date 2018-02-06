@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Papel;
+use App\Endereco;
 use Illuminate\Support\Facades\Gate;
 class UsuarioController extends Controller
 {
@@ -19,12 +20,8 @@ class UsuarioController extends Controller
             ['name' => 'required|string|max:255',
             'email' => 'nullable',
             'password' => 'nullable',
-            'cpf' => 'nullable',
-            'bairro' => 'required',
-            'logradouro' => 'required',
-            'num' => 'required',
-            'telefone' =>'required',
-            'papel_id' => 'nullable'
+       
+       
         ]);
         return $validator;
     }
@@ -33,12 +30,7 @@ class UsuarioController extends Controller
             ['name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'cpf' => 'required',
-            'bairro' => 'required',
-            'logradouro' => 'required',
-            'num' => 'required',
-            'telefone' =>'required',
-            'papel_id' => 'required'
+       
         ]);
         return $validator;
     }
@@ -85,22 +77,35 @@ class UsuarioController extends Controller
        if($validator->fails()){
            return redirect()->back()->withErrors($validator->errors());
        }
+
+
           $data = $request->all(); 
-          $user = User::create(
-              ['name' => $data['name'],
-              'email' => $data['email'],
-              'password' => bcrypt($data['password']),
-              'cpf' => $data['cpf'],
-              'bairro' => $data['bairro'],
-              'logradouro' => $data['logradouro'],
-              'num' => $data['num'],
-              'telefone' => $data['telefone'],
-              'papel_id' => $data['papel_id']
-                ]);
+          $endereco = Endereco::create(
+              [
+               'cep' => $data['cep'],
+              'uf' => $data['uf'],
+              'cidade' => $data['cidade'],
+              'complemento' => $data['complemento'] ,
+              'bairro' => $data['bairro'] ,
+               'logradouro' => $data['logradouro'] ,
+               'num' => $data['num'] 
+            ]);
 
-                return redirect()->back();
 
-        
+            if($endereco){
+                //$data['endereco_id'] = ;
+                $user = User::create(
+                    [
+                    'name' => $data['name'],
+                    'email' => $data['email'],
+                    'password' => bcrypt($data['password']),
+                    'endereco_id' => $endereco->id              
+                    ]);
+                echo "Endereco criado com sucesso";
+            }                 
+
+            return redirect()->route('usuarios.index');
+       
     }
 
     /**
@@ -125,12 +130,15 @@ class UsuarioController extends Controller
         if(Gate::denies('usuario-edit')){
             abort(403,"Não autorizado!");
           }
-         
           $user = User::find($id);
-          
 
-    
-          return view('admin.usuarios.edit',compact('user'));
+          if($user->name  == "Admin"){
+            return redirect()->route('usuarios.index');
+          }
+          
+          $endereco = Endereco::find($user->endereco_id);
+              
+          return view('admin.usuarios.edit',compact('user','endereco'));
        
     }
 
@@ -152,7 +160,10 @@ class UsuarioController extends Controller
         }
 
         if($request['name'] != "Admin"){
-            User::find($id)->update($request->all());
+            $dados = $request->all();
+            $user = User::find($id);
+            User::find($id)->update($dados);
+            Endereco::find($user->endereco_id)->update($dados);
         }
         
         return redirect()->route('usuarios.index');
@@ -172,15 +183,26 @@ class UsuarioController extends Controller
         if(Gate::denies('usuario-delete')){
             abort(403,"Não autorizado!");
           }
-
-          User::find($id)->delete();
-          return redirect()->back();
+          $user = User::find($id);
+          //dd($user->endereco_id);
+          Endereco::find($user->endereco_id)->delete();
+          $user->delete();
+          
+          return redirect()->route('usuarios.index');
       
     }
     public function remover($id){
         if(Gate::denies('usuario-delete')){
             abort(403,"Não autorizado!");
+            
           }
+
+          $user = User::find($id);
+
+          if($user->name  == "Admin"){
+            return redirect()->route('usuarios.index');
+        }
+
 
           $user = User::find($id);
           return view('admin.usuarios.remove',compact('user'));
@@ -216,6 +238,10 @@ class UsuarioController extends Controller
      if(Gate::denies('usuario-edit')){
        abort(403,"Não autorizado!");
      }
+
+     if(Papel::find($papel_id)->nome == "Admin"){
+        return redirect()->route('usuarios.index');
+    }
      $usuario = User::find($id);
      $papel = Papel::find($papel_id);
      $usuario->removePapel($papel);

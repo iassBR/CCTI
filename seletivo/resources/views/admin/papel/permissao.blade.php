@@ -14,7 +14,8 @@
                         @endforeach
                     </select>
                 </div>
-				<button class="btn btn-primary">Adicionar</button>
+                <button class="btn btn-primary">Adicionar</button>
+                <a href="{{ route('papeis.index') }}" class="btn btn-primary">Voltar</a>
 			</form>
 
 
@@ -49,7 +50,9 @@
                     @endforeach
                     </tbody>
                 </table>
+               
             </div>
+           
 		</div>
 
 	</div>

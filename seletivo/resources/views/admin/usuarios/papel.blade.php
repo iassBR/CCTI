@@ -20,6 +20,7 @@
                     </select>
                 </div>
                     <button class="btn btn-primary">Adicionar</button>
+                    <a href="{{ route('usuarios.index') }}" class="btn btn-primary">Voltar</a>
                 </form>
             </div>
 
@@ -55,6 +56,7 @@
                     </tbody>
                 </table>
             </div>
+           
 		</div>
 
 	</div>

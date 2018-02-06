@@ -97,7 +97,7 @@
                     <!-- Authentication Links -->
                     @guest
                         <li><a href="{{ route('login') }}">Entrar</a></li>
-                        <li><a href="{{ route('register') }}">Registrar</a></li>
+                        
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
@@ -129,7 +129,7 @@
                     <ul>
                         <li class="visible-xs"><a href="#">Sair</a></li>
                         <h3><strong>Painel do Administrador</strong></h3>
-
+                        <li><a href="{{route ('admin.index')}}">Início</a></li>
                         <li><a href="{{route ('usuarios.index')}}">Usuários</a></li>
                         
                         <li><a href="{{route ('papeis.index')}}">Papéis</a></li>
@@ -147,9 +147,18 @@
 </div>
     <!-- Scripts -->
     {{ asset('css/bootstrap.min.css') }}
-	<script type="text/javascript" src="{{ asset('js/app.js')}}"></script>
-    <script type="text/javascript" src="{{ asset('js/script.js') }}"></script>    
-	<script type="text/javascript" src="{{ asset('js/jquery-3.1.1.js') }} "></script>
+    
+    <script type="text/javascript" src="{{asset ('js/app.js')}}"></script>
+    <script type="text/javascript" src="{{asset ('js/script.js')}}"></script>    
+    <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="{{asset ('js/jquery.validate.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset ('js/additional-methods.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset ('js/localization/messages_pt_BR.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset ('js/jquery.mask.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset ('js/holder.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset ('js/localfilereader.js')}}"></script>
+    <script type="text/javascript" src="{{asset ('js/validate.js')}}"></script>
+    <script type="text/javascript" src="{{asset ('js/mask.js')}}"></script>
 	
 </body>
 

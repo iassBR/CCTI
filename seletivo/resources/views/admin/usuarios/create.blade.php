@@ -61,19 +61,59 @@
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                         </div>
                     </div>
-                    <div class="form-group{{ $errors->has('cpf') ? ' has-error' : '' }}">
-                        <label for="cpf" class="col-md-4 control-label">CPF</label>
-
-                        <div class="col-md-6">
-                            <input id="cpf" type="text" class="form-control" name="cpf" value="{{ old('cpf') }}" required>
-
-                            @if ($errors->has('cpf'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('cpf') }}</strong>
-                                </span>
-                            @endif
-                        </div>
+                    
+                    <div class="form-group">
+                            <label for="cidade"  class="col-md-4 control-label">Cidade:</label>
+                            <div class="col-md-6">
+                                <input id="cidade" class="form-control" type="text" name="cidade">
+                     
+                            </div>
                     </div>
+
+                     <div class="form-group">
+                             <label for="uf"  class="col-md-4 control-label">UF:</label>
+                             <div class="col-md-6">
+                                    <select id="uf" class="form-control" name="uf">
+                                        <option value="AC">Acre</option>
+                                        <option value="AL">Alagoas</option>
+                                        <option value="AP">Amapá</option>
+                                        <option value="AM">Amazonas</option>
+                                        <option value="BA">Bahia</option>
+                                        <option value="CE">Ceará</option>
+                                        <option value="DF">Distrito Federal</option>
+                                        <option value="ES">Espirito Santo</option>
+                                        <option value="GO">Goiás</option>
+                                        <option value="MA">Maranhão</option>
+                                        <option value="MS">Mato Grosso do Sul</option>
+                                        <option value="MT">Mato Grosso</option>
+                                        <option value="MG">Minas Gerais</option>
+                                        <option value="PA">Pará</option>
+                                        <option value="PB">Paraíba</option>
+                                        <option value="PR">Paraná</option>
+                                        <option value="PE">Pernambuco</option>
+                                        <option value="PI">Piauí</option>
+                                        <option value="RJ">Rio de Janeiro</option>
+                                        <option value="RN">Rio Grande do Norte</option>
+                                        <option value="RS">Rio Grande do Sul</option>
+                                        <option value="RO">Rondônia</option>
+                                        <option value="RR">Roraima</option>
+                                        <option value="SC">Santa Catarina</option>
+                                        <option value="SP">São Paulo</option>
+                                        <option value="SE">Sergipe</option>
+                                        <option value="TO">Tocantins</option>
+                                    </select>
+                            </div>
+                     </div>
+
+                    <div class="form-group">
+                            <label for="cep"  class="col-md-4 control-label">CEP:</label>
+                            <div class="col-md-6">
+                                <input id="cep" class="form-control" type="text" name="cep">
+                     
+                            </div>
+                    </div>
+
+
                     <div class="form-group{{ $errors->has('bairro') ? ' has-error' : '' }}">
                         <label for="bairro" class="col-md-4 control-label">Bairro</label>
 
@@ -112,36 +152,23 @@
                                 </span>
                             @endif
                         </div>
-                    </div>
-
-                    <div class="form-group{{ $errors->has('telefone') ? ' has-error' : '' }}">
-                        <label for="telefone" class="col-md-4 control-label">telefone</label>
-
-                        <div class="col-md-6">
-                            <input id="telefone" type="string" class="form-control" name="telefone" value="{{ old('telefone') }}" required>
-
-                            @if ($errors->has('telefone'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('num') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                    </div>
-			            <div class="form-group">
-                            <label for="papel_id" class="col-md-4 control-label">Papel(Permissao)</label>
+                    </div>   
+                    
+                    <div class="form-group">
+                            <label for="complemento"  class="col-md-4 control-label">Complemento:</label>
                             <div class="col-md-6">
-                                <select class="form-control" name="papel_id" required>
-                                    @foreach($papeis as $papel)            
-                                        <option value="{{$papel->id}}">{{$papel->nome}}</option>            
-                                    @endforeach
-                                </select>
+                                <input id="complemento" class="form-control" type="text" name="complemento">
+                     
                             </div>
-                        </div>
+                    </div>
+
+
+			           
 
 
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
-                        <a href="{{ url()->previous() }}" class="btn btn-primary">Voltar</a>
+                        <a href="{{ route('usuarios.index') }}" class="btn btn-primary">Voltar</a>
                             <button href="{{ url()->previous() }}" type="submit" class="btn btn-primary">Registrar                               
                             </button>
                             

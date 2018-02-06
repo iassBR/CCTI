@@ -32,6 +32,7 @@ Route::resource('escolaridades','EscolaridadeController');
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('admin', 'Admin\AdminController');
     Route::resource('usuarios', 'Admin\UsuarioController');
+    //Route::post('usuarios/create/{papel}', ['as'=>'usuarios.papel.store','uses'=>'Admin\UsuarioController@papelStore']);
     Route::resource('papeis','Admin\PapelController');
     Route::get('/usuarios/remove/{id}',  [
           'uses'=>'Admin\UsuarioController@remover'

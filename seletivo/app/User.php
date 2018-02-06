@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Candidato;
+use App\Endereco;
 
 class User extends Authenticatable
 {
@@ -17,7 +17,7 @@ class User extends Authenticatable
      */
     protected $table = 'users';
     protected $fillable = [
-        'name', 'email', 'password','cpf', 'bairro', 'logradouro','num','telefone',
+        'name', 'email', 'password','endereco_id'
     ];
 
     /**
@@ -33,8 +33,8 @@ class User extends Authenticatable
         return $this->belongsToMany(Papel::class);
     }
 
-    public function candidatos(){
-        return $this->hasOne('App\Candidato','user_id');
+    public function endereco(){
+        return $this->hasOne('App\Endereco','endereco_id');
     }
     public function eAdmin()
     {

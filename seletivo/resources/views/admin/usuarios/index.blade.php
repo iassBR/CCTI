@@ -23,10 +23,11 @@
                     <thead>
                         <tr>
                             <th>Nome</th>
-                            <th>CPF</th>
+                            
                             <th>Email</th>
-							<th>Bairro</th>
-							<th>Papéis</th>
+							
+                            <th>Papéis</th>
+                            <th>Ações</th>
                             
                             
                         </tr>
@@ -34,10 +35,9 @@
                    <tbody>            
                         @foreach($users as $user)
                             <tr>
-                                <td>{{$user->name}}</td>
-                                <td>{{$user->cpf}}</td>
+                                <td>{{$user->name}}</td>                              
 								<td> {{$user->email}} </td>
-								<td>{{ $user->bairro }} </td>
+								
 								<td>
 
 							    <a title="Papel" class="btn btn-primary" href="{{route('usuarios.papel',$user->id)}}">Papél</a>
@@ -56,6 +56,7 @@
             </div> 
         </div>
         <a href="{{route('usuarios.create')}}"><button class="btn btn-primary">Novo Usuário</button></a> 
+        <a href="{{ route('admin.index') }}" class="btn btn-primary">Voltar</a>
     </div>
 @endcan
 @endsection

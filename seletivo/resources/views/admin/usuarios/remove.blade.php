@@ -24,7 +24,7 @@
 									<hr>
 									<h4>Sobre o usuário</h4>
 									<p>Nome: {{$user->name}}</p>
-									<p>CPF: {{$user->cpf}}</p>
+									<p>CPF: {{$user->email}}</p>
 									
 									
 								</div>

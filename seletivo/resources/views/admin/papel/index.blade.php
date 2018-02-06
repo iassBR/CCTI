@@ -51,15 +51,22 @@
                             </td>
                         </tr>
                     @endforeach
+                    
                     </tbody>
+                    
                 </table>
-		    </div>
+               
+                
+            </div>
+            
         </div>
-		<div class="row">
-			@can('papel-create')
-			<a class="btn btn-primary" href="{{route('papeis.create')}}">Adicionar</a>
-			@endcan
-		</div>
+        
+     @can('papel-create')
+        <a class="btn btn-primary" href="{{route('papeis.create')}}">Adicionar</a>
+        <a href="{{ route('admin.index') }}" class="btn btn-primary">Voltar</a>
+    @endcan
+		           
+		
 	</div>
 
 @endsection
