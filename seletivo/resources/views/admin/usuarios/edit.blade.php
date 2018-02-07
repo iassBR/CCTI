@@ -28,7 +28,33 @@
                    
                 </div>
             </div>   
+            <div class="form-group{{ $errors->has('email') ? ' contem algum erro no email' : '' }}">
+                <label for="email" class="col-md-4 control-label">E-Mail</label>
 
+                <div class="col-md-6">
+                    <input id="email" type="email" class="form-control" name="email" required value="{{$user->email}}">
+
+                    @if ($errors->has('email'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
+                    @endif
+                </div>
+            </div>
+
+            <div class="form-group{{ $errors->has('password') ? 'senha inválida' : '' }}">
+                <label for="password" class="col-md-4 control-label">Senha</label>
+
+                <div class="col-md-6">
+                    <input id="password" type="password" class="form-control" name="password" required >
+
+                    @if ($errors->has('password'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('password') }}</strong>
+                        </span>
+                    @endif
+                </div>
+            </div>
             <div class="input-field">
                 <label for="cidade" class="col-md-4 control-label">Cidade</label>
 
