@@ -3,12 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Escolaridade;
 class Cargo extends Model
 {
-    protected $table = 'Cargo';
+    
     protected $fillable = ['nomeCargo','escolaridade_id'];
 
+<<<<<<< HEAD
     public function seletivo(){
         return $this->belongsToMany('App\Seletivo','cargo_seletivo');
     }
@@ -47,4 +48,9 @@ class Cargo extends Model
         return $this->seletivo()->detach($cargo);
     }
 
+=======
+    public function escolaridade(){
+        return $this->belongsTo('App\Escolaridade','escolaridade_id');
+    }
+>>>>>>> 8154dcd23d52940b1e09952e9f43ba66eea031d7
 }

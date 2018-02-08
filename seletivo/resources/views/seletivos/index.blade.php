@@ -14,7 +14,7 @@
                             <th>Data Termino</th>
                             <th>Cargo Desejado</th>
                             <th>Tempo de Experiência</th>
-                            <th>Escolaridade</th>
+                            
 
                         </tr>
                     </thead>
@@ -26,7 +26,7 @@
                                 <td>{{$seletivo->dataTermino}}</td>
                                 <td>{{$seletivo->cargoDesejado}}</td>
                                 <td>{{$seletivo->tempoExperiencia}}</td>
-                                <td>{{$seletivo->escolaridade->tipo}}</td>
+                                
                                 <td>
                                     <a href="{{route('seletivos.edit',$seletivo->id)}}"> <i class="glyphicon glyphicon-pencil"></i></a>
                                     <a href="{{route('seletivos.remove',$seletivo->id)}}"> <i class="glyphicon glyphicon-trash"></i></a>

@@ -20,8 +20,14 @@ Auth::routes();
 Route::get('/seletivos/remove/{id}','SeletivoController@remover')->name('seletivos.remove');
 Route::resource('seletivos', 'SeletivoController');
 
+Route::get('/cargos/remove/{id}','CargoController@remover')->name('cargos.remove');
+Route::resource('cargos','CargoController');
+
 Route::get('/escolaridades/remove/{id}','EscolaridadeController@remover')->name('escolaridades.remove');
 Route::resource('escolaridades','EscolaridadeController');
+
+
+
 
 
 //Route::group(['prefix' => 'admin'], function () {
