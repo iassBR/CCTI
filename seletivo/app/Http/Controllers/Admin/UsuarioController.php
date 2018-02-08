@@ -159,11 +159,15 @@ class UsuarioController extends Controller
             return redirect()->back()->withErrors($validator->errors());
         }
 
-        if($request['name'] === "Admin"){
-            $dados = $request->all();
+        if($request['name'] != "Admin"){
+            $data = $request->all();
             $user = User::find($id);
-            User::find($id)->update($dados);
-            Endereco::find($user->endereco_id)->update($dados);
+            User::find($id)->update([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => bcrypt($data['password'])
+                ]);
+            Endereco::find($user->endereco_id)->update($data);
         }
         
         return redirect()->route('usuarios.index');
