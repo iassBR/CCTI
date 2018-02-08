@@ -11,6 +11,10 @@ class CandidatoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function curriculo(){
+        return view('candidato.curriculo');
+    }
+
     public function index()
     {
         //
@@ -23,7 +27,7 @@ class CandidatoController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**

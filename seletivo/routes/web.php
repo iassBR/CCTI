@@ -35,7 +35,9 @@ Route::resource('escolaridades','EscolaridadeController');
  ///Route::resource('admin', 'Admin\AdminController');
  // Route::resource('usuarios', 'AdminController');
 //});
+Route::get('/curriculo', 'CandidatoController@curriculo');
 Route::group(['middleware' => 'auth'], function () {
+   
     Route::resource('admin', 'Admin\AdminController');
     Route::resource('usuarios', 'Admin\UsuarioController');
     //Route::post('usuarios/create/{papel}', ['as'=>'usuarios.papel.store','uses'=>'Admin\UsuarioController@papelStore']);

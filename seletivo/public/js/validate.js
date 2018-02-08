@@ -44,3 +44,44 @@
         }
     });
 })(jQuery);
+
+function alteraEtapa(etapa){
+    $('#tabEtapas a[href="#etapa'+etapa+'"]').tab('show');
+  }
+  
+  function exibePopover(dica){
+    $('#'+dica).popover('show');
+  }
+  function escondePopover(dica){
+    $('#'+dica).popover('hide');
+  }
+  function validaFormulario(){
+    let nome = $('#nome').val();
+    let email = $('#email').val();
+    let cidade = $('#cidade').val();
+    let estado = $('#estado').val();
+    let facebook = $('#facebook').val();
+    let twitter = $('#twitter').val();
+    if(nome == ''){
+      alteraEtapa(1);
+      $('#nome').focus();
+      $('#nome').tooltip('show');
+      setTimeout(function () {
+        $('#nome').tooltip('destroy');
+      }, 3000);
+      return;
+    }
+    if(email == ''){
+      alteraEtapa(1);
+      $('#email').focus();
+      $('#email').tooltip('show');
+      setTimeout(function () {
+        $('#email').tooltip('destroy');
+      }, 3000);
+      return;
+    }
+   
+  
+    console.log(nome,email);
+  }
+  

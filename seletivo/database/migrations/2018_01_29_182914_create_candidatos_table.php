@@ -15,11 +15,19 @@ class CreateCandidatosTable extends Migration
     {   
         Schema::create('candidatos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('formacao');
-            $table->string('cargoPretendido');
-            $table->string('profissaoAtual');
-            $table->string('curso');
-            $table->integer('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('nome');
+            $table->string('cpf')->unique();
+            $table->string('sexo');
+            $table->string('rg');
+            $table->string('data_nascimento');
+            $table->string('estado_civil');
+            $table->string('cor_raca');
+            $table->string('nacionalidade');
+            $table->string('email')->unique();
+            $table->string('naturalidade');
+            $table->string('idade');
+            $table->integer('endereco_id')->unsigned(); 
+            $table->foreign('endereco_id')->references('id')->on('enderecos')->onDelete('cascade');
             $table->timestamps();
         });
     }
