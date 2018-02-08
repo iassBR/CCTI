@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCargosTable extends Migration
+class EscolaridadeSeletivo extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateCargosTable extends Migration
      */
     public function up()
     {
-        Schema::create('cargos', function (Blueprint $table) {
+        Schema::create('escolaridade_seletivo', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nomeCargo')->unsigned();
             $table->integer('escolaridade_id')->unsigned();
-            $table->integer('escolaridade_id')->references('id')->on('escolaridade')->onDelete('cascade');
-            $table->timestamps();
+            $table->foreign('escolaridade_id')->references('id')->on('escolaridades')->onDelete('cascade');
+
+            $table->integer('seletivo_id')->unsigned();
+            $table->foreign('seletivo_id')->references('id')->on('seletivos')->onDelete('cascade');
+            
         });
     }
 
@@ -29,6 +31,6 @@ class CreateCargosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cargos');
+        Schema::dropIfExists('escolaridade_seletivo');
     }
 }

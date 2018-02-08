@@ -132,9 +132,9 @@ class UsuarioController extends Controller
           }
           $user = User::find($id);
 
-          if($user->name  == "Admin"){
-            return redirect()->route('usuarios.index');
-          }
+         // if($user->name  == "Admin"){
+         //   return redirect()->route('usuarios.index');
+         // }
           
           $endereco = Endereco::find($user->endereco_id);
               
@@ -160,10 +160,14 @@ class UsuarioController extends Controller
         }
 
         if($request['name'] != "Admin"){
-            $dados = $request->all();
+            $data = $request->all();
             $user = User::find($id);
-            User::find($id)->update($dados);
-            Endereco::find($user->endereco_id)->update($dados);
+            User::find($id)->update([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => bcrypt($data['password'])
+                ]);
+            Endereco::find($user->endereco_id)->update($data);
         }
         
         return redirect()->route('usuarios.index');

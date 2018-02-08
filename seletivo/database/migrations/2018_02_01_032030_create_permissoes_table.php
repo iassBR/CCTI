@@ -13,7 +13,7 @@ class CreatePermissoesTable extends Migration
      */
     public function up()
     {
-        Schema::create('permissaos', function (Blueprint $table) {
+        Schema::create('permissoes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome');
             $table->string('descricao')->nullable();
