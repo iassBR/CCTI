@@ -8,12 +8,10 @@ class Seletivo extends Model
 {
     
     protected $fillable = [
-        'nomeSeletivo','dataInicio','dataTermino','tempoExperiencia','cargoDesejado','escolaridade_id'
+        'nomeSeletivo','dataInicio','dataTermino','tempoExperiencia','cargoDesejado'
     ];
 
-    public function escolaridade(){
-        return $this->belongsTo('App\Escolaridade','escolaridade_id');
-    }
+    
     public function candidato(){
         return $this->hasOne('App\Candidato','candidato_id');
     }
