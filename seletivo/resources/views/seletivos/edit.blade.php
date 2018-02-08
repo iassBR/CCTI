@@ -54,16 +54,7 @@
                 </div>     
             </div> 
         </div>
-        <div class="form-group">
-            <label for="marca_id">Selecione a Escolaridade</label>
-            <select class="form-control" name="escolaridade_id" required>
-            @foreach($escolaridades as $escolaridade)            
-                <option value="{{$escolaridade->id}}"
-                {{(isset($seletivo->escolaridade_id) && $seletivo->escolaridade_id == $escolaridade->id ? 
-                'selected' : '')}}>{{$escolaridade->tipo}}
-                </option>
-            @endforeach
-            </select>
+       
         <span class="pull-right">
             <a href="{{ url()->previous() }}" class="btn btn-default">Voltar</a>
             <button type="submit" class="btn btn-primary">Editar</button>

@@ -52,14 +52,6 @@
                     <input type="text" class="form-control" name="tempoExperiencia" placeholder="Tempo de Experiência" required>
                 </div>     
             </div> 
-        </div>
-        <div class="form-group">
-            <label for="escolaridade_id">Selecione a escolaridade: </label>
-            <select class="form-control" name="escolaridade_id" required>
-            @foreach($escolaridades as $escolaridade)            
-                <option value="{{$escolaridade->id}}">{{$escolaridade->tipo}}</option>            
-            @endforeach
-            </select>
         </div>     
         
         <span class="pull-right">

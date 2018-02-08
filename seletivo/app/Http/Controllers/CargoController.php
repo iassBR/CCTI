@@ -3,21 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Seletivo;
+use App\Cargo;
+use App\Escolaridade;
 use Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\Paginator;
 
 
-class SeletivoController extends Controller
+class CargoController extends Controller
 {
-protected function validarSeletivo($request){
+protected function validarCargo($request){
     $validator = Validator::make($request->all(), [
-            "nomeSeletivo" => "required",
-            "dataInicio"=> "required",
-            "dataTermino" => "required",
-            "tempoExperiencia" => "required",
-            "cargoDesejado" => "required"
+            "nomeCargo" => "required"
 
    ]);
    return $validator;
@@ -40,13 +37,13 @@ protected function validarSeletivo($request){
         });
  
         if($buscar){
-            $seletivos = Seletivo::where('nomeSeletivo','=', $buscar)->paginate($qtd);
+            $cargos = Cargo::where('nomeCargo','=', $buscar)->paginate($qtd);
         }else{  
-            $seletivos = Seletivo::paginate($qtd);
+            $cargos = Cargo::paginate($qtd);
  
         }
-        $seletivos = $seletivos->appends(Request::capture()->except('page'));
-        return view('seletivos.index', compact('seletivos'));
+        $cargos = $cargos->appends(Request::capture()->except('page'));
+        return view('cargos.index', compact('cargos'));
     }
 
     /**
@@ -56,8 +53,8 @@ protected function validarSeletivo($request){
      */
     public function create()
     {
-       
-        return view('seletivos.create');
+        $escolaridades = Escolaridade::all();
+        return view('cargos.create', compact('escolaridades'));
     }
 
     /**
@@ -68,15 +65,15 @@ protected function validarSeletivo($request){
      */
     public function store(Request $request)
     {
-    $validator = $this->validarSeletivo($request);
+    $validator = $this->validarCargo($request);
     if($validator->fails()){
         return redirect()->back()->withErrors($validator->errors());
     }
 
         $dados = $request->all();
-        Seletivo::create($dados);
+        Cargo::create($dados);
 
-        return redirect()->route('seletivos.index');
+        return redirect()->route('cargos.index');
     }
 
     /**
@@ -87,9 +84,9 @@ protected function validarSeletivo($request){
      */
     public function show($id)
     {
-        $seletivo = Seletivo::find($id);
+        $cargo = Cargo::find($id);
  
-        return view('seletivos.show', compact('seletivo'));
+        return view('cargos.show', compact('cargo'));
     }
 
     /**
@@ -100,10 +97,10 @@ protected function validarSeletivo($request){
      */
     public function edit($id)
     {
-    
-       $seletivo = Seletivo::find($id);
+       $escolaridades = Escolaridade::all();
+       $cargo = Cargo::find($id);
  
-        return view('seletivos.edit', compact('seletivo'));
+        return view('cargos.edit', compact('cargo','escolaridades'));
     }
 
     /**
@@ -115,17 +112,17 @@ protected function validarSeletivo($request){
      */
     public function update(Request $request, $id)
     {
-        $validator = $this->validarSeletivo($request);
+        $validator = $this->validarCargo($request);
          
         if($validator->fails()){
             return redirect()->back()->withErrors($validator->errors());
         }
  
-        $seletivo = Seletivo::find($id);
+        $cargo = Cargo::find($id);
         $dados = $request->all();
-        $seletivo->update($dados);
+        $cargo->update($dados);
          
-        return redirect()->route('seletivos.index');
+        return redirect()->route('cargos.index');
     
     }
 
@@ -137,13 +134,13 @@ protected function validarSeletivo($request){
      */
     public function destroy($id)
     {
-        Seletivo::find($id)->delete();
-        return redirect()->route('seletivos.index');
+        Cargo::find($id)->delete();
+        return redirect()->route('cargos.index');
     }
     public function remover($id)
     {
-        $seletivo = Seletivo::find($id);
+        $cargo = Cargo::find($id);
  
-        return view('seletivos.remove', compact('seletivo'));
+        return view('cargos.remove', compact('cargo'));
     }
 }

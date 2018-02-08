@@ -18,8 +18,7 @@ class CreateSeletivosTable extends Migration
             $table->string('nomeSeletivo');
             $table->string('dataInicio');
             $table->string('dataTermino');
-            $table->string('tempoExperiencia');
-            $table->string('cargoDesejado');       
+            $table->string('tempoExperiencia');      
             $table->timestamps();
         });
     }
