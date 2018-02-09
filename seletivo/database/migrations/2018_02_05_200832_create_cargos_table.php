@@ -15,13 +15,8 @@ class CreateCargosTable extends Migration
     {
         Schema::create('cargos', function (Blueprint $table) {
             $table->increments('id');
-<<<<<<< HEAD
+
             $table->string('nomeCargo')->unsigned();
-            $table->integer('escolaridade_id')->unsigned();
-            $table->integer('escolaridade_id')->references('id')->on('escolaridade')->onDelete('cascade');
-=======
-            $table->string('nomeCargo');
->>>>>>> 8154dcd23d52940b1e09952e9f43ba66eea031d7
             $table->timestamps();
         });
     }

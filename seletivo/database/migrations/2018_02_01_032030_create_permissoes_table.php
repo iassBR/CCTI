@@ -23,7 +23,7 @@ class CreatePermissoesTable extends Migration
             $table->integer('permissao_id')->unsigned();
             $table->integer('papel_id')->unsigned();
             //$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('permissao_id')->references('id')->on('permissaos')->onDelete('cascade');
+            $table->foreign('permissao_id')->references('id')->on('permissoes')->onDelete('cascade');
             $table->foreign('papel_id')->references('id')->on('papeis')->onDelete('cascade');
 
             $table->primary(['permissao_id','papel_id']);
@@ -50,6 +50,6 @@ class CreatePermissoesTable extends Migration
         Schema::dropIfExists('papel_user');
         Schema::dropIfExists('papel_permissao');
         
-        Schema::dropIfExists('permissaos');
+        Schema::dropIfExists('permissoes');
     }
 }
