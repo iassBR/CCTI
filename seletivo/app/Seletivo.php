@@ -8,11 +8,10 @@ class Seletivo extends Model
 {
     
     protected $fillable = [
-<<<<<<< HEAD
+
         'nomeSeletivo','dataInicio','dataTermino','tempoExperiencia','cargoDesejado','escolaridade_id','documento_id'
-=======
-        'nomeSeletivo','dataInicio','dataTermino','tempoExperiencia','cargoDesejado'
->>>>>>> 8154dcd23d52940b1e09952e9f43ba66eea031d7
+
+        
     ];
 
     
