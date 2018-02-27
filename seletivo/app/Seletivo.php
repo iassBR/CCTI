@@ -15,13 +15,17 @@ class Seletivo extends Model
     ];
 
     
-    public function candidato(){
+    public function candidatos(){
         return $this->hasOne('App\Candidato','candidato_id');
     }
     public function cargos(){
         return $this->belongsToMany('App\Cargo','cargo_seletivo');
     }
-    public function documento(){
+    public function escolaridade(){
+        return $this->belongsToMany('App\Escolaridade','escolaridade_seletivo');
+    }
+
+    public function documentos(){
     return $this->belongsTo('App\Documento','documento_id');
     }
 

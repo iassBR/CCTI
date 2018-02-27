@@ -30,7 +30,7 @@
                 <label for="escolaridade_id">Selecione a escolaridade: </label>
                 <select class="form-control" name="escolaridade_id" required>
                 @foreach($escolaridades as $escolaridade)            
-                    <option value="{{$escolaridade->id}}">{{$escolaridade->tipo}}</option>            
+                  <option value="{{$escolaridade->id}}">{{$escolaridade->tipo}}</option>      
                 @endforeach
                 </select>
             </div>     

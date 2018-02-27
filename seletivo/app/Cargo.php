@@ -9,10 +9,11 @@ class Cargo extends Model
     
     protected $fillable = ['nomeCargo','tempoExperiencia','escolaridade_id'];
 
-    public function seletivo(){
+    public function seletivos(){
         return $this->belongsToMany('App\Seletivo','cargo_seletivo');
     }
-    public function escolaridade(){
+    
+    public function escolaridades(){
         return $this->belongsTo('App\Escolaridade','escolaridade_id');
     }
 
