@@ -10,7 +10,9 @@
                     <thead>
                         <tr>
                             <th>Nome Cargo</th>
+                            <th>Tempo experiencia</th>
                             <th>Escolaridade</th>
+                            
 
                         </tr>
                     </thead>
@@ -18,6 +20,7 @@
                         @foreach ($cargos as $cargo)
                             <tr>
                                 <td>{{$cargo->nomeCargo}}</td>
+                                <td>{{$cargo->tempoExperiencia}}</td>
                                 <td>{{$cargo->escolaridade->tipo}}</td>
                                 <td>
                                     <a href="{{route('cargos.edit',$cargo->id)}}"> <i class="glyphicon glyphicon-pencil"></i></a>

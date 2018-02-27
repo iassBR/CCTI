@@ -14,6 +14,7 @@
                                 <h4>Tem certeza que deseja remover o cargo</h4>
 
                                 <p>Nome Cargo: {{$cargo->nomeCargo}}</p>
+                                <p>Tempo de Experiencia: {{$cargo->tempoExperiencia}}</p>
                                 <p>Escolaridade: {{$cargo->escolaridade->tipo}}</p>
                             
                             </div>

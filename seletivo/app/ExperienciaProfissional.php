@@ -12,6 +12,6 @@ class ExperienciaProfissional extends Model
     ];
 
     public function candidatos(){
-        return $this->hasMany('App\Canidato','candidato_id');
+        return $this->hasMany('App\Candidato','candidato_id');
     }
 }

@@ -20,17 +20,23 @@
             <label for="cargo">Nome Cargo</label>
             <input type="text" class="form-control" placeholder="Nome Cargo" name="nomeCargo" required>
         </div>
-               
-        <div class="form-group">
-            <label for="escolaridade_id">Selecione a escolaridade: </label>
-            <select class="form-control" name="escolaridade_id" required>
-            @foreach($escolaridades as $escolaridade)            
-                <option value="{{$escolaridade->id}}">{{$escolaridade->tipo}}</option>            
-            @endforeach
-            </select>
-        </div>     
-        
-        <span class="pull-right">
+        <div class="row"> 
+            <div class="col-md-4">
+                <label for="experiencia">Tempo de Experiência</label>
+                <input type="text" class="form-control" placeholder="Tempo de Experiência" name="tempoExperiencia" required>
+            </div>
+                
+            <div class="col-md-4">
+                <label for="escolaridade_id">Selecione a escolaridade: </label>
+                <select class="form-control" name="escolaridade_id" required>
+                @foreach($escolaridades as $escolaridade)            
+                    <option value="{{$escolaridade->id}}">{{$escolaridade->tipo}}</option>            
+                @endforeach
+                </select>
+            </div>     
+        </div>
+    </br>
+        <span class="pull-left">
             <a href="{{ url()->previous() }}" class="btn btn-default">Voltar</a>
             <button type="submit" class="btn btn-primary">Cadastrar</button>
         </span>

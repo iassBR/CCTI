@@ -21,8 +21,13 @@
             <label for="nomeCargo">Nome Cargo</label>
             <input type="text" class="form-control" placeholder="Nome Cargo" name="nomeCargo" required value="{{$cargo->nomeCargo}}">
         </div>
+        <div class="row">
+            <div class="col-md-4">
+            <label for="tempoExperiencia">Nome Cargo</label>
+            <input type="text" class="form-control" placeholder="Tempo de Experiencia" name="tempoExperiencia" required value="{{$cargo->tempoExperiencia}}">
+        </div>
   
-        <div class="form-group">
+        <div class="col-md-4">
             <label for="marca_id">Selecione a Escolaridade</label>
             <select class="form-control" name="escolaridade_id" required>
             @foreach($escolaridades as $escolaridade)            
@@ -32,6 +37,8 @@
                 </option>
             @endforeach
             </select>
+         </div>
+        </br>
         <span class="pull-right">
             <a href="{{ url()->previous() }}" class="btn btn-default">Voltar</a>
             <button type="submit" class="btn btn-primary">Editar</button>

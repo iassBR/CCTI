@@ -17,6 +17,7 @@ class CreateCargosTable extends Migration
             $table->increments('id');
 
             $table->string('nomeCargo')->unsigned();
+            $table->string('tempoExperiencia');
             $table->timestamps();
         });
     }

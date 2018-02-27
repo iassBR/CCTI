@@ -12,7 +12,5 @@ class Escolaridade extends Model
     public function cargos(){
         return $this->hasMany('App\Cargo','escolaridade_id');
     }
-    public function cargo(){
-        return $this->hasMany('App\Cargos','escolaridade_id');
-    }
+    
 }

@@ -7,7 +7,7 @@ use App\Escolaridade;
 class Cargo extends Model
 {
     
-    protected $fillable = ['nomeCargo','escolaridade_id'];
+    protected $fillable = ['nomeCargo','tempoExperiencia','escolaridade_id'];
 
     public function seletivo(){
         return $this->belongsToMany('App\Seletivo','cargo_seletivo');
