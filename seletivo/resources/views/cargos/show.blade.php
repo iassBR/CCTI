@@ -12,6 +12,7 @@
                             <h4>Sobre o Cargo</h4>
 
                             <p>Nome Cargo: {{$cargo->nomeCargo}}</p>
+                            <p>Tempo de Experiência: {{$cargo->tempoExperiencia}}</p>
                             <p>Escolaridade: {{$cargo->escolaridade->tipo}}</p>
                         
                         </div>

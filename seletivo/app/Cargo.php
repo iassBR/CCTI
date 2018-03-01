@@ -7,9 +7,15 @@ use App\Escolaridade;
 class Cargo extends Model
 {
     
-    protected $fillable = ['nomeCargo','escolaridade_id'];
+    protected $fillable = ['nomeCargo','tempoExperiencia','escolaridade_id'];
 
-    public function escolaridade(){
+    public function seletivos(){
+        return $this->belongsToMany(Seletivo::class);
+    }
+    
+    public function escolaridades(){
         return $this->belongsTo('App\Escolaridade','escolaridade_id');
     }
+
+
 }

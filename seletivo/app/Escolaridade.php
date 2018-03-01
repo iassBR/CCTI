@@ -12,4 +12,9 @@ class Escolaridade extends Model
     public function cargos(){
         return $this->hasMany('App\Cargo','escolaridade_id');
     }
+    
+    public function seletivos(){
+        return $this->belongsToMany(Seletivo::class);
+    }
+    
 }

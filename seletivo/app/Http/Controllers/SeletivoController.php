@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Seletivo;
+use App\Cargo;
+use App\Escolaridade;
 use Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\Paginator;
@@ -15,9 +17,7 @@ protected function validarSeletivo($request){
     $validator = Validator::make($request->all(), [
             "nomeSeletivo" => "required",
             "dataInicio"=> "required",
-            "dataTermino" => "required",
-            "tempoExperiencia" => "required",
-            "cargoDesejado" => "required"
+            "dataTermino" => "required"
 
    ]);
    return $validator;
@@ -56,8 +56,9 @@ protected function validarSeletivo($request){
      */
     public function create()
     {
-       
-        return view('seletivos.create');
+        $cargos = Cargo::all();
+        $escolaridades = Escolaridade::all();
+        return view('seletivos.create', compact('cargos','escolaridades'));
     }
 
     /**
