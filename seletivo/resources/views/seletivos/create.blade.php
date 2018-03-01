@@ -36,6 +36,7 @@
             </div>
            
         </div> 
+
         <div class="row">  
             <div class="col-md-6">
                     <div class="form-group">
@@ -44,9 +45,10 @@
                         @foreach($cargos as $cargo)
                             <option value="{{$cargo->id}}">{{$cargo->nomeCargo}}</option>
                         @endforeach  
-
+                        </select>
                     </div>
             </div> 
+
         <div class="col-md-4">
                 <label for="escolaridade_id">Selecione a escolaridade: </label>
                 <select class="form-control" name="escolaridade_id" required>
@@ -54,7 +56,8 @@
                   <option value="{{$escolaridade->id}}">{{$escolaridade->tipo}}</option>      
                 @endforeach
                 </select>
-            </div>   
+        </div> 
+
         </div>     
         
         <span class="pull-right">

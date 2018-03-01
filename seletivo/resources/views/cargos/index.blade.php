@@ -21,11 +21,10 @@
                             <tr>
                                 <td>{{$cargo->nomeCargo}}</td>
                                 <td>{{$cargo->tempoExperiencia}}</td>
-                                <td>{{$cargo->escolaridade->tipo}}</td>
+                                <td>{{$cargo->escolaridades->tipo}}</td>
                                 <td>
-                                    <a href="{{route('cargos.edit',$cargo->id)}}"> <i class="glyphicon glyphicon-pencil"></i></a>
-                                    <a href="{{route('cargos.remove',$cargo->id)}}"> <i class="glyphicon glyphicon-trash"></i></a>
-                                    <a href="{{route('cargos.show',$cargo->id)}}"> <i class="glyphicon glyphicon-zoom-in"></i></a>
+                                    <a title='Seletivo' href="{{route('cargos.seletivo',$seletivo->id)}}"> <i class="glyphicon glyphicon-pencil"></i></a>
+                                    
                                 </td>
                             </tr>
                         @endforeach

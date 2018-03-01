@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Cargo;
 use App\Escolaridade;
+use App\Seletivo;
 use Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\Paginator;
@@ -143,4 +144,17 @@ protected function validarCargo($request){
  
         return view('cargos.remove', compact('cargo'));
     }
+    public function seletivo($id){
+        $cargo = Cargo::find($id);
+        $seletivo = Seletivo::all();
+        return view('cargos.index', compact('cargo','seletivo'));    
+    }
+    public function seletivoStore(Request $request, $id){
+
+    }
+    public function seletivoDestroy($id,$seletivo_id)
+    {
+        
+    }
+    
 }

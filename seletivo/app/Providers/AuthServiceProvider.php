@@ -31,16 +31,16 @@ class AuthServiceProvider extends ServiceProvider
       //      return $usuario->papel_id == $papel->id;
      //  });
         
-        foreach ($this->listaPermissoes() as $permissao) {
-            Gate::define($permissao->nome,function($user) use($permissao){
-           return $user->temUmPapelDestes($permissao->papeis) || $user->eAdmin();
-            });
-       }
+    //     foreach ($this->listaPermissoes() as $permissao) {
+    //         Gate::define($permissao->nome,function($user) use($permissao){
+    //        return $user->temUmPapelDestes($permissao->papeis) || $user->eAdmin();
+    //         });
+    //    }
   
       }
   
-      public function listaPermissoes()
-      {
-        return Permissao::with('papeis')->get();
-      }
+    //   public function listaPermissoes()
+    //   {
+    //     return Permissao::with('papeis')->get();
+    //   }
   }

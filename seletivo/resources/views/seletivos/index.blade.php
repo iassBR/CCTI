@@ -28,6 +28,8 @@
                                 <td>{{$seletivo->tempoExperiencia}}</td>
                                 
                                 <td>
+                                    
+                                    <a href="{{route('cargos.seletivo',$seletivo->id)}}"> <button>TESTE</button></a>
                                     <a href="{{route('seletivos.edit',$seletivo->id)}}"> <i class="glyphicon glyphicon-pencil"></i></a>
                                     <a href="{{route('seletivos.remove',$seletivo->id)}}"> <i class="glyphicon glyphicon-trash"></i></a>
                                     <a href="{{route('seletivos.show',$seletivo->id)}}"> <i class="glyphicon glyphicon-zoom-in"></i></a>

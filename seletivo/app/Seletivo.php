@@ -9,7 +9,7 @@ class Seletivo extends Model
     
     protected $fillable = [
 
-        'nomeSeletivo','dataInicio','dataTermino','tempoExperiencia','cargoDesejado','escolaridade_id','documento_id'
+        'nomeSeletivo','dataInicio','dataTermino','cargoDesejado','documento_id'
 
         
     ];
@@ -19,10 +19,10 @@ class Seletivo extends Model
         return $this->hasOne('App\Candidato','candidato_id');
     }
     public function cargos(){
-        return $this->belongsToMany('App\Cargo','cargo_seletivo');
+        return $this->belongsToMany(Cargo::class);
     }
     public function escolaridade(){
-        return $this->belongsToMany('App\Escolaridade','escolaridade_seletivo');
+        return $this->belongsToMany(Escolaridade::class);
     }
 
     public function documentos(){
@@ -95,35 +95,35 @@ class Seletivo extends Model
 
 
 
-    public function adicionaDocumento($documento)
+    public function adicionaEscolaridade($escolaridade)
     {
-        if (is_string($documento)) {
-            $documento = Documento::where('nome','=',$documento)->firstOrFail();
+        if (is_string($escolaridade)) {
+            $escolaridade = Documento::where('nome','=',$escolaridade)->firstOrFail();
         }
 
-        if($this->existeDocumento($documento)){
+        if($this->existeEscolaridade($escolaridade)){
             return;
         }
 
-        return $this->documento()->attach($documento);
+        return $this->escolaridade()->attach($escolaridade);
 
     }
-    public function existeDocumento($documento)
+    public function existeEscolaridade($escolaridade)
     {
-        if (is_string($documento)) {
-            $documento = Documento::where('nome','=',$documento)->firstOrFail();
+        if (is_string($escolaridade)) {
+            $escolaridade = Escolaridade::where('nome','=',$escolaridade)->firstOrFail();
         }
 
-        return (boolean) $this->documento()->find($documento->id);
+        return (boolean) $this->escolaridade()->find($escolaridade->id);
 
     }
-    public function removeDocumento($documento)
+    public function removeEscolaridade($escolaridade)
     {
-        if (is_string($documento)) {
-            $documento = Documento::where('nome','=',$documento)->firstOrFail();
+        if (is_string($escolaridade)) {
+            $escolaridade = Escolaridade::where('nome','=',$escolaridade)->firstOrFail();
         }
 
-        return $this->documento()->detach($documento);
+        return $this->escolaridade()->detach($escolaridade);
     }
 
 

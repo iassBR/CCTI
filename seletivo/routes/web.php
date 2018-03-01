@@ -60,10 +60,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('papeis/permissao/{permissao}', ['as'=>'papeis.permissao.store','uses'=>'Admin\PapelController@permissaoStore']);
     Route::delete('papeis/permissao/{papel}/{permissao}', ['as'=>'papeis.permissao.destroy','uses'=>'Admin\PapelController@permissaoDestroy']);
     
-     
+       
     
 });
 
+    Route::get('cargos/seletivo/{id}', ['as'=>'cargos.seletivo','uses'=>'CargoController@seletivo']);
+    Route::post('cargos/seletivo/{seletivo}', ['as'=>'cargos.seletivo.store','uses'=>'CargoController@seletivoStore']);
+    Route::delete('cargos/seletivo/{cargo}/{seletivo}', ['as'=>'cargos.seletivo.destroy','uses'=>'CargoController@seletivoDestroy']);
 
 
 
