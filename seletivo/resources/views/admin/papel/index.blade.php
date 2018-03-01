@@ -44,7 +44,7 @@
                                     @can('papel-delete')
                                         {{ method_field('DELETE') }}
                                         {{ csrf_field() }}
-                                        <button title="Deletar" class="btn btn-primary"><i class="material-icons">delete</i></button>
+                                        <button title="Deletar" class="btn btn-danger">Apagar</button>
                                     @endcan
                                 </form>
 
@@ -62,7 +62,7 @@
         </div>
         
      @can('papel-create')
-        <a class="btn btn-primary" href="{{route('papeis.create')}}">Adicionar</a>
+        <a class="btn btn-success" href="{{route('papeis.create')}}">Adicionar</a>
         <a href="{{ route('admin.index') }}" class="btn btn-primary">Voltar</a>
     @endcan
 		           

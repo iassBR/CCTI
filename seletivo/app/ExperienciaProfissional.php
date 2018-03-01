@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Canidato;
+use App\Candidato;
 class ExperienciaProfissional extends Model
 {
     protected $table = 'experiencias_profissionais';
@@ -12,6 +12,6 @@ class ExperienciaProfissional extends Model
     ];
 
     public function candidatos(){
-        return $this->hasMany('App\Canidato','candidato_id');
+        return $this->belongsTo(Candidato::class);
     }
 }

@@ -11,17 +11,22 @@
           <li role="presentation"><a href="#etapa4" aria-controls="etapa4" role="tab" data-toggle="tab">Cargo</a></li>
         </ul>
         <!-- Tab panes -->
+        <form  method="post" action="{{ route('candidatos.store') }}">
+        {{ csrf_field() }}
         <div class="tab-content">
+         
+        
+            @include('candidato._dadosPessoais')
 
-          @include('candidato._dadosPessoais')
+            @include('candidato._experienciaProfissional')
 
-          @include('candidato._experienciaProfissional')
+            @include('candidato._formacao')
 
-          @include('candidato._formacao')
-
-          @include('candidato._cargo')
+            @include('candidato._cargo')
 
         </div>
+        
+      </form>
     </div>
 </div>
     <!-- Verificar as IMPORTAÇÕES NECESSÁRIAS PARA VALIDAÇÃO  -->

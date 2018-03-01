@@ -29,11 +29,11 @@ class Candidato extends Model
         return $this->belongsTo('App\Deficiencia','candidato_id');
     }
 
-    public function experienciasProfissional(){
-        return $this->belongsToMany('App\ExperienciaProfissional','candidato_id');
+    public function experiencias(){
+        return $this->hasMany(ExperienciaProfissional::class);
     }
 
     public function formacoes(){
-        return $this->belongsToMany('App\Formacao','candidato_id');
+        return $this->hasMany(ExperienciaProfissional::class);
     }
 }

@@ -1,5 +1,7 @@
 
 <div role="tabpanel" class="tab-pane active" id="etapa1">
+       
+        <div class="form-group col-md-12"> 
             <h2> Dados Pessoais</h2>
             <p>
               <div class="panel panel-default">
@@ -8,77 +10,148 @@
                 </div>
               </div>
             </p>
+          </div>
         
-            <form>
-              <div class="form-group col-md-6">
-                <label>Nome</label>
-                <input type="text" class="form-control" id="nome" data-toggle="tooltip" data-placement="top" title="Informe seu nome completo aqui">
+            <div >
+            
+              <div class="form-group col-md-6 {{$errors->has('nome')  ? 'has-error': ''}}">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome"  value="{{ isset($candidato->nome) ? $candidato->nome : old('nome') }}" title="Informe seu nome completo aqui" >
+                    @if($errors->has('nome'))
+                        <span class="help-block">
+                            <strong>{{$errors->first('nome')}}</strong>
+                        </span> 
+                    @endif
               </div>
-              <div class="form-group col-md-6">
-                <label>E-mail</label>
-                <input type="email" class="form-control" id="email" data-toggle="tooltip" data-placement="top" title="Informe seu e-mail aqui">
+              <div class="form-group col-md-6 {{$errors->has('email')  ? 'has-error': ''}}">
+                <label for="email">E-mail</label>
+                <input type="email" class="form-control" id="email" name="email"  value="{{ isset($candidato->email) ? $candidato->email : old('email') }}"  title="Informe seu e-mail aqui" >
+                    @if($errors->has('email'))
+                        <span class="help-block">
+                            <strong>{{$errors->first('email')}}</strong>
+                        </span> 
+                    @endif
               </div>
 
-              <div class="form-group col-md-6">
-                <label>CPF</label>
-                <input type="text" class="form-control" id="cpf" data-toggle="tooltip" data-placement="top" title="Informe seu CPF aqui">
+              <div class="form-group col-md-6 {{$errors->has('cpf')  ? 'has-error': ''}}">
+                <label for="cpf">CPF</label>
+                <input type="text" class="form-control" id="cpf" name="cpf"  value="{{ isset($candidato->cpf) ? $candidato->cpf : old('cpf') }}"  title="Informe seu CPF aqui" >
+                @if($errors->has('cpf'))
+                        <span class="help-block">
+                            <strong>{{$errors->first('cpf')}}</strong>
+                        </span> 
+                    @endif
               </div>
 
-              <div class="form-group col-md-6">
-                <label>RG</label>
-                <input type="number" class="form-control" id="rg" data-toggle="tooltip" data-placement="top" title="Informe seu RG aqui">
+              <div class="form-group col-md-6 {{$errors->has('rg')  ? 'has-error': ''}}">
+                <label for="rg">RG</label>
+                <input type="number" class="form-control" id="rg"name="rg"   value="{{ isset($candidato->rg) ? $candidato->rg : old('rg') }}" title="Informe seu RG aqui" >
+                @if($errors->has('rg'))
+                        <span class="help-block">
+                            <strong>{{$errors->first('rg')}}</strong>
+                        </span> 
+                    @endif
               </div>
 
-              <div class="form-group col-md-6">
-                <label>Sexo:</label>                   
-                    <label class="radio-inline"><input type="radio" name="sexo"  id="sexo" >Masculino</label>                    
-                    <label class="radio-inline"><input type="radio" name="sexo"  id="sexo" >Feminino</label>
+              <div class="form-group col-md-6 {{$errors->has('sexo')  ? 'has-error': ''}}">
+                <label for="sexo">Sexo:</label>
+                    <select name="sexo"  id="sexo" class="form-control" value="{{ isset($candidato->sexo) ? $candidato->sexo : old('sexo') }}"  >
+                            <option value=""{{ (!isset($candidato) ? 'selected' : '') }}  >Selecione</option>
+                            <option value="masculino" {{  (isset($candidato) && $candidato->sexo == 'masculino' ? 'selected' : '') }} >masculino</option>
+                            <option value="feminino" {{ (isset($candidato) && $candidato->sexo == 'feminino' ? 'selected' : '') }} >feminino</option>                 
+                    </select>
+                    @if($errors->has('sexo'))
+                        <span class="help-block">
+                            <strong>{{$errors->first('sexo')}}</strong>
+                        </span> 
+                    @endif
              </div>
             
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-6 {{$errors->has('data_nascimento')  ? 'has-error': ''}}">
                     <label for="data_nascimento">Data Nascimento</label>
-                    <input type="date" class="form-control" placeholder="Iforme sua data de nascimento aqui" name="data_nascimento" required>
+                    <input type="date" class="form-control"   value="{{ isset($candidato->data_nascimento) ? $candidato->data_nascimento : old('data_nascimento')}}" placeholder="Informe sua data de nascimento aqui" name="data_nascimento" >
+                    @if($errors->has('data_nascimento'))
+                        <span class="help-block">
+                            <strong>{{$errors->first('data_nascimento')}}</strong>
+                        </span> 
+                    @endif
                 </div>
 
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-6 {{$errors->has('estado_civil')  ? 'has-error': ''}}">
                 <label for="estado_civil">Estado Civil:</label>
                     
-                        <select id="estado_civil" class="form-control" name="estado_civil">
-                            <option value="SOLTEIRO">Solteiro</option>
-                            <option value="CASADO">Casado</option>
-                            <option value="DIVORCIADO">Divorciado</option>
-                            <option value="VIUVO">Viúvo(a)</option>
+                        <select id="estado_civil" class="form-control" name="estado_civil" value="{{ isset($candidato->estado_civil) ? $candidato->estado_civil : old('estado_civil') }}" >
+                            <option value="">Selecione</option>    
+                            <option value="SOLTEIRO" {{ (isset($candidato) && $candidato->estado_civil == 'SOLTEIRO' ? 'selected' : '' )}} >Solteiro</option>
+                            <option value="CASADO" {{ (isset($candidato) && $candidato->estado_civil == 'CASADO' ? 'selected' : '' )}} >Casado</option>
+                            <option value="DIVORCIADO" {{ (isset($candidato) && $candidato->estado_civil == 'DIVORCIADO' ? 'selected' : '' )}} >Divorciado</option>
+                            <option value="VIUVO" {{ (isset($candidato) && $candidato->estado_civil == 'VIUVO' ? 'selected' : '' )}} >Viúvo(a)</option>
                         </select>
+                        @if($errors->has('estado_civil'))
+                          <span class="help-block">
+                              <strong>{{$errors->first('estado_civil')}}</strong>
+                          </span> 
+                        @endif
                                  
               </div>
               
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-6 {{$errors->has('cor_raca')  ? 'has-error': ''}}">
                 <label for="cor_raca">Cor\Raça:</label>
                     
-                        <select id="cor_raca" class="form-control" name="cor_raca">
-                            <option value="BRANCO">Branco</option>
-                            <option value="AMARELO">Amarelo</option>
-                            <option value="PARDO">Pardo</option>
-                            <option value="NEGRO">Negro</option>
-                            <option value="INDIGINA">Indígina</option>
+                        <select id="cor_raca" class="form-control" name="cor_raca" value="{{ isset($candidato->cor_raca) ? $candidato->cor_raca : old('cor_raca') }}">
+                            <option value="">Selecione</option>
+                            <option value="BRANCO"  {{ (isset($candidato) && $candidato->cor_raca == 'BRANCO' ? 'selected' : '' ) }}>Branco</option>
+                            <option value="AMARELO" {{ (isset($candidato) && $candidato->cor_raca == 'AMARELO' ? 'selected' : ''  )}} >Amarelo</option>
+                            <option value="PARDO" {{ (isset($candidato) && $candidato->cor_raca == 'PARDO' ? 'selected' : ''  )}} >Pardo</option>
+                            <option value="NEGRO"{{ (isset($candidato) && $candidato->cor_raca == 'NEGRO' ? 'selected' : ''  )}} >Negro</option>
+                            <option value="INDIGINA" {{ (isset($candidato) && $candidato->cor_raca == 'INDIGINA' ? 'selected' : ''  )}} >Indígina</option>
                             
                         </select>
+                        @if($errors->has('cor_raca'))
+                          <span class="help-block">
+                              <strong>{{$errors->first('cor_raca')}}</strong>
+                          </span> 
+                        @endif
                                  
-              </div>
+              </div>             
               
-              <div class="form-group col-md-6">
-                <label>Nacionalidade</label>
-                <input type="text" class="form-control" id="nacionalidade" data-toggle="tooltip" data-placement="top" title="EX: Brasileiro..Venezuelano">
+              <div class="form-group col-md-6 {{$errors->has('naturalidade')  ? 'has-error': ''}}">
+                  <label for="naturalidade">Naturalidade</label>
+                  <input type="text" class="form-control" id="naturalidade" value="{{ isset($candidato->naturalidade) ? $candidato->naturalidade : old('naturalidade') }}" name="naturalidade"  title="EX: Brasileiro..Venezuelano" >
+                  @if($errors->has('naturalidade'))
+                        <span class="help-block">
+                            <strong>{{$errors->first('naturalidade')}}</strong>
+                        </span> 
+                    @endif
               </div>
 
-              <div class="form-group col-md-6">
-                <label>Naturalidade</label>
-                <input type="text" class="form-control" id="naturalidade" data-toggle="tooltip" data-placement="top" title="EX: Boa vista, Pacaraima">
+              <div class="form-group col-md-6 {{$errors->has('nacionalidade')  ? 'has-error': ''}}">
+                <label for="nacionalidade">Nacionalidade</label>
+                <input type="text" class="form-control" id="nacionalidade"  value="{{ isset($candidato->nacionalidade) ? $candidato->nacionalidade : old('nacionalidade') }}" name="nacionalidade"  title="EX: Brasileiro..Venezuelano" >
+                @if($errors->has('nacionalidade'))
+                        <span class="help-block">
+                            <strong>{{$errors->first('nacionalidade')}}</strong>
+                        </span> 
+                    @endif
               </div>
-            <div>
+
+              <div class="form-group col-md-2 {{$errors->has('idade')  ? 'has-error': ''}}">
+                <label for="idade">Idade</label>
+                <input type="number" min="17" max="99" class="form-control" value="{{ isset($candidato->idade) ? $candidato->idade : old('idade') }}" id="idade" name="idade" title="" >
+                @if($errors->has('idade'))
+                        <span class="help-block">
+                            <strong>{{$errors->first('idade')}}</strong>
+                        </span> 
+                    @endif
+              </div>
+
+             
+            <div class="form-group col-md-12">
               <hr>              
             </div>
-            <div>            
+
+
+            <div class="form-group col-md-12">            
               <h2>Endereço</h2>
               <p>
                 <div class="panel panel-default">
@@ -89,73 +162,111 @@
               </p>
             </div>
 
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-6 {{$errors->has('cidade')  ? 'has-error': ''}}">
                     <label >Cidade:</label>
-                    <input id="cidade" class="form-control" type="text" name="cidade" data-toggle="tooltip" data-placement="top" title="Cidade onde você reside" >
+                    <input id="cidade" class="form-control" type="text" name="cidade"  value="{{ isset($endereco->cidade) ? $endereco->cidade : old('cidade') }}"  title="Cidade onde você reside" >
+                    @if($errors->has('cidade'))
+                        <span class="help-block">
+                            <strong>{{$errors->first('cidade')}}</strong>
+                        </span> 
+                    @endif
             </div>
 
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-6 {{$errors->has('uf')  ? 'has-error': ''}}">
                     <label>UF:</label>
-                        <select id="uf" class="form-control" name="uf" data-toggle="tooltip" data-placement="top" title="Estado onde você reside">
-                                        <option value="AC">Acre</option>
-                                        <option value="AL">Alagoas</option>
-                                        <option value="AP">Amapá</option>
-                                        <option value="AM">Amazonas</option>
-                                        <option value="BA">Bahia</option>
-                                        <option value="CE">Ceará</option>
-                                        <option value="DF">Distrito Federal</option>
-                                        <option value="ES">Espirito Santo</option>
-                                        <option value="GO">Goiás</option>
-                                        <option value="MA">Maranhão</option>
-                                        <option value="MS">Mato Grosso do Sul</option>
-                                        <option value="MT">Mato Grosso</option>
-                                        <option value="MG">Minas Gerais</option>
-                                        <option value="PA">Pará</option>
-                                        <option value="PB">Paraíba</option>
-                                        <option value="PR">Paraná</option>
-                                        <option value="PE">Pernambuco</option>
-                                        <option value="PI">Piauí</option>
-                                        <option value="RJ">Rio de Janeiro</option>
-                                        <option value="RN">Rio Grande do Norte</option>
-                                        <option value="RS">Rio Grande do Sul</option>
-                                        <option value="RO">Rondônia</option>
-                                        <option value="RR">Roraima</option>
-                                        <option value="SC">Santa Catarina</option>
-                                        <option value="SP">São Paulo</option>
-                                        <option value="SE">Sergipe</option>
-                                        <option value="TO">Tocantins</option>
+                        <select id="uf" class="form-control" name="uf" value="{{ isset($endereco->uf) ? $endereco->uf : old('uf') }}"   title="Estado onde você reside" >
+                                        <option value="">Selecione</option> 
+                                        <option value="AC" {{(isset($endereco) && $endereco->uf == 'AC'  ? 'selected' : '')}} > Acre</option>
+                                        <option value="AL" {{( isset($endereco) && $endereco->uf == 'AL'  ? 'selected' : '')}}>Alagoas</option>
+                                        <option value="AP" {{( isset($endereco) && $endereco->uf == 'AP'  ? 'selected' : '')}}>Amapá</option>
+                                        <option value="AM" {{( isset($endereco) && $endereco->uf == 'AM'  ? 'selected' : '')}}>Amazonas</option>
+                                        <option value="BA" {{ isset($endereco) && ($endereco->uf == 'BA'  ? 'selected' : '')}}>Bahia</option>
+                                        <option value="CE" {{( isset($endereco) && $endereco->uf == 'CE'  ? 'selected' : '')}}>Ceará</option>
+                                        <option value="DF" {{( isset($endereco) && $endereco->uf == 'DF'  ? 'selected' : '')}}>Distrito Federal</option>
+                                        <option value="ES" {{( isset($endereco) && $endereco->uf == 'ES'  ? 'selected' : '')}}>Espirito Santo</option>
+                                        <option value="GO" {{(  isset($endereco) && $endereco->uf == 'GO'  ? 'selected' : '')}}>Goiás</option>
+                                        <option value="MA" {{ isset($endereco) && ($endereco->uf == 'MA'  ? 'selected' : '')}}>Maranhão</option>
+                                        <option value="MS" {{( isset($endereco) && $endereco->uf == 'MS'  ? 'selected' : '')}}>Mato Grosso do Sul</option>
+                                        <option value="MT" {{ ( isset($endereco) && $endereco->uf == 'MT'  ? 'selected' : '')}}>Mato Grosso</option>
+                                        <option value="MG" {{( isset($endereco) && $endereco->uf == 'MG'  ? 'selected' : '')}}>Minas Gerais</option>
+                                        <option value="PA" {{( isset($endereco) && $endereco->uf == 'PA'  ? 'selected' : '')}}>Pará</option>
+                                        <option value="PB" {{( isset($endereco) && $endereco->uf == 'PB'  ? 'selected' : '')}}>Paraíba</option>
+                                        <option value="PR" {{( isset($endereco) && $endereco->uf == 'PR'  ? 'selected' : '')}}>Paraná</option>
+                                        <option value="PE" {{( isset($endereco) && $endereco->uf == 'PE'  ? 'selected' : '')}}>Pernambuco</option>
+                                        <option value="PI" {{( isset($endereco) && $endereco->uf == 'PI'  ? 'selected' : '')}}>Piauí</option>
+                                        <option value="RJ" {{( isset($endereco) && $endereco->uf == 'RJ'  ? 'selected' : '')}}>Rio de Janeiro</option>
+                                        <option value="RN" {{( isset($endereco) && $endereco->uf == 'RN'  ? 'selected' : '')}}>Rio Grande do Norte</option>
+                                        <option value="RS" {{( isset($endereco) && $endereco->uf == 'RS'  ? 'selected' : '')}}>Rio Grande do Sul</option>
+                                        <option value="RO" {{( isset($endereco) && $endereco->uf == 'RO'  ? 'selected' : '')}}>Rondônia</option>
+                                        <option value="RR" {{( isset($endereco) && $endereco->uf == 'RR'  ? 'selected' : '')}} > Roraima</option>
+                                        <option value="SC" {{( isset($endereco) && $endereco->uf == 'SC'  ? 'selected' : '')}}>Santa Catarina</option>
+                                        <option value="SP" {{ isset($endereco) && ($endereco->uf == 'SP'  ? 'selected' : '')}}>São Paulo</option>
+                                        <option value="SE" {{( isset($endereco) && $endereco->uf == 'SE'  ? 'selected' : '')}}>Sergipe</option>
+                                        <option value="TO" {{( isset($endereco) && $endereco->uf == 'TO'  ? 'selected' : '')}}>Tocantins</option>
                                     </select>
-                            
+                    @if($errors->has('uf'))
+                        <span class="help-block">
+                            <strong>{{$errors->first('uf')}}</strong>
+                        </span> 
+                    @endif                                     
             </div>
 
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-6 {{$errors->has('cep')  ? 'has-error': ''}}">
                 <label >CEP:</label>
-                <input id="cep" class="form-control" type="text" name="cep" data-toggle="tooltip" data-placement="top" title="CEP da sua RUA/AVENIDA">                            
+                <input id="cep" class="form-control" type="text" name="cep" value="{{ isset($endereco->cep) ? $endereco->cep : old('cep') }}"  title="CEP da sua RUA/AVENIDA" > 
+                @if($errors->has('cep'))
+                        <span class="help-block">
+                            <strong>{{$errors->first('cep')}}</strong>
+                        </span> 
+                @endif                           
             </div>
 
 
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-6 {{$errors->has('bairro')  ? 'has-error': ''}}">
                 <label >Bairro</label>                        
-                <input id="bairro" type="text" class="form-control" name="bairro" data-toggle="tooltip" data-placement="top" title="Bairro em que reside">                   
+                <input id="bairro" type="text" class="form-control" name="bairro" value="{{ isset($endereco->bairro) ? $endereco->bairro : old('bairro') }}"   title="Bairro em que reside" >  
+                @if($errors->has('bairro'))
+                        <span class="help-block">
+                            <strong>{{$errors->first('bairro')}}</strong>
+                        </span> 
+               @endif                 
             </div>
 
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-6 {{$errors->has('logradouro')  ? 'has-error': ''}}">
                 <label>Logradouro</label>
-                <input id="logradouro" type="text" class="form-control" name="logradouro" data-toggle="tooltip" data-placement="top" title="Informe o nome de sua Rua/Avenida/Vicinal">   
+                <input id="logradouro" type="text" class="form-control" name="logradouro" value="{{ isset($endereco->logradouro) ? $endereco->logradouro : old('logradouro') }}"   title="Informe o nome de sua Rua/Avenida/Vicinal" >
+                @if($errors->has('logradouro'))
+                        <span class="help-block">
+                            <strong>{{$errors->first('logradouro')}}</strong>
+                        </span> 
+                @endif   
             </div>
 
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-6 {{$errors->has('num')  ? 'has-error': ''}}">
                 <label >Numero</label>
-                <input id="num" type="number" class="form-control" name="num"   data-toggle="tooltip" data-placement="top" title="Número da sua casa">                           
+                <input id="num" type="number" class="form-control" name="num" value="{{ isset($endereco->num) ? $endereco->num : old('num') }}"   title="Número da sua casa" >
+                @if($errors->has('num'))
+                        <span class="help-block">
+                            <strong>{{$errors->first('num')}}</strong>
+                        </span> 
+                @endif                           
             </div>   
                     
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-6 {{$errors->has('complemento')  ? 'has-error': ''}}">
                 <label >Complemento:</label>
-                <input id="complemento" class="form-control" type="text" name="complemento"  data-toggle="tooltip" data-placement="top" title="Algum complemento para seu endereço">
+                <input id="complemento" class="form-control" type="text" value="{{ isset($endereco->complemento) ? $endereco->complemento : old('complemento') }}"  name="complemento"   title="Algum complemento para seu endereço" >
+                @if($errors->has('complemento'))
+                        <span class="help-block">
+                            <strong>{{$errors->first('complemento')}}</strong>
+                        </span> 
+                @endif
             </div>
 
-
-            </form>
+            <div class="form-group col-md-4">
+            <a onclick="alteraEtapa(2)" class="btn btn-info">Avançar</a>
+            <!--<button   class="btn btn-info"> Avançar</button> -->
+            </div>
+</div>
             
-            <button onclick="alteraEtapa(2)" class="btn btn-info">Próxima Etapa</button>
+           
 </div>  

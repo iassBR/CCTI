@@ -19,7 +19,7 @@
                         @endforeach
                     </select>
                 </div>
-                    <button class="btn btn-primary">Adicionar</button>
+                    <button class="btn btn-success">Adicionar</button>
                     <a href="{{ route('usuarios.index') }}" class="btn btn-primary">Voltar</a>
                 </form>
             </div>
@@ -48,7 +48,7 @@
                                 <form action="{{route('usuarios.papel.destroy',[$usuario->id,$papel->id])}}" method="post">
                                         {{ method_field('DELETE') }}
                                         {{ csrf_field() }}
-                                        <button title="Deletar" class="btn btn-primary"><i class="material-icons">delete</i></button>
+                                        <button title="Deletar" class="btn btn-danger"><i class="material-icons">Apagar</i></button>
                                 </form>
                             </td>
                         </tr>

@@ -23,7 +23,7 @@ class CreateCandidatosTable extends Migration
             $table->string('estado_civil');
             $table->string('cor_raca');
             $table->string('nacionalidade');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('naturalidade');
             $table->string('idade');
             $table->integer('endereco_id')->unsigned(); 

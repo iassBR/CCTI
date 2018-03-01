@@ -129,10 +129,10 @@
                     <ul>
                         <li class="visible-xs"><a href="#">Sair</a></li>
                         <h3><strong>Painel do Administrador</strong></h3>
-                        <li><a href="{{route ('admin.index')}}">Início</a></li>
-                        <li><a href="{{route ('usuarios.index')}}">Usuários</a></li>
+                        <li><a href="{{route ('admin.index')}}"><i class="glyphicon glyphicon-home"> </i>  Início</a></li>
+                        <li><a href="{{route ('usuarios.index')}}"><i class="glyphicon glyphicon-user"> </i>  Usuários</a></li>
                         
-                        <li><a href="{{route ('papeis.index')}}">Papéis</a></li>
+                        <li><a href="{{route ('papeis.index')}}"><i class="glyphicon glyphicon-file"> </i>  Papéis</a></li>
                         
                     </ul>
                 </div>

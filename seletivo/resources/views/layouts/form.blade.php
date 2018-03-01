@@ -41,7 +41,9 @@
    
 
     <script type="text/javascript" src="{{asset ('js/app.js')}}"></script>
-    <script type="text/javascript" src="{{asset ('js/script.js')}}"></script>    
+    <script type="text/javascript" src="{{asset ('js/script.js')}}"></script>
+    <script type="text/javascript" src="{{asset ('js/add.js')}}"></script>
+    <script type="text/javascript" src="{{asset ('js/add2.js')}}"></script>     
     <script type="text/javascript" src="{{asset ('js/jquery-3.1.1.js')}}"></script>
     <script type="text/javascript" src="{{asset ('js/jquery.validate.min.js')}}"></script>
     <script type="text/javascript" src="{{asset ('js/additional-methods.min.js')}}"></script>
