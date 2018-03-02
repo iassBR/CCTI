@@ -22,20 +22,20 @@
                 <label>Formação/Curso</label>                
                         <select id="tipo" class="form-control" name="formacoes[0][tipo]"  title="Preencha uma formação válida" >
                             <option value="">Selecione</option>
-                            <option value="Curso de Capacitação">Curso de Capacitação</option>
-                            <option value="Doutorado Completo">Doutorado Completo</option>
-                            <option value="Doutorado Incompleto">Doutorado Incompleto</option>
-                            <option value="Mestrado Completo">Mestrado Completo</option>
-                            <option value="Mestrado Incompleto">Mestrado Incompleto</option>
-                            <option value="Pós-Graduação Completa">Pós-Graduação Completa</option>
-                            <option value="Pós-Graduação Incompleta">Pós-Graduação Incompleta</option>
-                            <option value="Graduação Completa">Graduação Completa</option>
-                            <option value="Graduação Incompleta">Graduação Incompleta</option>
-                            <option value="Ensino Médio Completo">Ensino Médio Completo</option>
-                            <option value="Ensino Médio Incompleto">Ensino Médio Incompleto</option>
-                            <option value="Ensino Médio Técnico">Ensino Médio Técnico</option>
-                            <option value="Ensino Fundamental Completo">Ensino Fundamental Completo</option>
-                            <option value="Ensino Fundamental Incompleto">Ensino Fundamental Incompleto</option>
+                            <option value="CURSO DE CAPACITACAO">Curso de Capacitação</option>
+                            <option value="DOUTORADO COMPLETODoutorado Completo">Doutorado Completo</option>
+                            <option value="DOUTORADO INCOMPLETO">Doutorado Incompleto</option>
+                            <option value="MESTRADO COMPLETO">Mestrado Completo</option>
+                            <option value="MESTRADO INCOMPLETO">Mestrado Incompleto</option>
+                            <option value="POS-GRADUACAO COMPLETA">Pós-Graduação Completa</option>
+                            <option value="POS-GRADUACAO INCOMPLETA">Pós-Graduação Incompleta</option>
+                            <option value="GRADUACAO COMPLETA">Graduação Completa</option>
+                            <option value="GRADUACAO INCOMPLETA">Graduação Incompleta</option>
+                            <option value="ENSINO MEDIO COMPLETO">Ensino Médio Completo</option>
+                            <option value="ENSINO MEDIO INCOMPLETO">Ensino Médio Incompleto</option>
+                            <option value="ENSINO MEDIO TECNICO">Ensino Médio Técnico</option>
+                            <option value="ENSINO FUNDAMENTAL COMPLETO">Ensino Fundamental Completo</option>
+                            <option value="ENSINO FUNDAMENTAL INCOMPLETO">Ensino Fundamental Incompleto</option>
                         </select>
             </div>            
             <div class="form-group  {{$errors->has('formacoes[0][instituicao]')  ? 'has-error': ''}}">

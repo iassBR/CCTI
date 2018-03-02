@@ -144,17 +144,6 @@ protected function validarCargo($request){
  
         return view('cargos.remove', compact('cargo'));
     }
-    public function seletivo($id){
-        $cargo = Cargo::find($id);
-        $seletivo = Seletivo::all();
-        return view('cargos.index', compact('cargo','seletivo'));    
-    }
-    public function seletivoStore(Request $request, $id){
-
-    }
-    public function seletivoDestroy($id,$seletivo_id)
-    {
-        
-    }
+    
     
 }

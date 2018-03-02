@@ -25,7 +25,7 @@ class EscolaridadeController extends Controller
     }
     public function index(Request $request)
     {
-        $qtd = $request['qtd'] ?: 4;
+        $qtd = $request['qtd'] ?: 10;
         $page = $request['page'] ?: 1;
         $buscar = $request['buscar'];
 

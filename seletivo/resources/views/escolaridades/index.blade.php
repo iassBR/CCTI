@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
     <div class="panel panel-default">    
@@ -6,7 +6,7 @@
 
         <form method="GET" action="{{route('escolaridades.index', 'buscar' )}}">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-10">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Digite o nome da escolaridade" name="buscar">
                     <span class="input-group-btn">
@@ -18,7 +18,7 @@
         </form>
 
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-10">
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -46,6 +46,8 @@
         <div align="center" class="row">
         	{{ $escolaridades->links() }}
 	    </div>
+        <a href="{{route('escolaridades.create')}}"><button class="btn btn-primary">Adicionar</button></a>
     </div>
-    <a href="{{route('escolaridades.create')}}"><button class="btn btn-primary">Adicionar</button></a>
+    
+    
 @endsection

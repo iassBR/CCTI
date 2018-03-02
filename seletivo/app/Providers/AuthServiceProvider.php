@@ -26,12 +26,7 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-       // $usuario=Auth::user();
-      // Gate::define('usuario-view',function($usuario,Papel $papel){
-      //      return $usuario->papel_id == $papel->id;
-     //  });
-
-     ///*   
+   
         foreach ($this->listaPermissoes() as $permissao) {
             Gate::define($permissao->nome,function($user) use($permissao){
            return $user->temUmPapelDestes($permissao->papeis) || $user->eAdmin();
@@ -43,19 +38,12 @@ class AuthServiceProvider extends ServiceProvider
       public function listaPermissoes()
       {
         return Permissao::with('papeis')->get();
-      }//*/
-    
-        
-    //     foreach ($this->listaPermissoes() as $permissao) {
-    //         Gate::define($permissao->nome,function($user) use($permissao){
-    //        return $user->temUmPapelDestes($permissao->papeis) || $user->eAdmin();
-    //         });
-    //    }
-  
       }
+    
+
+        
+    
+      } 
+   
+
   
-    //   public function listaPermissoes()
-    //   {
-    //     return Permissao::with('papeis')->get();
-    //   }
-  }

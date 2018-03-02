@@ -85,7 +85,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" >Administrador</a>
+				<a class="navbar-brand" >Painel de Controle</a>
 			</div>
            
 		</div>
@@ -128,12 +128,14 @@
 		        <div class="menu">
                     <ul>
                         <li class="visible-xs"><a href="#">Sair</a></li>
-                        <h3><strong>Painel do Administrador</strong></h3>
+                        <h3><strong>Painel de Controle</strong></h3>
+                       
                         <li><a href="{{route ('admin.index')}}"><i class="glyphicon glyphicon-home"> </i>  Início</a></li>
+                        @can('admin-view')
                         <li><a href="{{route ('usuarios.index')}}"><i class="glyphicon glyphicon-user"> </i>  Usuários</a></li>
                         
                         <li><a href="{{route ('papeis.index')}}"><i class="glyphicon glyphicon-file"> </i>  Papéis</a></li>
-                        
+                        @endcan
                     </ul>
                 </div>
             <div class="content">

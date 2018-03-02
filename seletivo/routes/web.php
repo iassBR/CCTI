@@ -70,9 +70,9 @@ Route::group(['middleware' => 'auth'], function () {
     
 });
 
-    Route::get('cargos/seletivo/{id}', ['as'=>'cargos.seletivo','uses'=>'CargoController@seletivo']);
-    Route::post('cargos/seletivo/{seletivo}', ['as'=>'cargos.seletivo.store','uses'=>'CargoController@seletivoStore']);
-    Route::delete('cargos/seletivo/{cargo}/{seletivo}', ['as'=>'cargos.seletivo.destroy','uses'=>'CargoController@seletivoDestroy']);
+    Route::get('seletivos/cargo/{id}', ['as'=>'seletivos.cargo','uses'=>'SeletivoController@cargo']);
+    Route::post('seletivos/cargo/{cargo}', ['as'=>'seletivos.cargo.store','uses'=>'SeletivoController@cargoStore']);
+    Route::delete('seletivos/cargo/{seletivo}/{cargo}', ['as'=>'seletivos.cargo.destroy','uses'=>'SeletivoController@cargoDestroy']);
 
 
 

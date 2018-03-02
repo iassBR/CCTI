@@ -14,20 +14,55 @@ class EscolaridadeSeeder extends Seeder
     {
         DB::table('escolaridades')->insert([
             [
-                'tipo'=>'ENSINO FUNDAMENTAL',
+                'tipo'=>'CURSO DE CAPACITACAO',
             ],
             [
-                'tipo'=>'ENSINO MEDIO',
+                'tipo'=>'DOUTORADO COMPLETO',
             ],
             [
-                'tipo'=>'ENSINO SUPERIOR',
+                'tipo'=>'DOUTORADO INCOMPLETO',
             ],
             [
-                'tipo'=>'MESTRADO',
+                'tipo'=>'MESTRADO COMPLETO',
             ],
             [
-                'tipo'=>'DOUTORADO',
+                'tipo'=>'MESTRADO INCOMPLETO',
+            ],
+            [
+                'tipo'=>'POS-GRADUACAO COMPLETA',
             ]
+            ,[
+                'tipo'=>'POS-GRADUACAO INCOMPLETA',
+            ]
+            ,[
+                'tipo'=>'GRADUACAO COMPLETA',
+            ]
+            ,[
+                'tipo'=>'GRADUACAO INCOMPLETA',
+            ]
+            ,[
+                'tipo'=>'ENSINO MEDIO COMPLETO',
+            ]
+            ,[
+                'tipo'=>'ENSINO MEDIO INCOMPLETO',
+            ]
+            ,[
+                'tipo'=>'ENSINO MEDIO TECNICO',
+            ]
+            ,[
+                'tipo'=>'ENSINO FUNDAMENTAL COMPLETO',
+            ]
+            ,[
+                'tipo'=>'ENSINO FUNDAMENTAL INCOMPLETO',
+            ],
+
+      
+            
         ]);
+
+
+
+
+      
     }
 }

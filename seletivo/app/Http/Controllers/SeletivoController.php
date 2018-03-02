@@ -45,7 +45,10 @@ protected function validarSeletivo($request){
             $seletivos = Seletivo::paginate($qtd);
  
         }
+
+        
         $seletivos = $seletivos->appends(Request::capture()->except('page'));
+
         return view('seletivos.index', compact('seletivos'));
     }
 
@@ -141,10 +144,43 @@ protected function validarSeletivo($request){
         Seletivo::find($id)->delete();
         return redirect()->route('seletivos.index');
     }
+
+    
     public function remover($id)
     {
         $seletivo = Seletivo::find($id);
  
         return view('seletivos.remove', compact('seletivo'));
+    }
+    public function cargo($id){
+        $seletivo = Seletivo::find($id);
+        $cargo = Cargo::all();
+        return view('seletivos.cargos', compact('cargo','seletivo'));    
+    }
+    public function cargoStore(Request $request, $id){
+        
+        
+        // if(Gate::denies('seletivo-edit')){
+        //     abort(403,"Não autorizado!");
+        //   }
+
+          $seletivo = Seletivo::find($id);
+          $dados = $request->all();
+          $cargo = Cargo::find($dados['cargo_id']);
+          $seletivo->adicionaCargo($cargo);
+          return redirect()->back();
+    }
+    public function cargoDestroy($id,$seletivo_id)
+    {
+        // if(Gate::denies('seletivo-edit')){
+        //     abort(403,"Não autorizado!");
+        //   }
+     
+          $seletivo = Seletivo::find($id);
+          $cargo = Cargo::find($cargo_id);
+          $seletivo->removeCargo($cargo);
+          return redirect()->back();
+        
+        
     }
 }
