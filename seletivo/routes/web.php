@@ -74,6 +74,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('seletivos/cargo/{cargo}', ['as'=>'seletivos.cargo.store','uses'=>'SeletivoController@cargoStore']);
     Route::delete('seletivos/cargo/{seletivo}/{cargo}', ['as'=>'seletivos.cargo.destroy','uses'=>'SeletivoController@cargoDestroy']);
 
+    Route::get('seletivos/escolaridade/{id}', ['as'=>'seletivos.escolaridade','uses'=>'SeletivoController@escolaridade']);
+    Route::post('seletivos/escolaridade/{escolaridade}', ['as'=>'seletivos.escolaridade.store','uses'=>'SeletivoController@escolaridadeStore']);
+    Route::delete('seletivos/escolaridade/{seletivo}/{escolaridade}', ['as'=>'seletivos.escolaridade.destroy','uses'=>'SeletivoController@escolaridadeDestroy']);
 
 
 //Route::get('admin', 'AdminController@index');

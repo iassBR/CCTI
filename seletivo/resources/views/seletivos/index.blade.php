@@ -12,7 +12,7 @@
                             <th>Nome Seletivo</th>
                             <th>Data Inicio</th>
                             <th>Data Termino</th>
-                            <th>Cargo Desejado</th>
+                            <th>Ações</th>
                             <th>Tempo de Experiência</th>                        
                         </tr>
                     </thead>
@@ -22,7 +22,7 @@
                                 <td>{{$seletivo->nomeSeletivo}}</td>
                                 <td>{{$seletivo->dataInicio}}</td>
                                 <td>{{$seletivo->dataTermino}}</td>
-                                <td><a  class="btn btn-primary" href="{{route('seletivos.cargo',$seletivo->id)}}">Cargos </a></td>
+                                <td><a  class="btn btn-primary" href="{{route('seletivos.cargo',$seletivo->id)}}">Cargos </a> <a  class="btn btn-primary" href="{{route('seletivos.escolaridade',$seletivo->id)}}">Escolaridade</a></td>
                                 <td>{{$seletivo->tempoExperiencia}}</td>
                                 
                                 <td>
