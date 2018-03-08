@@ -37,24 +37,7 @@
             </div>
            
         </div> 
-        <div class="row">  
-            <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="nomeSeletivo">Cargo desejado</label>
-                        <input type="text" class="form-control" placeholder="Cargo Desejado" name="cargoDesejado" required value="{{$seletivo->cargoDesejado}}">
-                    </div>
-            </div> 
-        
-          
-            <div class="col-md-6">          
-                <div class="form-group">
-                    
-                    <label for="tempoxp">Tempo de experiência</label>
-                    <input type="text" class="form-control" name="tempoExperiencia" placeholder="Tempo de Experiência" required value="{{$seletivo->tempoExperiencia}}">
-                </div>     
-            </div> 
-        </div>
-       
+              
         <span class="pull-right">
             <a href="{{ url()->previous() }}" class="btn btn-default">Voltar</a>
             <button type="submit" class="btn btn-primary">Editar</button>

@@ -177,10 +177,28 @@ protected function validarSeletivo($request){
         //   }
      
           $seletivo = Seletivo::find($id);
-          $cargo = Cargo::find($cargo_id);
+          $cargo = Cargo::find($seletivo_id);
           $seletivo->removeCargo($cargo);
           return redirect()->back();
         
         
+    }
+    public function escolaridade($id){
+        $seletivo = Seletivo::find($id);
+        $escolaridade = Escolaridade::all();
+        return view('seletivos.escolaridades', compact('escolaridade','seletivo'));    
+    }
+    public function EscolaridadeStore(Request $request, $id){
+          $seletivo = Seletivo::find($id);
+          $dados = $request->all();
+          $escolaridade = Escolaridade::find($dados['escolaridade_id']);
+          $seletivo->adicionaEscolaridade($escolaridade);
+          return redirect()->back();
+    }
+    public function escolaridadeDestroy($id,$seletivo_id){
+          $seletivo = Seletivo::find($id);
+          $escolaridade = Escolaridade::find($seletivo_id);
+          $seletivo->removeEscolaridade($escolaridade);
+          return redirect()->back();  
     }
 }

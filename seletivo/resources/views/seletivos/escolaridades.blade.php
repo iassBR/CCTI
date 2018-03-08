@@ -2,23 +2,20 @@
 
 @section('content')
 <div class="panel panel-default">    
-    <div class="panel-heading">Lista de Cargos para o Seletivo: {{$seletivo->nomeSeletivo}}</div>	
+    <div class="panel-heading">Lista de Escolaridade para o Seletivo: {{$seletivo->nomeSeletivo}}</div>	
     
 		<div class="panel-body">
-			<form class="form-horizontal" action="{{route('seletivos.cargo.store',$seletivo->id)}}" method="post">
+			<form class="form-horizontal" action="{{route('seletivos.escolaridade.store',$seletivo->id)}}" method="post">
 			{{ csrf_field() }}
                 <div class="form-control" >
-                    <select name="cargo_id">
-                        @foreach($cargo as $valor)
-                        <option value="{{$valor->id}}">{{$valor->nomeCargo}}</option>
+                    <select name="escolaridade_id">
+                        @foreach($escolaridade as $valor)
+                        <option value="{{$valor->id}}">{{$valor->tipo}}</option>
                         @endforeach
                     </select>
                 </div>
-                <a href="{{ route('seletivos.index') }}" class="btn btn-primary" >Voltar </a>
-                <button class="btn btn-success">Adicionar</button>
-
-                <a href="{{ route('seletivos.index') }}" class="btn btn-primary">Voltar</a>
-
+                <button class="btn btn-primary">Adicionar</button>
+                <a href="{{route('seletivos.index')}}" class="btn btn-primary">Voltar</a>
 
 			</form>
 		</div>
@@ -28,18 +25,15 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th>Nome</th>
-                            <th>Escolaridade</th>    
-                            <th>Ações </th>
+                            <th>tipo</th>
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach($seletivo->cargos as $cargo)
+                    @foreach($seletivo->escolaridade as $escolaridade)
                         <tr>
-                            <td>{{ $cargo->nomeCargo }}</td>
-                            <td>{{ $cargo->escolaridades->tipo }}</td>
+                            <td>{{ $escolaridade->tipo }}</td>
                             <td>
-                                <form action="{{route('seletivos.cargo.destroy',[$seletivo->id,$cargo->id])}}" method="post">
+                                <form action="{{route('seletivos.escolaridade.destroy',[$seletivo->id,$escolaridade->id])}}" method="post">
                                         {{ method_field('DELETE') }}
                                         {{ csrf_field() }}
                                         <button title="Deletar" class="btn btn-danger">Deletar</button>

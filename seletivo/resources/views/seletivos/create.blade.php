@@ -36,29 +36,7 @@
             </div>
            
         </div> 
-
-        <div class="row">  
-            <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="nomeCargo">Cargo desejado</label>
-                        <select class="form-control" name="nomeCargo" required>
-                        @foreach($cargos as $cargo)
-                            <option value="{{$cargo->id}}">{{$cargo->nomeCargo}}</option>
-                        @endforeach  
-                        </select>
-                    </div>
-            </div> 
-
-        <div class="col-md-4">
-                <label for="escolaridade_id">Selecione a escolaridade: </label>
-                <select class="form-control" name="escolaridade_id" required>
-                @foreach($escolaridades as $escolaridade)            
-                  <option value="{{$escolaridade->id}}">{{$escolaridade->tipo}}</option>      
-                @endforeach
-                </select>
-        </div> 
-
-        </div>     
+   
         
         <span class="pull-right">
             <a href="{{ url()->previous() }}" class="btn btn-default">Voltar</a>
