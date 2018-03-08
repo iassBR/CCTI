@@ -45,8 +45,18 @@
     });
 })(jQuery);
 */
+
+function getId(id) {
+  
+  //$("#seletivo").attr("#seletivo",id);
+  $("#forme").attr("action",'/inscricao/'+id+'');
+  
+}
+
+
+
 function alteraEtapa(etapa){
-    $('#tabEtapas a[href="#etapa'+etapa+'"]').tab('show');
+    $('#tabEtapas a[href="#etapa'+etapa+']"').tab('show');
   }
   
   function exibePopover(dica){
@@ -249,6 +259,6 @@ function alteraEtapa(etapa){
   
     console.log(nome,email,cpf,rg,sexo,data_nascimento,estado_civil,
     naturalidade,nacionalidade,idade,cidade,uf,cep,bairro,logradouro,num
-    ,complemento);
+    ,complemento,id);
   }
-  
+ 

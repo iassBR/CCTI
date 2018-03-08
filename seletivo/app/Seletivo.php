@@ -16,7 +16,7 @@ class Seletivo extends Model
 
     
     public function candidatos(){
-        return $this->hasOne('App\Candidato','candidato_id');
+        return $this->belongsToMany(Candidato::class);
     }
     public function cargos(){
         return $this->belongsToMany(Cargo::class);

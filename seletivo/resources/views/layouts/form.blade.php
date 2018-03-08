@@ -8,7 +8,9 @@
     <title>Seletivo</title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/stylesheet.css')}}">
+    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -21,23 +23,32 @@
     <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="{{ route('home.index') }}">
             Processo Seletivo
           </a>
         </div>
       </div>
     </nav>
   
-    
-       
+    <div class="container">
+    <div class="row">
+      <!-- Nav tabs -->  
+        <ul id="tabEtapas" class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#etapa1" aria-controls="etapa1" role="tab" data-toggle="tab">Dados Pessoais</a></li>
+          <li role="presentation"><a href="#etapa2" aria-controls="etapa2" role="tab" data-toggle="tab">Experiências Profissionais</a></li>
+          <li role="presentation"><a href="#etapa3" aria-controls="etapa3" role="tab" data-toggle="tab">Formação</a></li>
+          
+        </ul>
 
-          @yield('corpo')
-      
+
+        @yield('corpo')
+                
+
         
-    
-
-    
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
+       
+    </div>
+</div>      
+<!-- Include all compiled plugins (below), or include individual files as needed -->
    
 
     <script type="text/javascript" src="{{asset ('js/app.js')}}"></script>

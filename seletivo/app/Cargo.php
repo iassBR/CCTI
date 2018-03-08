@@ -17,5 +17,9 @@ class Cargo extends Model
         return $this->belongsTo('App\Escolaridade','escolaridade_id');
     }
 
+    public function candidatos(){
+        return $this->belongsToMany(Candidatos::class);
+    }
+
 
 }
