@@ -22,10 +22,6 @@
                                 <td>{{$cargo->nomeCargo}}</td>
                                 <td>{{$cargo->tempoExperiencia}}</td>
                                 <td>{{$cargo->escolaridades->tipo}}</td>
-                                <td>
-                                    <a title='Seletivo' href="{{route('cargos.seletivo',$seletivo->id)}}"> <i class="glyphicon glyphicon-pencil"></i></a>
-                                    
-                                </td>
                             </tr>
                         @endforeach
                     </tbody>
