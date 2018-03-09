@@ -9,6 +9,7 @@ use App\Candidato;
 use App\Endereco;
 use App\ExperienciaProfissional;
 use App\Formacao;
+use App\Cargo;
 class CandidatoController extends Controller
 {
     /**
@@ -31,17 +32,21 @@ class CandidatoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create(Request $request,$id)
     {      //passar od $id como parametro
 
         //verificar se existe o candidato para salvar apenas as experiencias e formações DB::table('users')->where('votes', '=', 100)->get();
-       // $cpf =  $request->input('cpf');
-        //$seletivo = Seletivo::find($id); 
-        $cpf = "";
+        
+        $data = $request->all();
+        
+        $cpf =  $request->input('cpf');
+        //dd($id);
+        $seletivo = Seletivo::find($id); 
+        
         if($cpf){
             //$cpf = "134.432.313-21";
             $candidato = Candidato::where('cpf','=', $cpf)->first();
-            //dd($candidato);
+           // dd($candidato);
             if($candidato){
 
                 $endereco = Endereco::find($candidato->endereco_id);
@@ -51,13 +56,14 @@ class CandidatoController extends Controller
     
                 $formacoes = Formacao::where('candidato_id','=',$candidato->id)->get();
                 //dd($formacoes);
-                return view('candidato.curriculo' ,compact ('candidato, seletivo','endereco'));
+               // dd($candidato);
+                return view('candidato.edit' ,compact ('candidato','seletivo','endereco','formacoes','experiencias'));
             }
            
            
         }       
 
-        return view('candidato.curriculo');
+        return view('candidato.create',compact('seletivo','cpf'));
        // return("Oi");
     }
 
@@ -68,13 +74,15 @@ class CandidatoController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-   
+    public function cargoStore($candidato){
+        $cargo = Cargo::find($data['cargo_id']);
+        $candidato->adicionaCargo($cargo);
+        return;
+    }
+
+
     public function store(CandidatoRequest $request)
     {
-        //Ordem para salvar
-        //endereco
-        //candidato
-        //experiencias formacoes e deficiencia se tiver
 
         $data = $request->all();
         $experiencias = [];
@@ -88,6 +96,7 @@ class CandidatoController extends Controller
         $candidato = Candidato::create($data, 'endereco_id');
         $data['candidato_id'] = $candidato->id;
         //dd($data['candidato_id']);      
+
         foreach($data['experiencias'] as $i => $experiencia){
             $experiencias[$i] = new ExperienciaProfissional($experiencia);                      
         }
@@ -100,11 +109,27 @@ class CandidatoController extends Controller
         //dd($data['formacoes']);
         $candidato->formacoes()->saveMany($formacoes);
 
+
+
+        // VERIFICAR SE TODAS AS ENTIDADES FORAM SALVAS, CASO CONTRÁRIO DEVE DAR ROLLBACK
+
+
+
+
+
+        //$this->cargoStore($candidato);      
+
+        // $seletivo = Seletivo::find($data['seletivo_id']);
+        // $candidato->adicionaSeletivo($seletivo);
+              
+
         //dd($candidato->experiencias());
         return ('finalle com sucesso');            
 
     }
-
+    
+ 
+    
     /**
      * Display the specified resource.
      *
@@ -136,7 +161,25 @@ class CandidatoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //achar endereco , candidato , formacoes e experiencias
+
+        $data = $request->all();
+        $formacoes = [''];
+        foreach($data['formacoes'] as $i => $formacao){
+            $formacoes[$i] = new Formacao($formacao);                      
+        }
+        //$experiencias = $data['experiencias'];
+        
+        dd($formacoes);
+        $candidato = Candidato::find($id);
+        $candidato->update($data);
+
+        $endereco = Endereco::find($candidato->endereco_id);
+        $endereco->update($data);
+
+        // verificar se existem novas experiencias e add
+
+        return ('gg');
     }
 
     /**

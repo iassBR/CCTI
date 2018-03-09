@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>SELETIVOS</title>
-	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 	<link rel="stylesheet" href="{{ asset('css/stylesheet.css')}}">
@@ -16,6 +16,8 @@
 .navbar{
     margin: 0;
     border-radius: 0;
+    
+    
 }
 
 .navbar-toggle{
@@ -74,13 +76,13 @@
 
 <body>
 <div id="app">
-	<nav class="navbar navbar-inverse">
+	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
                 
               <div class="navbar-header">
 				
-				<a class="navbar-brand" href="#">CCTI SELETIVOS</a>
+				<a class="navbar-brand" href="{{ route('home.index') }}">CCTI SELETIVOS</a>
 			</div>
 			</div>
 			
@@ -88,7 +90,7 @@
 				<ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @guest
-                        <li><a href="{{ route('login') }}">Entrar</a></li>
+                        <li><a href="{{ route('login') }}">Admin</a></li>
                        
                     @else
                         <li class="dropdown">

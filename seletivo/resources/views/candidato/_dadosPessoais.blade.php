@@ -35,7 +35,7 @@
 
               <div class="form-group col-md-6 {{$errors->has('cpf')  ? 'has-error': ''}}">
                 <label for="cpf">CPF</label>
-                <input type="text" class="form-control" id="cpf" name="cpf"  value="{{ isset($candidato->cpf) ? $candidato->cpf : old('cpf') }}"  title="Informe seu CPF aqui" >
+                <input type="text" class="form-control" id="cpf" name="cpf"  value="{{ isset($cpf)  ? $cpf : old('cpf') }}"  title="Informe seu CPF aqui" >
                 @if($errors->has('cpf'))
                         <span class="help-block">
                             <strong>{{$errors->first('cpf')}}</strong>
@@ -261,8 +261,9 @@
                         </span> 
                 @endif
             </div>
-
-            <div class="form-group col-md-4">
+            
+            <div class="form-group col-md-12">
+            <hr>
             <a onclick="alteraEtapa(2)" class="btn btn-info">Avançar</a>
             <!--<button   class="btn btn-info"> Avançar</button> -->
             </div>

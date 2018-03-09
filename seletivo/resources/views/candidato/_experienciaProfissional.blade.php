@@ -23,7 +23,7 @@
           <hr>
           <div class="form-group {{$errors->has('experiencias[0][nome_empresa]')  ? 'has-error': ''}}">                
             <label>Empresa</label>
-            <input placeholder="Nome da empresa" type="text" class="form-control" id="nome_empresa" name="experiencias[0][nome_empresa]" value=""   title="Nome da empresa em que trabalhou" >
+            <input placeholder="Nome da empresa" type="text" class="form-control" id="nome_empresa" value="{{ isset($candidato->experiencias->nome_empresa) ? $candidato->experiencias->nome_empresa : old('nome_empresa') }}"  name="experiencias[0][nome_empresa]" value=""   title="Nome da empresa em que trabalhou" >
             @if($errors->has('experiencias[0][nome_empresa]'))
                   <span class="help-block">
                       <strong>{{$errors->first('experiencias[0][nome_empresa]')}}</strong>
@@ -33,7 +33,7 @@
 
           <div class="form-group  {{$errors->has('experiencias[0][data_inicio]')  ? 'has-error': ''}}">                 
             <label>Data de Ínicio</label>
-            <input type="date" class="form-control" id="data_inicio" name="experiencias[0][data_inicio]" value="" title="Data de quando começou o trabalho" >
+            <input type="date" class="form-control" id="data_inicio" name="experiencias[0][data_inicio]" value="{{ isset($candidato->experiencias->data_inicio) ? $candidato->experiencias->data_inicio : old('data_inicio') }}"  title="Data de quando começou o trabalho" >
             @if($errors->has('experiencias[0][data_inicio]'))
                   <span class="help-block">
                       <strong>{{$errors->first('experiencias[0][data_inicio]')}}</strong>
@@ -43,7 +43,7 @@
 
           <div class="form-group  {{$errors->has('experiencias[0][data_fim]')  ? 'has-error': ''}}">                 
             <label>Data de Término</label>
-            <input type="date" class="form-control" id="data_fim" name="experiencias[0][data_fim]" value=""   title="Data de quando terminou o trabalho" >
+            <input type="date" class="form-control" id="data_fim" name="experiencias[0][data_fim]" value="{{ isset($candidato->experiencias->data_fim) ? $candidato->experiencias->descricao : old('data_fim') }}"    title="Data de quando terminou o trabalho" >
             @if($errors->has('experiencias[0][data_fim]'))
                   <span class="help-block">
                       <strong>{{$errors->first('experiencias[0][data_fim]')}}</strong>
@@ -53,7 +53,7 @@
 
           <div class="form-group  {{$errors->has('experiencias[0][cargo]')  ? 'has-error': ''}}">                
             <label>Cargo</label>
-            <input  placeholder="Digite o cargo"type="text" class="form-control" id="cargo"   name="experiencias[0][cargo]" value=""   title="Cargo que trabalhou" >
+            <input  placeholder="Digite o cargo"type="text" class="form-control" id="cargo"   name="experiencias[0][cargo]" value="{{ isset($candidato->experiencias->cargo) ? $candidato->experiencias->cargo : old('cargo') }}"   title="Cargo que trabalhou" >
             @if($errors->has('experiencias[0][cargo]'))
                   <span class="help-block">
                       <strong>{{$errors->first('experiencias[0][cargo]')}}</strong>
@@ -63,7 +63,7 @@
 
           <div class="form-group  {{$errors->has('experiencias[0][descricao]')  ? 'has-error': ''}}">                 
             <label>Descrição</label>                                  
-            <textarea   placeholder="Descrição " class="form-control" id="descricao"  name="experiencias[0][descricao]" value="{{ old('descricao')  }}" rows="3"  title="Descrição do trabalho" ></textarea>
+            <textarea   placeholder="Descrição " class="form-control" id="descricao"  name="experiencias[0][descricao]" value="{{ isset($candidato->experiencias->descricao) ? $candidato->experiencias->descricao : old('experiencias[0][descricao]') }}"  rows="3"  title="Descrição do trabalho" ></textarea>
             @if($errors->has('experiencias[0][descricao]'))
                   <span class="help-block">
                       <strong>{{$errors->first('experiencias[0][descricao]')}}</strong>

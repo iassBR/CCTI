@@ -9,6 +9,7 @@ use App\Endereco;
 use App\Deficiencia;
 use App\ExperienciaProfissional;
 use App\Formacao;
+use App\Cargo;
 class Candidato extends Model
 {
     
@@ -36,4 +37,76 @@ class Candidato extends Model
     public function formacoes(){
         return $this->hasMany(ExperienciaProfissional::class);
     }
+
+    public function cargos(){
+        return $this->belongsToMany(Cargo::class);
+    }
+
+
+
+    public function adicionaCargo($cargo)
+    {
+        if (is_string($cargo)) {
+            $cargo = Cargo::where('nomeCargo','=',$cargo)->firstOrFail();
+        }
+
+        if($this->existeCargo($cargo)){
+            return;
+        }
+
+        return $this->cargos()->attach($cargo);
+
+    }
+    public function existeCargo($cargo)
+    {
+        if (is_string($cargo)) {
+            $cargo = Cargo::where('nomeCargo','=',$cargo)->firstOrFail();
+        }
+
+        return (boolean) $this->cargos()->find($cargo->id);
+
+    }
+
+    public function removeCargo($cargo)
+    {
+        if (is_string($cargo)) {
+            $cargo = Cargo::where('nomeCargo','=',$cargo)->firstOrFail();
+        }
+
+        return $this->cargos()->detach($cargo);
+    }
+
+
+    public function adicionaSeletivo($seletivo)
+    {
+        if (is_string($seletivo)) {
+            $seletivo = Seletivo::where('nomeSeletivo','=',$seletivo)->firstOrFail();
+        }
+
+        if($this->existeCargo($seletivo)){
+            return;
+        }
+
+        return $this->seletivos()->attach($seletivo);
+
+    }
+    public function existeSeletivo($seletivo)
+    {
+        if (is_string($seletivo)) {
+            $seletivo = Seletivo::where('nomeSeletivo','=',$seletivo)->firstOrFail();
+        }
+
+        return (boolean) $this->seletivos()->find($seletivo->id);
+
+    }
+
+    public function removeSeletivo($seletivo)
+    {
+        if (is_string($seletivo)) {
+            $seletivo = Seletivo::where('nomeSeletivo','=',$seletivo)->firstOrFail();
+        }
+
+        return $this->seletivos()->detach($seletivo);
+    }
+
 }

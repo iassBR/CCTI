@@ -15,7 +15,6 @@ class CreateCargosTable extends Migration
     {
         Schema::create('cargos', function (Blueprint $table) {
             $table->increments('id');
-
             $table->string('nomeCargo')->unsigned();
             $table->string('tempoExperiencia');
             $table->timestamps();
@@ -30,6 +29,8 @@ class CreateCargosTable extends Migration
 
             $table->primary(['cargo_id','seletivo_id']);
         });
+
+
         Schema::create('escolaridade_seletivo', function (Blueprint $table) {
             $table->integer('escolaridade_id')->unsigned();
             $table->integer('seletivo_id')->unsigned();
@@ -37,9 +38,31 @@ class CreateCargosTable extends Migration
             $table->foreign('escolaridade_id')->references('id')->on('escolaridades')->onDelete('cascade');
             $table->foreign('seletivo_id')->references('id')->on('seletivos')->onDelete('cascade');
 
-
             $table->primary(['escolaridade_id','seletivo_id']);
         });
+
+
+        Schema::create('candidato_cargo', function (Blueprint $table) {
+            $table->integer('candidato_id')->unsigned();
+            $table->integer('cargo_id')->unsigned();
+
+            $table->foreign('candidato_id')->references('id')->on('candidatos')->onDelete('cascade');
+            $table->foreign('cargo_id')->references('id')->on('cargos')->onDelete('cascade');
+
+            $table->primary(['candidato_id','cargo_id']);
+        });
+
+        Schema::create('candidato_seletivo', function (Blueprint $table) {
+            $table->integer('candidato_id')->unsigned();
+            $table->integer('seletivo_id')->unsigned();
+
+            $table->foreign('candidato_id')->references('id')->on('candidatos')->onDelete('cascade');
+            $table->foreign('seletivo_id')->references('id')->on('seletivos')->onDelete('cascade');
+
+            $table->primary(['candidato_id','seletivo_id']);
+        });
+
+        
     }
 
     /**

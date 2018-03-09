@@ -13,7 +13,7 @@
 
 Route::get('/','HomeController@index' );
 
-Route::get('/home','HomeController@index');
+Route::get('/home','HomeController@index')->name('home.index');
 
 Auth::routes();
 
@@ -30,16 +30,13 @@ Route::resource('escolaridades','EscolaridadeController');
 
 
 
-//Route::group(['prefix' => 'admin'], function () {
-  //Route::get('/', 'Admin\AdminController@index');
- ///Route::resource('admin', 'Admin\AdminController');
- // Route::resource('usuarios', 'AdminController');
-//});
-Route::get('/inscricao', 'CandidatoController@create');
+
+Route::get('/inscricao/{id}', 'CandidatoController@create')->name('candidatos.create');
+Route::get('/inscricao/edit/{id}', 'CandidatoController@edit')->name('candidatos.edit');
+Route::put('/inscricao/edit/{id}','CandidatoController@update')->name('candidatos.update');
     
 Route::post('/inscricao', ['uses'=>'CandidatoController@store'])->name('candidatos.store');
-//Route::post('inscricao/',['as' => 'candidato.experiencia.store', 'uses'=>'CandidadoController@experienciaStore']);
-//Route::post('/inscricao',['as' => 'candidato.formacao.store', 'uses'=>'CandidadoController@formacaoStore']);
+
 
 Route::group(['middleware' => 'auth'], function () {
    
@@ -56,9 +53,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('usuarios/papel/{id}', ['as'=>'usuarios.papel','uses'=>'Admin\UsuarioController@papel']);
     Route::post('usuarios/papel/{papel}', ['as'=>'usuarios.papel.store','uses'=>'Admin\UsuarioController@papelStore']);
     Route::delete('usuarios/papel/{usuario}/{papel}', ['as'=>'usuarios.papel.destroy','uses'=>'Admin\UsuarioController@papelDestroy']);
-    //usuarios/{id}/edit
-   // usuarios/create
-   // usuarios/remove/{id}
+
 
     Route::resource('papeis', 'Admin\PapelController');
 
@@ -79,25 +74,3 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('seletivos/escolaridade/{seletivo}/{escolaridade}', ['as'=>'seletivos.escolaridade.destroy','uses'=>'SeletivoController@escolaridadeDestroy']);
 
 
-//Route::get('admin', 'AdminController@index');
-
-
-
-//Route::group(['middleware' => 'auth','prefix' => 'admin'], function () {
-   //   Route::resource('admin', 'Admin\AdminController');
-  //    Route::resource('usuarios', 'Admin\AdminController');
-     // Route::get('/', 'AdminController@index');
-      //Route::get('/admin', 'Admin\AdminController@index');
-      //Route::resource('usuarios', 'Admin\UsuarioController');
-    
-      //Route::get('usuarios/papel/{id}', ['as'=>'usuarios.papel','uses'=>'Admin\UsuarioController@papel']);
-      //Route::post('usuarios/papel/{papel}', ['as'=>'usuarios.papel.store','uses'=>'Admin\UsuarioController@papelStore']);
-     // Route::delete('usuarios/papel/{usuario}/{papel}', ['as'=>'usuarios.papel.destroy','uses'=>'Admin\UsuarioController@papelDestroy']);
-    
-      //Route::resource('papeis', 'Admin\PapelController');
-    
-      //Route::get('papeis/permissao/{id}', ['as'=>'papeis.permissao','uses'=>'Admin\PapelController@permissao']);
-      //Route::post('papeis/permissao/{permissao}', ['as'=>'papeis.permissao.store','uses'=>'Admin\PapelController@permissaoStore']);
-      //Route::delete('papeis/permissao/{papel}/{permissao}', ['as'=>'papeis.permissao.destroy','uses'=>'Admin\PapelController@permissaoDestroy']);
-    
-//});
