@@ -1,5 +1,5 @@
 
-@extends ('layouts.admin')
+@extends ('layouts.app')
 
 @section('content')
    <div class="container-fluid">
@@ -8,10 +8,10 @@
     <h4>Analise as informações do seletivo com cuidado</h4>
   </div>
   <div class="row">
-    <div class="col-sm-6">
-      <div class="panel panel-default text-center">
+    <div class="col-sm-8">
+      <div class="panel panel-default text-left">
         <div class="panel-heading">
-          <h3>Detalhes do Seletivo</h3>
+          <h4>Detalhes do Seletivo</h4>
         </div>
         <div class="panel-body">
           <p><b>Nome Seletivo: </b>{{$seletivo->nomeSeletivo}}</p>
@@ -22,10 +22,10 @@
         </div>
       </div> 
     </div> 
-    <div class="col-sm-6">
-      <div class="panel panel-default text-center">
+    <div class="col-sm-4">
+      <div class="panel panel-default text-justify">
         <div class="panel-heading">
-          <h3>Documentos</h3>
+          <h4>Documentos</h4>
         </div>
         <div class="panel-body">
           
