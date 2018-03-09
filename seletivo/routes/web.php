@@ -61,9 +61,12 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('papeis/permissao/{permissao}', ['as'=>'papeis.permissao.store','uses'=>'Admin\PapelController@permissaoStore']);
     Route::delete('papeis/permissao/{papel}/{permissao}', ['as'=>'papeis.permissao.destroy','uses'=>'Admin\PapelController@permissaoDestroy']);
     
+    
        
     
 });
+
+
 
     Route::get('seletivos/cargo/{id}', ['as'=>'seletivos.cargo','uses'=>'SeletivoController@cargo']);
     Route::post('seletivos/cargo/{cargo}', ['as'=>'seletivos.cargo.store','uses'=>'SeletivoController@cargoStore']);
@@ -73,4 +76,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('seletivos/escolaridade/{escolaridade}', ['as'=>'seletivos.escolaridade.store','uses'=>'SeletivoController@escolaridadeStore']);
     Route::delete('seletivos/escolaridade/{seletivo}/{escolaridade}', ['as'=>'seletivos.escolaridade.destroy','uses'=>'SeletivoController@escolaridadeDestroy']);
 
+    Route::resource('documentos', 'DocumentoController');
+    Route::get('documentos/remove/{id}','DocumentoController@remover')->name('documentos.remove');
+    Route::get('/documentos/show/{seletivo_id}','DocumentoController@show');
+    Route::get('/documentos/download/{id}','DocumentoController@download')->name('documentos.download');    
 
+    Route::post('documento','Documento@store');
+    Route::post('documentos/create/{seletivo_id}', ['as'=>'documento.store','uses'=>'DocumentoController@store']);

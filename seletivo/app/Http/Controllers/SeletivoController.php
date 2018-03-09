@@ -52,6 +52,18 @@ protected function validarSeletivo($request){
         return view('seletivos.index', compact('seletivos'));
     }
 
+    public function getindex(Request $request){
+        $qtd = $request['qtd'] ?: 3;
+        $page = $request['page'] ?: 1;
+        Paginator::currentPageResolver(function () use ($page){
+            return $page;
+        });
+        $seletivos = DB::table('seletivos')->paginate($qtd);
+        //$seletivos = Seletivo::paginate($qtd);
+        $seletivos = $seletivos->appends(Request::capture()->except('page'));
+        return $seletivos;
+
+    }
     /**
      * Show the form for creating a new resource.
      *

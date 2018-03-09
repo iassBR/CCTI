@@ -15,10 +15,10 @@
         </div>
         <div class="panel-body">
           <p><b>Nome Seletivo: </b>{{$seletivo->nomeSeletivo}}</p>
-          <p><strong>Data do Inicio</strong> {{$seletivo->dataInicio}}</p>
-          <p><strong>Data do Termino</strong>{{$seletivo->dataTermino}}</p>
-          <p><strong>Cargo Desejado</strong> {{$seletivo->cargoDesejado}}</p>
-          <p><strong>Tempo de Expêriencia</strong> {{$seletivo->tempoExperiencia}}</p>
+          <p><b>Data do Inicio</b> {{$seletivo->dataInicio}}</p>
+          <p><b>Data do Termino</b>{{$seletivo->dataTermino}}</p>
+          <p><b>Cargo Desejado</b> {{$seletivo->cargoDesejado}}</p>
+          <p><b>Tempo de Expêriencia</b> {{$seletivo->tempoExperiencia}}</p>
         </div>
       </div> 
     </div> 
