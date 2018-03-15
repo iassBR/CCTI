@@ -21,7 +21,12 @@
                             <tr>
                                 <td>{{$cargo->nomeCargo}}</td>
                                 <td>{{$cargo->tempoExperiencia}}</td>
+
+                                <td>{{$cargo->escolaridades->tipo}}</td>                              
+                                                                    
+
                                 <td>{{$cargo->escolaridades->tipo}}</td>
+
                             </tr>
                         @endforeach
                     </tbody>

@@ -39,6 +39,8 @@ Route::get('inscricao/dados/{id}',['as'=>'candidato.gerarPdf','uses'=>'Candidato
     
 Route::post('/inscricao', ['uses'=>'CandidatoController@store'])->name('candidatos.store');
 
+Route::post('/inscricao/cargo/{cargo}', ['as'=>'candidatos.cargo.store','uses'=>'CandidatoController@cargoStore']);
+Route::delete('/inscricao/cargo/{candidato}/{cargo}', ['as'=>'candidatos.cargo.destroy','uses'=>'CandidatoController@cargoDestroy']);
 
 Route::group(['middleware' => 'auth'], function () {
    

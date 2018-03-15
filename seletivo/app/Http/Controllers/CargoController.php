@@ -44,7 +44,7 @@ protected function validarCargo($request){
  
         }
         $cargos = $cargos->appends(Request::capture()->except('page'));
-        return view('cargos.index', compact('cargos'));
+        return view('cargos.index', compact('cargos','seletivo'));
     }
 
     /**

@@ -17,6 +17,7 @@
               <div class="form-group col-md-6 {{$errors->has('nome')  ? 'has-error': ''}}">
                 <label for="nome">Nome</label>
                 <input type="text" class="form-control" id="nome" name="nome"  value="{{ isset($candidato->nome) ? $candidato->nome : old('nome') }}" title="Informe seu nome completo aqui" >
+                <input type="hidden" name="seletivo_id" value="{{ $seletivo->id }}"> 
                     @if($errors->has('nome'))
                         <span class="help-block">
                             <strong>{{$errors->first('nome')}}</strong>
@@ -35,7 +36,7 @@
 
               <div class="form-group col-md-6 {{$errors->has('cpf')  ? 'has-error': ''}}">
                 <label for="cpf">CPF</label>
-                <input type="text" class="form-control" id="cpf" name="cpf"  value="{{ isset($cpf)  ? $cpf : old('cpf') }}"  title="Informe seu CPF aqui" >
+                <input type="text" class="form-control" id="cpf" name="cpf"  value="{{ isset($cpf)  ? $cpf : $candidato->cpf }}"  title="Informe seu CPF aqui" >
                 @if($errors->has('cpf'))
                         <span class="help-block">
                             <strong>{{$errors->first('cpf')}}</strong>
