@@ -16,6 +16,7 @@ class CreateDocumentosTable extends Migration
         Schema::create('documentos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome_documento');
+            $table->string('endereço_armazenado');
 
             $table->integer('seletivo_id')->unsigned();
             $table->foreign('seletivo_id')->references('id')->on('seletivos');
