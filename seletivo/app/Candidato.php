@@ -35,7 +35,7 @@ class Candidato extends Model
     }
 
     public function formacoes(){
-        return $this->hasMany(ExperienciaProfissional::class);
+        return $this->hasMany(Formacao::class);
     }
 
     public function cargos(){

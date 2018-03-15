@@ -12,14 +12,7 @@ use App\Formacao;
 use App\Cargo;
 class CandidatoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
-    //private $id; 
-
+   
   
 
     public function index()
@@ -27,11 +20,7 @@ class CandidatoController extends Controller
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   
     public function create(Request $request,$id)
     {      //passar od $id como parametro
 
@@ -67,17 +56,60 @@ class CandidatoController extends Controller
        // return("Oi");
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    public function update(Request $request,$id){
 
-    public function cargoStore($candidato){
+        $data = $request->all();
+       // $experiencias = [];
+        $formacoes = [];
+
+        $candidato = Candidato::find($id);
+        
+        $endereco = Endereco::find($candidato->endereco_id);
+        
+
+       $candidato->update($data);
+       $endereco->update($data);
+       //dd($candidato,$endereco);
+       //dd($data['formacoes']);
+        foreach($data['formacoes'] as $i => $formacao){
+            //$formacoes[$i] = new Formacao($formacao);
+            dd($formacao);
+            $idExist = $formacao->id;
+            dd($idExist);               
+            $form = Formacao::firstOrNew(['id' => '$idExist']);
+            if($form){
+               //cria caso n existe     
+            }else{
+                //update
+                // atualiza se existir
+            }       
+        }
+        //
+        $candidato->formacoes()->saveMany($formacoes);
+
+    }
+
+    
+
+    public function cargoStore(Request $request,$id){
+
+        $candidato = Candidato::find($id);
+        $data = $request->all();
         $cargo = Cargo::find($data['cargo_id']);
         $candidato->adicionaCargo($cargo);
-        return;
+        $cargos = Cargo::all();
+        return view('candidato.cargos', compact('candidato',  'cargos'));
+    }
+
+    public function cargoDestroy($id,$cargo_id)
+    {
+ 
+      
+      $candidato = Candidato::find($id);
+      $cargo = Cargo::find($cargo_id);
+      $candidato->removeCargo($cargo);
+      $cargos = Cargo::all();
+      return view('candidato.cargos', compact('candidato',  'cargos'));
     }
 
 
@@ -88,7 +120,7 @@ class CandidatoController extends Controller
         $experiencias = [];
         $formacoes = [];
 
-        //dd($valores);  
+        //dd($data);  
        
         $endereco = Endereco::create($data);
         $data['endereco_id'] = $endereco->id;
@@ -113,83 +145,18 @@ class CandidatoController extends Controller
 
         // VERIFICAR SE TODAS AS ENTIDADES FORAM SALVAS, CASO CONTRÁRIO DEVE DAR ROLLBACK
 
-
-
-
-
         //$this->cargoStore($candidato);      
 
-        // $seletivo = Seletivo::find($data['seletivo_id']);
+        $seletivo = Seletivo::find($data['seletivo_id']);
         // $candidato->adicionaSeletivo($seletivo);
-              
-
+             
         //dd($candidato->experiencias());
-        return ('finalle com sucesso');            
+
+        $cargos = Cargo::all();
+        return view('candidato.cargos', compact('candidato',  'cargos'));            
 
     }
     
  
     
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //achar endereco , candidato , formacoes e experiencias
-
-        $data = $request->all();
-        $formacoes = [''];
-        foreach($data['formacoes'] as $i => $formacao){
-            $formacoes[$i] = new Formacao($formacao);                      
-        }
-        //$experiencias = $data['experiencias'];
-        
-        dd($formacoes);
-        $candidato = Candidato::find($id);
-        $candidato->update($data);
-
-        $endereco = Endereco::find($candidato->endereco_id);
-        $endereco->update($data);
-
-        // verificar se existem novas experiencias e add
-
-        return ('gg');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
