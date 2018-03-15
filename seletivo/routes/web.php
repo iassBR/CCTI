@@ -34,6 +34,8 @@ Route::resource('escolaridades','EscolaridadeController');
 Route::get('/inscricao/{id}', 'CandidatoController@create')->name('candidatos.create');
 Route::get('/inscricao/edit/{id}', 'CandidatoController@edit')->name('candidatos.edit');
 Route::put('/inscricao/edit/{id}','CandidatoController@update')->name('candidatos.update');
+
+Route::get('inscricao/dados/{id}',['as'=>'candidato.gerarPdf','uses'=>'CandidatoController@gerarPdf']);
     
 Route::post('/inscricao', ['uses'=>'CandidatoController@store'])->name('candidatos.store');
 
@@ -83,3 +85,5 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::post('documento','Documento@store');
     Route::post('documentos/create/{seletivo_id}', ['as'=>'documento.store','uses'=>'DocumentoController@store']);
+
+    

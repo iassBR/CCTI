@@ -14,12 +14,9 @@
                         @endforeach
                     </select>
                 </div>
-                <a href="{{ route('seletivos.index') }}" class="btn btn-primary" >Voltar </a>
                 <button class="btn btn-success">Adicionar</button>
-
-                <a href="{{ route('seletivos.index') }}" class="btn btn-primary">Voltar</a>
-
-
+                <a href="{{ route('seletivos.index') }}" class="btn btn-primary" >Voltar </a>
+                
 			</form>
 		</div>
 

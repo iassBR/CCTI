@@ -19,7 +19,7 @@ class Candidato extends Model
 
 
     public function endereco(){
-        return $this->hasOne('App\Endereco','endereco_id');
+        return $this->belongsTo('App\Endereco','endereco_id');
     }
 
     public function seletivos(){
