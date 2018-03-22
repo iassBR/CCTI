@@ -158,14 +158,7 @@ class CandidatoController extends Controller
     }
     
  
-    
-<<<<<<< HEAD
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+     
     public function show($id)
     {
         //
@@ -180,36 +173,6 @@ class CandidatoController extends Controller
     public function edit($id)
     {
         //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //achar endereco , candidato , formacoes e experiencias
-
-        $data = $request->all();
-        $formacoes = [''];
-        foreach($data['formacoes'] as $i => $formacao){
-            $formacoes[$i] = new Formacao($formacao);                      
-        }
-        //$experiencias = $data['experiencias'];
-        
-        dd($formacoes);
-        $candidato = Candidato::find($id);
-        $candidato->update($data);
-
-        $endereco = Endereco::find($candidato->endereco_id);
-        $endereco->update($data);
-
-        // verificar se existem novas experiencias e add
-
-        return ('gg');
     }
 
     /**
@@ -229,6 +192,5 @@ class CandidatoController extends Controller
     return \PDF::loadView('candidato.gerarPdf', compact('candidatos'))->setPaper('a4', 'landscape')
                 ->stream('Dados_candidato.pdf');
 }
-=======
->>>>>>> 521cefe7f1a32a5a55375eb29a53858d657440f6
+
 }

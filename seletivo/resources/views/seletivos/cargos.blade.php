@@ -15,15 +15,7 @@
                     </select>
                 </div>
                 <button class="btn btn-success">Adicionar</button>
-<<<<<<< HEAD
-                <a href="{{ route('seletivos.index') }}" class="btn btn-primary" >Voltar </a>
-                
-=======
 
-               
-
-
->>>>>>> 521cefe7f1a32a5a55375eb29a53858d657440f6
 			</form>
 		</div>
 

@@ -16,7 +16,8 @@
         <table class="table table-bordered">
                 
                     
-                            <td>Cargo {{ $candidatos->cargo->nomeCargo }} </td> 
+                            <td>Cargo {{ $seletivo->cargo->nomeCargo }} </td> 
+
                             <td>Nome : {{$candidatos->nome}}</td>
                             <td>CPF : {{$candidatos->cpf}}</td>
                             <td>Sexo : {{$candidatos->sexo}}</td>

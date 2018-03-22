@@ -27,10 +27,6 @@ Route::get('/escolaridades/remove/{id}','EscolaridadeController@remover')->name(
 Route::resource('escolaridades','EscolaridadeController');
 
 
-
-
-
-
 Route::get('/inscricao/{id}', 'CandidatoController@create')->name('candidatos.create');
 Route::get('/inscricao/edit/{id}', 'CandidatoController@edit')->name('candidatos.edit');
 Route::put('/inscricao/edit/{id}','CandidatoController@update')->name('candidatos.update');
