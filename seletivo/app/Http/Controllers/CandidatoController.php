@@ -189,7 +189,7 @@ class CandidatoController extends Controller
 {
     $candidatos = Candidato::find($id);
  
-    return \PDF::loadView('candidato.gerarPdf', compact('candidatos'))->setPaper('a4', 'landscape')
+    return \PDF::loadView('candidato.gerarPdf', compact('candidatos'))//->setPaper('a4', 'landscape')
                 ->stream('Dados_candidato.pdf');
 }
 
