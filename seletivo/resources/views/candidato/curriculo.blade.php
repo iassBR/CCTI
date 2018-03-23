@@ -117,27 +117,30 @@
         </tbody>
     </table>
     <br>
+    @foreach($candidato->formacoes as $formacao)  
     <table class="table table-bordered">
-        @foreach($candidato->formacoes as $cargo)   
+         
         <thead>
         <tr>
-            <th colspan="2">CURSO(S)</th>
+            <th colspan="2">CURSO</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-            <td >Escolaridade: </td>
-            <td >Instituição: </td>
+            <td >Escolaridade:{{$formacao->tipo}} </td>
+            <td >Instituição:{{$formacao->instituicao}} </td>
         </tr>
         <tr>
-            <td>Nome Curso: </td>
-            <td>Ano de Conclusão: </td>
+            <td>Nome Curso: {{$formacao->nome_curso}}</td>
+            <td>Ano de Conclusão: {{$formacao->ano_conclusao}} </td>
         </tr>
         </tbody>
-        @endforeach
+        
     </table>
+    @endforeach
     <br>
     <table class="table table-bordered">
+        @foreach($candidato->experiencias as $experiencia)
         <thead>
         <tr>
             <th colspan="2">EXPERIÊNCIA PROFISSIONAL</th>
@@ -145,18 +148,19 @@
         </thead>
         <tbody>
         <tr>
-            <td colspan="2">Empresa: </td>
+            <td colspan="2">Empresa:{{$experiencia->nome_empresa}} </td>
             
         </tr>
         <tr>
-            <td >Data Inicio: </td>
-            <td>Data Término: </td>
+            <td >Data Inicio: {{$experiencia->data_inicio}}</td>
+            <td>Data Término:{{$experiencia->data_fim}} </td>
         </tr>
         <tr>
-            <td >Cargo: </td>
-            <td>Descrição: </td>
+            <td >Cargo: {{$experiencia->cargo}}</td>
+            <td>Descrição: {{$experiencia->descricao}}</td>
         </tr>
         </tbody>
+        @endforeach
     </table>
     
     </body>       
