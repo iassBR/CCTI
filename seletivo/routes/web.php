@@ -31,7 +31,8 @@ Route::get('/inscricao/{id}', 'CandidatoController@create')->name('candidatos.cr
 Route::get('/inscricao/edit/{id}', 'CandidatoController@edit')->name('candidatos.edit');
 Route::put('/inscricao/edit/{id}','CandidatoController@update')->name('candidatos.update');
 
-Route::get('inscricao/dados/{id}',['as'=>'candidato.gerarPdf','uses'=>'CandidatoController@gerarPdf']);
+Route::get('inscricao/comprovante/{id}',['as'=>'dados.comprovante','uses'=>'CandidatoController@comprovante']);
+Route::get('inscricao/curriculo/{id}',['as'=>'dados.curriculo','uses'=>'CandidatoController@curriculo']);
     
 Route::post('/inscricao', ['uses'=>'CandidatoController@store'])->name('candidatos.store');
 
@@ -61,12 +62,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('papeis/permissao/{permissao}', ['as'=>'papeis.permissao.store','uses'=>'Admin\PapelController@permissaoStore']);
     Route::delete('papeis/permissao/{papel}/{permissao}', ['as'=>'papeis.permissao.destroy','uses'=>'Admin\PapelController@permissaoDestroy']);
     
-    
-       
-    
 });
-
-
 
     Route::get('seletivos/cargo/{id}', ['as'=>'seletivos.cargo','uses'=>'SeletivoController@cargo']);
     Route::post('seletivos/cargo/{cargo}', ['as'=>'seletivos.cargo.store','uses'=>'SeletivoController@cargoStore']);

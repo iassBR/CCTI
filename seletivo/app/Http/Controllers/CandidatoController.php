@@ -185,12 +185,21 @@ class CandidatoController extends Controller
     {
         //
     }
-    public function gerarPDF($id)
-{
-    $candidatos = Candidato::find($id);
+    public function comprovante($id)
+    {
+    $candidato = Candidato::find($id);
+    $seletivos = Seletivo::all();
  
-    return \PDF::loadView('candidato.gerarPdf', compact('candidatos'))//->setPaper('a4', 'landscape')
+    return \PDF::loadView('candidato.comprovante', compact('candidato','seletivos'))//->setPaper('a4', 'landscape')
                 ->stream('Dados_candidato.pdf');
-}
+    }
+    public function curriculo($id)
+    {
+    $candidato = Candidato::find($id);
+    $seletivos = Seletivo::all();
+ 
+    return \PDF::loadView('candidato.curriculo', compact('candidato','seletivos'))//->setPaper('a4', 'landscape')
+                ->stream('Dados_candidato.pdf');
+    }
 
 }
