@@ -40,20 +40,25 @@
                 
         <img src="{{public_path('imagem/logo-ccti.png')}}" width="100" height="50"   >
         <h3>FICHA DE INSCRIÇÃO</h3>
-        <p>Apresentar essa ficha no ato da entrevista</p>            
+        <p>Apresentar essa ficha no ato da entrevista</p>
+    <b>CARGOS PRETENDIDOS</b>            
     <table class="table table-bordered">
         <thead>
-        <tr>
-            <th>CARGO PRETENDIDO</th>
-
-        </tr>
         </thead>
         <tbody>
         <tr>
-            <td>Escolaridade: </td>
-        </tr>
-        <tr>
-            <td>Cargo Pretendido:</td>
+            Cargo Pretendido:
+            
+            @foreach($candidato->cargos as $cargo)
+            <td>
+                    Cargo: {{$cargo->nomeCargo}}
+                
+            </td>
+            <td>
+    
+                   Escolaridade:  {{$cargo->escolaridade->tipo}}
+            </td>
+            @endforeach
         </tr>
         </tbody>
     </table>
@@ -131,7 +136,12 @@
             <p>COMPROVANTE DE INSCRICAO</p>
 
             <p class="esquerda">Nome:<b>{{$candidato->nome}}</b> CPF::<b>{{$candidato->cpf}}</b></p>
-            <p class="esquerda">Função::<b></b> <p class="esquerda">Data:{{date('d-m-Y')}}:<b></b> </p>
+            <p class="esquerda">
+                @foreach($candidato->cargos as $cargo)
+                Cargo: {{$cargo->nomeCargo}}<br>
+                 @endforeach
+            </p>
+                <p class="esquerda">Data:{{date('d-m-Y')}}:<b></b> </p>
             <p class="esquerda">Assinatura do Candidato:_______________________________________________________________ <p>
             <br>
             <br>

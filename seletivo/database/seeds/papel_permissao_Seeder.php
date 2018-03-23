@@ -65,5 +65,12 @@ class papel_permissao_Seeder extends Seeder
             'permissao_id' => 13
         ]);
 
+        DB::table('papel_permissao')->insert([
+            'papel_id' => 1,
+            'permissao_id' => 13
+        ]);
+
+
+
     }
 }

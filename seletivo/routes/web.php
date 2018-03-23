@@ -27,22 +27,22 @@ Route::get('/escolaridades/remove/{id}','EscolaridadeController@remover')->name(
 Route::resource('escolaridades','EscolaridadeController');
 
 
-<<<<<<< HEAD
+
 
 
 // ------------------------ dados pessoas --------------------- //
 Route::get('/inscricao/{id}', 'CandidatoController@create')->name('candidatos.create');
 //Route::get('/inscricao/edit/{id}', 'CandidatoController@edit')->name('candidatos.edit');
 Route::put('/seletivo/{seletivo}/candidato/{candidato}/edit','CandidatoController@update')->name('candidatos.update');
-=======
+
 Route::get('/inscricao/{id}', 'CandidatoController@create')->name('candidatos.create');
 Route::get('/inscricao/edit/{id}', 'CandidatoController@edit')->name('candidatos.edit');
 Route::put('/inscricao/edit/{id}','CandidatoController@update')->name('candidatos.update');
 
-Route::get('inscricao/comprovante/{id}',['as'=>'dados.comprovante','uses'=>'CandidatoController@comprovante']);
-Route::get('inscricao/curriculo/{id}',['as'=>'dados.curriculo','uses'=>'CandidatoController@curriculo']);
+Route::get('inscricao/seletivo/{seletivo}/candidato/{candidato}/comprovante',['as'=>'dados.comprovante','uses'=>'CandidatoController@comprovante']);
+Route::get('inscricao/seletivo/{seletivo}/candidato/{candidato}/curriculo',['as'=>'dados.curriculo','uses'=>'CandidatoController@curriculo']);
     
->>>>>>> fac7e599782c173bc38e8d62b4b9e84f2d0f8648
+
 Route::post('/inscricao', ['uses'=>'CandidatoController@store'])->name('candidatos.store');
 // END------------------------ dados pessoas ---------------------END //
 
