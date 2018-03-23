@@ -13,7 +13,7 @@ class Cargo extends Model
         return $this->belongsToMany(Seletivo::class);
     }
     
-    public function escolaridades(){
+    public function escolaridade(){
         return $this->belongsTo('App\Escolaridade','escolaridade_id');
     }
 

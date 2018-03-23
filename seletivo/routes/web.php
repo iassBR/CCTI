@@ -35,9 +35,15 @@ Route::get('/inscricao/{id}', 'CandidatoController@create')->name('candidatos.cr
 //Route::get('/inscricao/edit/{id}', 'CandidatoController@edit')->name('candidatos.edit');
 Route::put('/seletivo/{seletivo}/candidato/{candidato}/edit','CandidatoController@update')->name('candidatos.update');
 
+<<<<<<< HEAD
+=======
+Route::get('/inscricao/{id}', 'CandidatoController@create')->name('candidatos.create');
+Route::get('/inscricao/edit/{id}', 'CandidatoController@edit')->name('candidatos.edit');
+Route::put('/inscricao/edit/{id}','CandidatoController@update')->name('candidatos.update');
+>>>>>>> 5e84e5bc1b083dc9ad84780ef0605ebcc7e5ecb0
 
-Route::get('inscricao/comprovante/{id}',['as'=>'dados.comprovante','uses'=>'CandidatoController@comprovante']);
-Route::get('inscricao/curriculo/{id}',['as'=>'dados.curriculo','uses'=>'CandidatoController@curriculo']);
+Route::get('inscricao/seletivo/{seletivo}/candidato/{candidato}/comprovante',['as'=>'dados.comprovante','uses'=>'CandidatoController@comprovante']);
+Route::get('inscricao/seletivo/{seletivo}/candidato/{candidato}/curriculo',['as'=>'dados.curriculo','uses'=>'CandidatoController@curriculo']);
     
 
 Route::post('/inscricao', ['uses'=>'CandidatoController@store'])->name('candidatos.store');

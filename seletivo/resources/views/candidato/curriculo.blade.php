@@ -38,22 +38,29 @@
     <body>
                 
         <img src="{{public_path('imagem/logo-ccti.png')}}" width="100" height="50"   >
-        <h3>CURRICULO DO CANDIDATO</h3>          
+        <h3>CURRICULO DO CANDIDATO</h3>  
+        <br>        
+     <b>CARGOS PRETENDIDOS</b>            
     <table class="table table-bordered">
         <thead>
-        <tr>
-            <th>CARGO PRETENDIDO</th>
-
-        </tr>
         </thead>
         <tbody>
         <tr>
-            <td>Escolaridade:</td>
-        </tr>
-        <tr>
-            <td>Cargo Pretendido:</td>
+            Cargo Pretendido:
+            
+            @foreach($candidato->cargos as $cargo)
+            <td>
+                    Cargo: {{$cargo->nomeCargo}}
+                
+            </td>
+            <td>
+    
+                   Escolaridade:  {{$cargo->escolaridade->tipo}}
+            </td>
+            @endforeach
         </tr>
         </tbody>
+    
     </table>
     <br>
     <table class="table table-bordered">
@@ -93,8 +100,9 @@
         </tr>
         </thead>
         <tbody>
+         
         <tr>
-            <td colspan="2">Endereço: {{$candidatos->endereco->logradouro}}</td>
+            <td colspan="2">Endereço: {{$candidato->endereco->logradouro}}</td>
             <td >Número: {{$candidato->endereco->num}}</td>
         </tr>
         <tr>
@@ -103,13 +111,14 @@
             <td>Cidade: {{$candidato->endereco->cidade}}</td>
         </tr>
         <tr>   
-            <td>CEP: {{$candidatos->endereco->cep}}</td>
-            <td colspan="2">Complemento: {{$candidatos->endereco->complemento}}</td>
+            <td>CEP: {{$candidato->endereco->cep}}</td>
+            <td colspan="2">Complemento: {{$candidato->endereco->complemento}}</td>
         </tr>
         </tbody>
     </table>
     <br>
     <table class="table table-bordered">
+        @foreach($candidato->formacoes as $cargo)   
         <thead>
         <tr>
             <th colspan="2">CURSO(S)</th>
@@ -125,6 +134,7 @@
             <td>Ano de Conclusão: </td>
         </tr>
         </tbody>
+        @endforeach
     </table>
     <br>
     <table class="table table-bordered">
