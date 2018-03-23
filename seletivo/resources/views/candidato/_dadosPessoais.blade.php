@@ -57,9 +57,9 @@
               <div class="form-group col-md-6 {{$errors->has('sexo')  ? 'has-error': ''}}">
                 <label for="sexo">Sexo:</label>
                     <select name="sexo"  id="sexo" class="form-control" value="{{ isset($candidato->sexo) ? $candidato->sexo : old('sexo') }}"  >
-                            <option value=""{{ (!isset($candidato) ? 'selected' : '') }}  >Selecione</option>
-                            <option value="masculino" {{  (isset($candidato) && $candidato->sexo == 'masculino' ? 'selected' : '') }} >masculino</option>
-                            <option value="feminino" {{ (isset($candidato) && $candidato->sexo == 'feminino' ? 'selected' : '') }} >feminino</option>                 
+                            <option value=""  >Selecione</option>
+                            <option value="masculino" {{ old('sexo') == 'masculino' ? 'selected' : '' }}  >masculino</option>
+                            <option value="feminino"{{ old('sexo') == 'feminino' ? 'selected' : '' }} }} >feminino</option>                 
                     </select>
                     @if($errors->has('sexo'))
                         <span class="help-block">
@@ -83,10 +83,10 @@
                     
                         <select id="estado_civil" class="form-control" name="estado_civil" value="{{ isset($candidato->estado_civil) ? $candidato->estado_civil : old('estado_civil') }}" >
                             <option value="">Selecione</option>    
-                            <option value="SOLTEIRO" {{ (isset($candidato) && $candidato->estado_civil == 'SOLTEIRO' ? 'selected' : '' )}} >Solteiro</option>
-                            <option value="CASADO" {{ (isset($candidato) && $candidato->estado_civil == 'CASADO' ? 'selected' : '' )}} >Casado</option>
-                            <option value="DIVORCIADO" {{ (isset($candidato) && $candidato->estado_civil == 'DIVORCIADO' ? 'selected' : '' )}} >Divorciado</option>
-                            <option value="VIUVO" {{ (isset($candidato) && $candidato->estado_civil == 'VIUVO' ? 'selected' : '' )}} >Viúvo(a)</option>
+                            <option value="SOLTEIRO" {{ old('estado_civil') == 'SOLTEIRO' ? 'selected' : '' }} >Solteiro</option>
+                            <option value="CASADO" {{ old('estado_civil') == 'CASADO' ? 'selected' : '' }} >Casado</option>
+                            <option value="DIVORCIADO" {{ old('estado_civil') == 'DIVORCIADO' ? 'selected' : '' }} >Divorciado</option>
+                            <option value="VIUVO" {{ old('estado_civil') == 'VIUVO' ? 'selected' : '' }} >Viúvo(a)</option>
                         </select>
                         @if($errors->has('estado_civil'))
                           <span class="help-block">
@@ -101,11 +101,11 @@
                     
                         <select id="cor_raca" class="form-control" name="cor_raca" value="{{ isset($candidato->cor_raca) ? $candidato->cor_raca : old('cor_raca') }}">
                             <option value="">Selecione</option>
-                            <option value="BRANCO"  {{ (isset($candidato) && $candidato->cor_raca == 'BRANCO' ? 'selected' : '' ) }}>Branco</option>
-                            <option value="AMARELO" {{ (isset($candidato) && $candidato->cor_raca == 'AMARELO' ? 'selected' : ''  )}} >Amarelo</option>
-                            <option value="PARDO" {{ (isset($candidato) && $candidato->cor_raca == 'PARDO' ? 'selected' : ''  )}} >Pardo</option>
-                            <option value="NEGRO"{{ (isset($candidato) && $candidato->cor_raca == 'NEGRO' ? 'selected' : ''  )}} >Negro</option>
-                            <option value="INDIGINA" {{ (isset($candidato) && $candidato->cor_raca == 'INDIGINA' ? 'selected' : ''  )}} >Indígina</option>
+                            <option value="BRANCO"  {{ old('cor_raca') == 'BRANCO' ? 'selected' : '' }}>Branco</option>
+                            <option value="AMARELO" {{ old('cor_raca') == 'AMARELO' ? 'selected' : '' }} >Amarelo</option>
+                            <option value="PARDO" {{ old('cor_raca') == 'PARDO' ? 'selected' : '' }} >Pardo</option>
+                            <option value="NEGRO" {{ old('cor_raca') == 'NEGRO' ? 'selected' : '' }} >Negro</option>
+                            <option value="INDIGINA" {{ old('cor_raca') == 'INDIGINA' ? 'selected' : '' }} >Indígina</option>
                             
                         </select>
                         @if($errors->has('cor_raca'))
@@ -177,33 +177,33 @@
                     <label>UF:</label>
                         <select id="uf" class="form-control" name="uf" value="{{ isset($endereco->uf) ? $endereco->uf : old('uf') }}"   title="Estado onde você reside" >
                                         <option value="">Selecione</option> 
-                                        <option value="AC" {{(isset($endereco) && $endereco->uf == 'AC'  ? 'selected' : '')}} > Acre</option>
-                                        <option value="AL" {{( isset($endereco) && $endereco->uf == 'AL'  ? 'selected' : '')}}>Alagoas</option>
-                                        <option value="AP" {{( isset($endereco) && $endereco->uf == 'AP'  ? 'selected' : '')}}>Amapá</option>
-                                        <option value="AM" {{( isset($endereco) && $endereco->uf == 'AM'  ? 'selected' : '')}}>Amazonas</option>
-                                        <option value="BA" {{ isset($endereco) && ($endereco->uf == 'BA'  ? 'selected' : '')}}>Bahia</option>
-                                        <option value="CE" {{( isset($endereco) && $endereco->uf == 'CE'  ? 'selected' : '')}}>Ceará</option>
-                                        <option value="DF" {{( isset($endereco) && $endereco->uf == 'DF'  ? 'selected' : '')}}>Distrito Federal</option>
-                                        <option value="ES" {{( isset($endereco) && $endereco->uf == 'ES'  ? 'selected' : '')}}>Espirito Santo</option>
-                                        <option value="GO" {{(  isset($endereco) && $endereco->uf == 'GO'  ? 'selected' : '')}}>Goiás</option>
-                                        <option value="MA" {{ isset($endereco) && ($endereco->uf == 'MA'  ? 'selected' : '')}}>Maranhão</option>
-                                        <option value="MS" {{( isset($endereco) && $endereco->uf == 'MS'  ? 'selected' : '')}}>Mato Grosso do Sul</option>
-                                        <option value="MT" {{ ( isset($endereco) && $endereco->uf == 'MT'  ? 'selected' : '')}}>Mato Grosso</option>
-                                        <option value="MG" {{( isset($endereco) && $endereco->uf == 'MG'  ? 'selected' : '')}}>Minas Gerais</option>
-                                        <option value="PA" {{( isset($endereco) && $endereco->uf == 'PA'  ? 'selected' : '')}}>Pará</option>
-                                        <option value="PB" {{( isset($endereco) && $endereco->uf == 'PB'  ? 'selected' : '')}}>Paraíba</option>
-                                        <option value="PR" {{( isset($endereco) && $endereco->uf == 'PR'  ? 'selected' : '')}}>Paraná</option>
-                                        <option value="PE" {{( isset($endereco) && $endereco->uf == 'PE'  ? 'selected' : '')}}>Pernambuco</option>
-                                        <option value="PI" {{( isset($endereco) && $endereco->uf == 'PI'  ? 'selected' : '')}}>Piauí</option>
-                                        <option value="RJ" {{( isset($endereco) && $endereco->uf == 'RJ'  ? 'selected' : '')}}>Rio de Janeiro</option>
-                                        <option value="RN" {{( isset($endereco) && $endereco->uf == 'RN'  ? 'selected' : '')}}>Rio Grande do Norte</option>
-                                        <option value="RS" {{( isset($endereco) && $endereco->uf == 'RS'  ? 'selected' : '')}}>Rio Grande do Sul</option>
-                                        <option value="RO" {{( isset($endereco) && $endereco->uf == 'RO'  ? 'selected' : '')}}>Rondônia</option>
-                                        <option value="RR" {{( isset($endereco) && $endereco->uf == 'RR'  ? 'selected' : '')}} > Roraima</option>
-                                        <option value="SC" {{( isset($endereco) && $endereco->uf == 'SC'  ? 'selected' : '')}}>Santa Catarina</option>
-                                        <option value="SP" {{ isset($endereco) && ($endereco->uf == 'SP'  ? 'selected' : '')}}>São Paulo</option>
-                                        <option value="SE" {{( isset($endereco) && $endereco->uf == 'SE'  ? 'selected' : '')}}>Sergipe</option>
-                                        <option value="TO" {{( isset($endereco) && $endereco->uf == 'TO'  ? 'selected' : '')}}>Tocantins</option>
+                                        <option value="AC" {{ old('uf') == 'AC' ? 'selected' : '' }} > Acre</option>
+                                        <option value="AL" {{ old('uf') == 'AL' ? 'selected' : '' }}>Alagoas</option>
+                                        <option value="AP" {{ old('uf') == 'AP' ? 'selected' : '' }}>Amapá</option>
+                                        <option value="AM" {{ old('uf') == 'AM' ? 'selected' : '' }}>Amazonas</option>
+                                        <option value="BA" {{ old('uf') == 'BA' ? 'selected' : '' }}>Bahia</option>
+                                        <option value="CE" {{ old('uf') == 'CE' ? 'selected' : '' }}>Ceará</option>
+                                        <option value="DF" {{ old('uf') == 'DF' ? 'selected' : '' }}>Distrito Federal</option>
+                                        <option value="ES" {{ old('uf') == 'ES' ? 'selected' : '' }}>Espirito Santo</option>
+                                        <option value="GO" {{ old('uf') == 'GO' ? 'selected' : '' }}>Goiás</option>
+                                        <option value="MA" {{ old('uf') == 'MA' ? 'selected' : '' }}>Maranhão</option>
+                                        <option value="MS" {{ old('uf') == 'MS' ? 'selected' : '' }}>Mato Grosso do Sul</option>
+                                        <option value="MT" {{ old('uf') == 'MT' ? 'selected' : '' }}>Mato Grosso</option>
+                                        <option value="MG" {{ old('uf') == 'MG' ? 'selected' : '' }}>Minas Gerais</option>
+                                        <option value="PA" {{ old('uf') == 'PA' ? 'selected' : '' }}>Pará</option>
+                                        <option value="PB" {{ old('uf') == 'PB' ? 'selected' : '' }}>Paraíba</option>
+                                        <option value="PR" {{ old('uf') == 'PR' ? 'selected' : '' }}>Paraná</option>
+                                        <option value="PE" {{ old('uf') == 'PE' ? 'selected' : '' }}>Pernambuco</option>
+                                        <option value="PI" {{ old('uf') == 'PI' ? 'selected' : '' }}>Piauí</option>
+                                        <option value="RJ" {{ old('uf') == 'RJ' ? 'selected' : '' }}>Rio de Janeiro</option>
+                                        <option value="RN" {{ old('uf') == 'RN' ? 'selected' : '' }}>Rio Grande do Norte</option>
+                                        <option value="RS" {{ old('uf') == 'RS' ? 'selected' : '' }}>Rio Grande do Sul</option>
+                                        <option value="RO"{{ old('uf') == 'RO' ? 'selected' : '' }}>Rondônia</option>
+                                        <option value="RR" {{ old('uf') == 'RR' ? 'selected' : '' }} > Roraima</option>
+                                        <option value="SC" {{ old('uf') == 'SC' ? 'selected' : '' }}>Santa Catarina</option>
+                                        <option value="SP" {{ old('uf') == 'SP' ? 'selected' : '' }}>São Paulo</option>
+                                        <option value="SE" {{ old('uf') == 'SE' ? 'selected' : '' }}>Sergipe</option>
+                                        <option value="TO" {{ old('uf') == 'TO' ? 'selected' : '' }}>Tocantins</option>
                                     </select>
                     @if($errors->has('uf'))
                         <span class="help-block">
@@ -265,8 +265,8 @@
             
             <div class="form-group col-md-12">
             <hr>
-            <a onclick="alteraEtapa(2)" class="btn btn-info">Avançar</a>
-            <!--<button   class="btn btn-info"> Avançar</button> -->
+            
+            <!--<button   class="btn btn-info"> Atualizar Dados</button> -->
             </div>
 </div>
             

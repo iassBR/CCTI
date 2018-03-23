@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+@can('escolaridadeSeletivo-view')
 <div class="panel panel-default">    
     <div class="panel-heading">Lista de Escolaridade para o Seletivo: {{$seletivo->nomeSeletivo}}</div>	
     
@@ -49,5 +50,5 @@
 		</div>
 
 	</div>
-
+@endcan
 @endsection

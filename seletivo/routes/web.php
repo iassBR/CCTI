@@ -29,17 +29,56 @@ Route::resource('escolaridades','EscolaridadeController');
 
 
 
-
-
+// ------------------------ dados pessoas --------------------- //
 Route::get('/inscricao/{id}', 'CandidatoController@create')->name('candidatos.create');
-Route::get('/inscricao/edit/{id}', 'CandidatoController@edit')->name('candidatos.edit');
-Route::put('/inscricao/edit/{id}','CandidatoController@update')->name('candidatos.update');
-    
+//Route::get('/inscricao/edit/{id}', 'CandidatoController@edit')->name('candidatos.edit');
+Route::put('/seletivo/{seletivo}/candidato/{candidato}/edit','CandidatoController@update')->name('candidatos.update');
 Route::post('/inscricao', ['uses'=>'CandidatoController@store'])->name('candidatos.store');
+// END------------------------ dados pessoas ---------------------END //
 
-Route::post('/inscricao/cargo/{cargo}', ['as'=>'candidatos.cargo.store','uses'=>'CandidatoController@cargoStore']);
-Route::delete('/inscricao/cargo/{candidato}/{cargo}', ['as'=>'candidatos.cargo.destroy','uses'=>'CandidatoController@cargoDestroy']);
+//Route::get('/inscricao/edit/formacao/{id}', 'CandidatoController@editFormacao')->name('candidatos.formacao.editar');
 
+
+// ------------------------ formacações ---------------------------  //
+
+Route::get('/seletivo/{seletivo}/candidato/{candidato}/create-formacao', 'FormacaoController@create')->name('candidatos.formacao.create');
+Route::post('/seletivo/{seletivo}/candidato/{candidato}/store-formacao', 'FormacaoController@store')->name('candidatos.formacao.store');
+
+Route::get('/seletivo/{seletivo}/candidato/{candidato}/formacao/{formacao}/edit-formacao', 'FormacaoController@edit')->name('candidatos.formacao.editar');
+
+Route::put('/seletivo/{seletivo}/candidato/{candidato}/formacao/{formacao}/update-formacao', 'FormacaoController@update')->name('candidatos.formacao.update');
+
+Route::get('/seletivo/{seletivo}/candidato/{candidato}/formacao/{formacao}/remove-formacao', 'FormacaoController@remove')->name('candidatos.formacao.remove');
+Route::delete('/seletivo/{seletivo}/candidato/{candidato}/formacao/{formacao}/destroy-formacao', 'FormacaoController@destroy')->name('candidatos.formacao.destroy');
+
+// END------------------------ formacações ---------------------------END  //
+
+
+
+
+
+// ------------------------ experiências ---------------------------  //
+Route::get('/seletivo/{seletivo}/candidato/{candidato}/create-experiencia', 'ExperienciaController@create')->name('candidatos.experiencia.create');
+Route::post('/seletivo/{seletivo}/candidato/{candidato}/store-experiencia', 'ExperienciaController@store')->name('candidatos.experiencia.store');
+
+Route::get('/seletivo/{seletivo}/candidato/{candidato}/experiencia/{experiencia}/edit-experiencia', 'ExperienciaController@edit')->name('candidatos.experiencia.edit');
+
+Route::put('/seletivo/{seletivo}/candidato/{candidato}/experiencia/{experiencia}/update-experiencia', 'ExperienciaController@update')->name('candidatos.experiencia.update');
+
+Route::get('/seletivo/{seletivo}/candidato/{candidato}/experiencia/{experiencia}/remove-experiencia', 'ExperienciaController@remove')->name('candidatos.experiencia.remove');
+Route::delete('/seletivo/{seletivo}/candidato/{candidato}/experiencia/{experiencia}/destroy-experiencia', 'ExperienciaController@destroy')->name('candidatos.experiencia.destroy');
+
+
+// END------------------------ experiências --------------------------- END //
+
+
+// --------------------------- Cargo -----------------------------------//
+Route::get('/inscricao/seletivo/{seletivo}/candidato/{candidato}/cargo-show', ['as'=>'candidatos.cargo.show','uses'=>'CandidatoController@cargoShow']);
+Route::post('/inscricao/seletivo/{seletivo}/candidato/{candidato}/cargo-store', ['as'=>'candidatos.cargo.store','uses'=>'CandidatoController@cargoStore']);
+Route::delete('/inscricao/seletivo/{seletivo}/candidato/{candidato}/cargo/{cargo}/delete', ['as'=>'candidatos.cargo.destroy','uses'=>'CandidatoController@cargoDestroy']);
+
+
+// END--------------------------- Cargo ----------------------------------- END//
 Route::group(['middleware' => 'auth'], function () {
    
     Route::resource('admin', 'Admin\AdminController');

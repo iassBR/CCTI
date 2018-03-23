@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    
+@can('seletivo-create')    
         @if($errors->any())
             <div class="alert alert-danger" role="alert">
                 @foreach ($errors->all() as $error)
@@ -45,5 +45,5 @@
     </form>
     </div>
 </div>
-
+@endcan
 @endsection

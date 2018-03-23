@@ -35,7 +35,7 @@
       <!-- Nav tabs -->  
         <ul id="tabEtapas" class="nav nav-tabs" role="tablist">
           <li role="presentation" class="active"><a href="#etapa1" aria-controls="etapa1" role="tab" data-toggle="tab">Dados Pessoais</a></li>
-          <li role="presentation"><a href="#etapa2" aria-controls="etapa2" role="tab" data-toggle="tab">Experiências Profissionais</a></li>
+          <li role="presentation" ><a href="#etapa2" aria-controls="etapa2" role="tab" data-toggle="tab">Experiências Profissionais</a></li>
           <li role="presentation"><a href="#etapa3" aria-controls="etapa3" role="tab" data-toggle="tab">Formação</a></li>
           
         </ul>

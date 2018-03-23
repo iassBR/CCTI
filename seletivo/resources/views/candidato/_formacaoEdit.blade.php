@@ -8,17 +8,16 @@
               </div>
             </p>
 
-            <div class="row">
-                           
-              <button type="submit" onclick="validaFormulario()"  class="btn btn-success">Atualizar Currículo</button>            
-              <button class="btn btn-primary" id="add_field_edit" data-contador="{{ $candidato->experiencias->count() }}" >Adicionar Formação</button>
+            <div  class="row">                         
+              <a class="btn btn-primary"  href="{{ route('candidatos.formacao.create', [ $seletivo, $candidato ]) }}" >Adicionar Formação</a>
+              <a class="btn btn-success" title="Avançar e escolher o Cargo para concorrer"  href="{{ route('candidatos.cargo.show', [$seletivo , $candidato ]) }}" >Concluir/ Avançar</a>
             </div>
-
+         
             
-            <div id="formEdit" > 
+            <div name="candidato_id" value="{{ $candidato->id }}"  > 
             <?php  $cont=1; ?>  
             @foreach($candidato->formacoes as $i => $formacao)          
-                <div id="cont" value="{{ $i }}" class="oco form-group col-md-6" >
+                <div value="{{ $candidato->id }}" name="candidato_id" class="form-group col-md-6" >
                   <hr>
                     <div class="form-group {{$errors->has('formacoes->tipo')  ? 'has-error': ''}}">
                         <label>Formação/Curso</label>                
@@ -53,7 +52,8 @@
                       <input type="date" class="form-control"  name="formacoes[{{$i}}][ano_conclusao]" value="{{ isset($formacao->ano_conclusao) ? $formacao->ano_conclusao : '' }}" name="formacoes[{{$i}}0][ano_conclusao]" id="ano_conclusao"  title="Preencha um ano válido">
                   </div>
                 <br>                     
-                <button id="remover_campo"    class="btn btn-danger"> Remover</button>
+                <a href="{{ route('candidatos.formacao.remove', [$seletivo, $candidato, $formacao]) }}"  class="btn btn-danger"> Remover</a>
+                <a href="{{route('candidatos.formacao.editar',[$seletivo, $candidato, $formacao])}}"  class="btn btn-primary"> Editar</a>
               <?php $cont=$i ?>
             </div>
             

@@ -27,7 +27,8 @@ class AdminController extends Controller
     {
         if(Gate::denies('admin-view')){
             abort(403,"Não autorizado!");
-          }
+        }      
+        
        
         $users = User::all();
         $papeis = Papel::all();            

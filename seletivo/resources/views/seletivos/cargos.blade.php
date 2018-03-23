@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
+@can('cargoSeletivo-view')
 <div class="panel panel-default">    
     <div class="panel-heading">Lista de Cargos para o Seletivo: {{$seletivo->nomeSeletivo}}</div>	
     
@@ -55,5 +56,5 @@
 		</div>
 
 	</div>
-
+@endcan
 @endsection

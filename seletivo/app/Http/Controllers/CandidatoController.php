@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\Http\Requests\CandidatoRequest;
+
 use App\Seletivo;
 use App\Candidato;
 use App\Endereco;
@@ -56,60 +58,49 @@ class CandidatoController extends Controller
        // return("Oi");
     }
 
-    public function update(Request $request,$id){
+    public function update(Request $request, Seletivo $seletivo, Candidato $candidato){
 
-        $data = $request->all();
-       // $experiencias = [];
-        $formacoes = [];
+        $data = $request->all();     
 
-        $candidato = Candidato::find($id);
+        $candidato = Candidato::find($candidato->id);
         
-        $endereco = Endereco::find($candidato->endereco_id);
+        $endereco = Endereco::find($candidato->endereco_id);        
+
+        $candidato->update($data);
+        $endereco->update($data);
         
-
-       $candidato->update($data);
-       $endereco->update($data);
-       //dd($candidato,$endereco);
-       //dd($data['formacoes']);
-        foreach($data['formacoes'] as $i => $formacao){
-            //$formacoes[$i] = new Formacao($formacao);
-            dd($formacao);
-            $idExist = $formacao->id;
-            dd($idExist);               
-            $form = Formacao::firstOrNew(['id' => '$idExist']);
-            if($form){
-               //cria caso n existe     
-            }else{
-                //update
-                // atualiza se existir
-            }       
-        }
-        //
-        $candidato->formacoes()->saveMany($formacoes);
-
+        return redirect()->route('candidatos.create', [
+            $seletivo,
+            'cpf' => $candidato->cpf 
+            ] );
     }
-
     
+  
+    
+    public function cargoShow(Seletivo $seletivo, Candidato $candidato){
+        $candidato = Candidato::find($candidato->id);
+        $cargos = Cargo::all();
+        return view('candidato.cargos', compact( 'seletivo','candidato', 'cargos'));
+    }
+    public function cargoStore(Request $request, Seletivo $seletivo, Candidato $candidato){
 
-    public function cargoStore(Request $request,$id){
-
-        $candidato = Candidato::find($id);
+        $candidato = Candidato::find($candidato->id);
         $data = $request->all();
         $cargo = Cargo::find($data['cargo_id']);
         $candidato->adicionaCargo($cargo);
         $cargos = Cargo::all();
-        return view('candidato.cargos', compact('candidato',  'cargos'));
+        return view('candidato.cargos', compact( 'seletivo','candidato', 'cargos'));
     }
 
-    public function cargoDestroy($id,$cargo_id)
+    public function cargoDestroy(Seletivo $seletivo, Candidato $candidato, Cargo $cargo)
     {
  
       
-      $candidato = Candidato::find($id);
-      $cargo = Cargo::find($cargo_id);
+      $candidato = Candidato::find($candidato->id);
+      $cargo = Cargo::find($cargo->id);
       $candidato->removeCargo($cargo);
       $cargos = Cargo::all();
-      return view('candidato.cargos', compact('candidato',  'cargos'));
+      return view('candidato.cargos', compact('seletivo','candidato',  'cargos'));
     }
 
 

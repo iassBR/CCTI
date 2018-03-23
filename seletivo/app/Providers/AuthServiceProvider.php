@@ -29,7 +29,7 @@ class AuthServiceProvider extends ServiceProvider
    
         foreach ($this->listaPermissoes() as $permissao) {
             Gate::define($permissao->nome,function($user) use($permissao){
-           return $user->temUmPapelDestes($permissao->papeis) || $user->eAdmin();
+           return $user->temUmPapelDestes($permissao->papeis) ;
             });
        }
   

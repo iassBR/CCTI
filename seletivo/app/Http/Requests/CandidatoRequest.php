@@ -70,7 +70,14 @@ class CandidatoRequest extends FormRequest
              'experiencias.*.data_inicio.required' => 'Informe a data de início',
              'experiencias.*.data_fim.required' => 'Informe a data de término',
              'experiencias.*.cargo.required' => 'Informe o cargo',
-             'experiencias.*.descricao.required' => 'Informe a descrição do cargo'
+             'experiencias.*.descricao.required' => 'Informe a descrição do cargo',
+
+            'formacoes.*.tipo.required' => 'Informe o tipo de formação',
+            'formacoes.*.instituicao.required' => 'Informe a instituição',
+            'formacoes.*.nome_curso.required' => 'Informe o nome do curso',
+            'formacoes.*.ano_conclusao.required' => 'Informe o ano de conclusão'
+             
+            
              
 
          ];
@@ -104,6 +111,12 @@ class CandidatoRequest extends FormRequest
             'experiencias.*.data_fim'=>'required',
             'experiencias.*.cargo'=>'required',
             'experiencias.*.descricao'=>'required',
+
+            'formacoes.*.tipo' => 'required',
+            'formacoes.*.instituicao' => 'required',
+            'formacoes.*.nome_curso' => 'required',
+            'formacoes.*.ano_conclusao' => 'required'
+
 
         ];
     }

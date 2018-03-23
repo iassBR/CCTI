@@ -131,10 +131,13 @@
                         <h3><strong>Painel de Controle</strong></h3>
                        
                         <li><a href="{{route ('admin.index')}}"><i class="glyphicon glyphicon-home"> </i>  Início</a></li>
-                        @can('admin-view')
+                        @can('dashboard-view')
                         <li><a href="{{route ('usuarios.index')}}"><i class="glyphicon glyphicon-user"> </i>  Usuários</a></li>
                         
                         <li><a href="{{route ('papeis.index')}}"><i class="glyphicon glyphicon-file"> </i>  Papéis</a></li>
+                        @endcan
+                        @can('seletivo-view')
+                        <li><a href="{{route ('seletivos.index')}}"><i class="glyphicon glyphicon-file"> </i>  Seletivos</a></li>
                         @endcan
                     </ul>
                 </div>

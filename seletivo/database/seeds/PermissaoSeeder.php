@@ -16,6 +16,12 @@ class PermissaoSeeder extends Seeder
             'nome' => 'admin-view',
             'descricao' =>'index admin'
         ]);
+
+        $admin = Permissao::firstOrCreate([
+            'nome' => 'dashboard-view',
+            'descricao' =>'dashboard admin'
+        ]);
+
         $usuarios1 = Permissao::firstOrCreate([
             'nome' =>'usuario-view',
             'descricao' =>'Acesso a lista de Usuários'
@@ -82,6 +88,43 @@ class PermissaoSeeder extends Seeder
             'descricao' =>'Acesso aos chamados'
         ]);
   
+
+
+
+
+        $gerente = Permissao::firstOrCreate([
+            'nome' => 'seletivo-view',
+            'descricao' =>'index seletivo'
+        ]);
+        $gerente = Permissao::firstOrCreate([
+            'nome' =>'cargoSeletivo-view',
+            'descricao' =>'Acesso a lista de cargos em um seletivo'
+        ]);
+        $gerente = Permissao::firstOrCreate([
+            'nome' =>'seletivo-update',
+            'descricao' =>'Acesso a lista de seletivos'
+        ]);
+        $gerente = Permissao::firstOrCreate([
+            'nome' =>'seletivo-create',
+            'descricao' =>'Adicionar seletivo'
+        ]);
+        $gerente = Permissao::firstOrCreate([
+            'nome' =>'seletivo-edit',
+            'descricao' =>'Editar seletivo'
+        ]);
+        $gerente = Permissao::firstOrCreate([
+            'nome' =>'seletivo-delete',
+            'descricao' =>'Deletar seletivo'
+        ]);
+        $gerente = Permissao::firstOrCreate([
+            'nome' =>'seletivo-store',
+            'descricao' =>'Deletar seletivo'
+        ]);
+  
+        $gerente = Permissao::firstOrCreate([
+            'nome' =>'escolaridadeSeletivo-view',
+            'descricao' =>'Acesso às escolaridades do seletivo'
+        ]);
         echo "Registros de Permissoes criados no sistema";
     }
 }
