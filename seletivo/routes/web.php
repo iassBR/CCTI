@@ -27,12 +27,22 @@ Route::get('/escolaridades/remove/{id}','EscolaridadeController@remover')->name(
 Route::resource('escolaridades','EscolaridadeController');
 
 
+<<<<<<< HEAD
 
 
 // ------------------------ dados pessoas --------------------- //
 Route::get('/inscricao/{id}', 'CandidatoController@create')->name('candidatos.create');
 //Route::get('/inscricao/edit/{id}', 'CandidatoController@edit')->name('candidatos.edit');
 Route::put('/seletivo/{seletivo}/candidato/{candidato}/edit','CandidatoController@update')->name('candidatos.update');
+=======
+Route::get('/inscricao/{id}', 'CandidatoController@create')->name('candidatos.create');
+Route::get('/inscricao/edit/{id}', 'CandidatoController@edit')->name('candidatos.edit');
+Route::put('/inscricao/edit/{id}','CandidatoController@update')->name('candidatos.update');
+
+Route::get('inscricao/comprovante/{id}',['as'=>'dados.comprovante','uses'=>'CandidatoController@comprovante']);
+Route::get('inscricao/curriculo/{id}',['as'=>'dados.curriculo','uses'=>'CandidatoController@curriculo']);
+    
+>>>>>>> fac7e599782c173bc38e8d62b4b9e84f2d0f8648
 Route::post('/inscricao', ['uses'=>'CandidatoController@store'])->name('candidatos.store');
 // END------------------------ dados pessoas ---------------------END //
 
@@ -102,12 +112,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('papeis/permissao/{permissao}', ['as'=>'papeis.permissao.store','uses'=>'Admin\PapelController@permissaoStore']);
     Route::delete('papeis/permissao/{papel}/{permissao}', ['as'=>'papeis.permissao.destroy','uses'=>'Admin\PapelController@permissaoDestroy']);
     
-    
-       
-    
 });
-
-
 
     Route::get('seletivos/cargo/{id}', ['as'=>'seletivos.cargo','uses'=>'SeletivoController@cargo']);
     Route::post('seletivos/cargo/{cargo}', ['as'=>'seletivos.cargo.store','uses'=>'SeletivoController@cargoStore']);
@@ -124,3 +129,5 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::post('documento','Documento@store');
     Route::post('documentos/create/{seletivo_id}', ['as'=>'documento.store','uses'=>'DocumentoController@store']);
+
+    

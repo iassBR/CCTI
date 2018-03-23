@@ -19,15 +19,15 @@ class CreateUsersTable extends Migration
             $table->string('cep');
             $table->string('uf');
             $table->string('cidade');
-            $table->string('complemento');
+            $table->string('complemento')->nullable();
             $table->string('bairro');
             $table->string('logradouro');
             $table->string('num');
 
-            //$table->integer('user_id')->unsigned()->nullable(); 
-            //$table->integer('canidato_id')->unsigned()->nullable(); 
+            // $table->integer('user_id')->unsigned()->nullable(); 
+            //$table->integer('candidato_id')->unsigned()->nullable(); 
             
-           // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
            
             //$table->foreign('candidato_id')->references('id')->on('candidatos')->onDelete('cascade');
             

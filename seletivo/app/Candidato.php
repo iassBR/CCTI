@@ -19,11 +19,12 @@ class Candidato extends Model
 
 
     public function endereco(){
-        return $this->hasOne('App\Endereco','endereco_id');
+        return $this->belongsTo('App\Endereco','endereco_id');
     }
 
     public function seletivos(){
-        return $this->belongsToMany('App\Seletivo');
+        return $this->belongsToMany('App\Seletivo')
+        ->withPivot('nomeSeletivo');
     }
 
     public function deficiencia(){
@@ -32,6 +33,7 @@ class Candidato extends Model
 
     public function experiencias(){
         return $this->hasMany(ExperienciaProfissional::class);
+
     }
 
     public function formacoes(){

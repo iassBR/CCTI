@@ -149,5 +149,48 @@ class CandidatoController extends Controller
     }
     
  
-    
+     
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+    public function comprovante($id)
+    {
+    $candidato = Candidato::find($id);
+    $seletivos = Seletivo::all();
+ 
+    return \PDF::loadView('candidato.comprovante', compact('candidato','seletivos'))//->setPaper('a4', 'landscape')
+                ->stream('Dados_candidato.pdf');
+    }
+    public function curriculo($id)
+    {
+    $candidato = Candidato::find($id);
+    $seletivos = Seletivo::all();
+ 
+    return \PDF::loadView('candidato.curriculo', compact('candidato','seletivos'))//->setPaper('a4', 'landscape')
+                ->stream('Dados_candidato.pdf');
+    }
+
 }
