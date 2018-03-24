@@ -1,22 +1,31 @@
 @extends('layouts.app')
 
 @section('content')
+<br>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-heading"> <h4><strong>Seletivos</strong></h4></div>
+            <div class="panel panel-info">
+                <div class="panel-heading"> 
+                    <h4><strong>Seletivos</strong></h4>
+                </div>
                     <div class="panel-body">
                         <div class="row">
-                            <div  class="col-md-10">
-                                <table class="table table-bordered">
+                            <div  class="col-md-10 col-md-offset-1">
+                                <table class="table table-hover ">
+                                    <thead>
+										<tr>
+											<th>Seletivo</th>
+											<th class="hidden-xs">Ações</th>
+										</tr>
+									</thead>
                                     <tbody>
                                         @foreach ($seletivos as $seletivo)
                                             <tr>
                                                 <td>{{$seletivo->nomeSeletivo}}</td>                                
                                                 <td>
-                                                    <a href="{{route('seletivos.show',$seletivo)}}"><button type="button" class="btn btn-primary">Detalhes</button></a>
-                                                    <button id="{{$seletivo->id}}" onclick="getId({{$seletivo->id}})"  name="button" type="button" class="btn btn-success" data-toggle="modal" data-target="#seletivo">Inscrever</button>
+                                                    <a class="btn btn-xs btn-info" href="{{route('seletivos.show',$seletivo)}}">Detalhes</a>
+                                                    <a id="{{$seletivo->id}}" onclick="getId({{$seletivo->id}})"  name="button" type="button" class="btn btn-xs btn-success" data-toggle="modal" data-target="#seletivo">Inscrever</a>
                                                 </td>
                                                 <!-- End Modal -->   
                                             </tr>
@@ -66,7 +75,7 @@
                     
             </div>
         </div>
-</div>
+</div>  
 
 
 

@@ -176,21 +176,29 @@ class CandidatoController extends Controller
     {
         //
     }
-    public function comprovante($id)
-    {
-    $candidato = Candidato::find($id);
-    $seletivos = Seletivo::all();
- 
-    return \PDF::loadView('candidato.comprovante', compact('candidato','seletivos'))//->setPaper('a4', 'landscape')
-                ->stream('Dados_candidato.pdf');
+    
+
+
+    public function impressao(Seletivo $seletivo,Candidato $candidato){
+        return view('impressao.index',compact('seletivo', 'candidato'));
     }
-    public function curriculo($id)
+
+    public function comprovante(Seletivo $seletivo, Candidato $candidato)
     {
-    $candidato = Candidato::find($id);
-    $seletivos = Seletivo::all();
- 
-    return \PDF::loadView('candidato.curriculo', compact('candidato','seletivos'))//->setPaper('a4', 'landscape')
-                ->stream('Dados_candidato.pdf');
+        $candidato = Candidato::find($candidato->id);
+        $seletivos = Seletivo::find($seletivo->id);
+    
+        return \PDF::loadView('candidato.comprovante', compact('candidato','seletivo'))//->setPaper('a4', 'landscape')
+                    ->stream('Comprovante_de_Inscrição.pdf');
+    }
+
+    public function curriculo(Seletivo $seletivo, Candidato $candidato)
+    {
+        $candidato = Candidato::find($candidato->id);
+        $seletivos = Seletivo::find($seletivo->id);
+    
+        return \PDF::loadView('candidato.curriculo', compact('candidato','seletivo'))//->setPaper('a4', 'landscape')
+                    ->stream('Currículo_do_Candidato.pdf');
     }
 
 }

@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>Dados do Usuario</title>
+        <title>Comprovante de Inscrição do Candidato</title>
         <style>
             img{
                 position: absolute;

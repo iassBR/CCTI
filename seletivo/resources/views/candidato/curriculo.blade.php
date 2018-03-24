@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>Dados do Usuario</title>
+        <title>Currículo do Candidato</title>
         <style>
             img{
                 position: absolute;
@@ -119,6 +119,31 @@
     <br>
     @foreach($candidato->formacoes as $formacao)  
     <table class="table table-bordered">
+<<<<<<< HEAD
+          
+        <thead>
+            <tr>
+                <th colspan="2">CURSO(S)</th>
+            </tr>
+        </thead> 
+        @foreach($candidato->formacoes as $formacao)
+        <tbody>
+            <tr>
+                <td >Grau:{{ $formacao->tipo }} </td>
+                <td >Instituição: {{ $formacao->instituicao }} </td>
+               
+            </tr>
+       
+            
+            <tr>
+                <td>Nome Curso: {{ $formacao->nome_curso }} </td>
+                <td>Ano de Conclusão: {{ $formacao->ano_conclusao }} </td>
+            </tr>
+            
+        
+        @endforeach
+        </tbody>
+=======
          
         <thead>
         <tr>
@@ -136,6 +161,7 @@
         </tr>
         </tbody>
         
+>>>>>>> 857811935ce8e5d010824474dce256699b09db62
     </table>
     @endforeach
     <br>
@@ -144,10 +170,23 @@
         <thead>
         <tr>
             <th colspan="2">EXPERIÊNCIA PROFISSIONAL</th>
-        </tr>
+        </tr> 
         </thead>
+        @foreach($candidato->experiencias as $experiencia)
         <tbody>
         <tr>
+<<<<<<< HEAD
+            <td colspan="2">Empresa: {{ $experiencia->nome_empresa }} </td>
+            
+        </tr>
+        <tr>
+            <td >Data Inicio: {{ $experiencia->data_inicio }} </td>
+            <td>Data Término: {{ $experiencia->data_fim }} </td>
+        </tr>
+        <tr>
+            <td >Cargo: {{ $experiencia->cargo }} </td>
+            <td>Descrição: {{ $experiencia->descricao }} </td>
+=======
             <td colspan="2">Empresa:{{$experiencia->nome_empresa}} </td>
             
         </tr>
@@ -158,7 +197,9 @@
         <tr>
             <td >Cargo: {{$experiencia->cargo}}</td>
             <td>Descrição: {{$experiencia->descricao}}</td>
+>>>>>>> 857811935ce8e5d010824474dce256699b09db62
         </tr>
+        @endforeach
         </tbody>
         @endforeach
     </table>
