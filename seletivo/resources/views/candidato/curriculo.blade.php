@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <title>Dados do Usuario</title>
+        <title>Currículo do Candidato</title>
         <style>
             img{
                 position: absolute;
@@ -118,44 +118,52 @@
     </table>
     <br>
     <table class="table table-bordered">
-        @foreach($candidato->formacoes as $cargo)   
+          
         <thead>
-        <tr>
-            <th colspan="2">CURSO(S)</th>
-        </tr>
-        </thead>
+            <tr>
+                <th colspan="2">CURSO(S)</th>
+            </tr>
+        </thead> 
+        @foreach($candidato->formacoes as $formacao)
         <tbody>
-        <tr>
-            <td >Escolaridade: </td>
-            <td >Instituição: </td>
-        </tr>
-        <tr>
-            <td>Nome Curso: </td>
-            <td>Ano de Conclusão: </td>
-        </tr>
-        </tbody>
+            <tr>
+                <td >Grau:{{ $formacao->tipo }} </td>
+                <td >Instituição: {{ $formacao->instituicao }} </td>
+               
+            </tr>
+       
+            
+            <tr>
+                <td>Nome Curso: {{ $formacao->nome_curso }} </td>
+                <td>Ano de Conclusão: {{ $formacao->ano_conclusao }} </td>
+            </tr>
+            
+        
         @endforeach
+        </tbody>
     </table>
     <br>
     <table class="table table-bordered">
         <thead>
         <tr>
             <th colspan="2">EXPERIÊNCIA PROFISSIONAL</th>
-        </tr>
+        </tr> 
         </thead>
+        @foreach($candidato->experiencias as $experiencia)
         <tbody>
         <tr>
-            <td colspan="2">Empresa: </td>
+            <td colspan="2">Empresa: {{ $experiencia->nome_empresa }} </td>
             
         </tr>
         <tr>
-            <td >Data Inicio: </td>
-            <td>Data Término: </td>
+            <td >Data Inicio: {{ $experiencia->data_inicio }} </td>
+            <td>Data Término: {{ $experiencia->data_fim }} </td>
         </tr>
         <tr>
-            <td >Cargo: </td>
-            <td>Descrição: </td>
+            <td >Cargo: {{ $experiencia->cargo }} </td>
+            <td>Descrição: {{ $experiencia->descricao }} </td>
         </tr>
+        @endforeach
         </tbody>
     </table>
     

@@ -35,7 +35,7 @@
                     @foreach($seletivo->cargos as $cargo)
                         <tr>
                             <td>{{ $cargo->nomeCargo }}</td>
-                            <td>{{ $cargo->escolaridades->tipo }}</td>
+                            <td>{{ $cargo->escolaridade->tipo }}</td>
                             <td>
                                 <form action="{{route('seletivos.cargo.destroy',[$seletivo->id,$cargo->id])}}" method="post">
                                         {{ method_field('DELETE') }}

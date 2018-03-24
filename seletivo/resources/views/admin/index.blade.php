@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="row">
+	<div class="row">
 					<div class="col-sm-4 text-center">
 						<div class="panel panel-info">
 							<div class="panel-heading">

@@ -9,23 +9,26 @@
   </div>
   <div class="row">
     <div class="col-sm-8">
-      <div class="panel panel-default text-left">
+      <div class="panel  panel-info text-left">
         <div class="panel-heading">
-          <h4>Detalhes do Seletivo</h4>
+          <h4 class="panel-title">Detalhes do Seletivo</h4>
         </div>
+        <thead>
+
+        </thead>
         <div class="panel-body">
           <p><b>Nome Seletivo: </b>{{$seletivo->nomeSeletivo}}</p>
-          <p><b>Data do Inicio</b> {{$seletivo->dataInicio}}</p>
-          <p><b>Data do Termino</b>{{$seletivo->dataTermino}}</p>
-          <p><b>Cargo Desejado</b> {{$seletivo->cargoDesejado}}</p>
-          <p><b>Tempo de Expêriencia</b> {{$seletivo->tempoExperiencia}}</p>
+          <p><b>Data do Inicio: </b> {{$seletivo->dataInicio}}</p>
+          <p><b>Data do Termino: </b>{{$seletivo->dataTermino}}</p>
+        
         </div>
       </div> 
-    </div> 
+    </div>
+
     <div class="col-sm-4">
-      <div class="panel panel-default text-justify">
+      <div class="panel panel-info text-justify">
         <div class="panel-heading">
-          <h4>Documentos</h4>
+          <h4 class="panel-title" >Documentos</h4>
         </div>
         <div class="panel-body">
           

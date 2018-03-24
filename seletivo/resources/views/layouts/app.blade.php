@@ -76,14 +76,14 @@
 
 <body>
 <div id="app">
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
+	<nav class="navbar navbar-inverse" >
+		<div class="container">
 			<div class="navbar-header">
                 
               <div class="navbar-header">
 				
 				<a class="navbar-brand" href="{{ route('home.index') }}">CCTI SELETIVOS</a>
-			</div>
+			    </div>
 			</div>
 			
 			<div class="collapse navbar-collapse">
