@@ -40,7 +40,7 @@
                                             <div>{{$cargo->nomeCargo}}</div>
                                         </td>
                                         <td class="hidden-xs">
-                                            <button name="cargo_id" value="{{$cargo->id}}" class="btn btn-xs btn-info" href="#">Selecionar</button>
+                                            <button name="cargo_id" value="{{$cargo->id}}" class="btn btn-xs btn-info" >Selecionar</button>
                                         </td>
                                     </tr>
                                     @endforeach    
@@ -70,10 +70,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <form action="{{route('candidatos.cargo.destroy',[$seletivo, $candidato, $cargo])}}" method="post">
-                                    {{ method_field('DELETE') }}
-                                    {{ csrf_field() }}
+                                
                                     @foreach($candidato->cargos as $cargo)
+                                    <form action="{{route('candidatos.cargo.destroy',[$seletivo, $candidato, $cargo])}}" method="post">
+                                        {{ method_field('DELETE') }}
+                                        {{ csrf_field() }}
                                         <tr>
                                             <td>{{ $cargo->nomeCargo }}</td>
                                             <td>{{ $cargo->tempoExperiencia }}</td>
@@ -91,7 +92,7 @@
                 </div>  
 
                 <div class="alert alert-secondary col-md-12 col-md-offset-1" role="alert">
-                    <a href="{{ url()->previous() }}" class="btn btn-default">Voltar</a>
+                    <a href="{{ route('candidatos.create', [$seletivo,'cpf' => $candidato->cpf ]) }}" class="btn btn-default">Voltar</a>
                     <a href="{{ route('candidato.impressao' , [$seletivo, $candidato]) }}" class="btn btn-success"  >Finalizar Inscrição  </a>
                 </div>
                

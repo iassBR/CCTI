@@ -38,8 +38,8 @@ Route::put('/seletivo/{seletivo}/candidato/{candidato}/edit','CandidatoControlle
 
 
 Route::get('/inscricao/{id}', 'CandidatoController@create')->name('candidatos.create');
-Route::get('/inscricao/edit/{id}', 'CandidatoController@edit')->name('candidatos.edit');
-Route::put('/inscricao/edit/{id}','CandidatoController@update')->name('candidatos.update');
+// Route::get('/inscricao/edit/{id}', 'CandidatoController@edit')->name('candidatos.edit');
+// Route::put('/inscricao/edit/{id}','CandidatoController@update')->name('candidatos.update');
 
 Route::get('inscricao/seletivo/{seletivo}/candidato/{candidato}/finalizar','CandidatoController@impressao')->name('candidato.impressao');
 Route::get('inscricao/seletivo/{seletivo}/candidato/{candidato}/comprovante',['as'=>'candidato.imprime.comprovante','uses'=>'CandidatoController@comprovante']);
