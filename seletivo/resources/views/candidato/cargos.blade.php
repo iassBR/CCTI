@@ -3,8 +3,6 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <link rel="stylesheet" href="{{ asset('css/stylesheet.css')}}">
 
-
-
 <div class="container">
   <div class="row">
     <div class="panel panel-default">
@@ -70,7 +68,11 @@
                   </div>               
             </div>
             
+
+
+
+
+
         </div>
-    </div>
   </div>
 
