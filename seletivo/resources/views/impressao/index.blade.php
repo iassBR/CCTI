@@ -3,6 +3,15 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+<nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="{{ route('home.index') }}">
+            Processo Seletivo
+          </a>
+        </div>
+      </div>
+</nav>
 <div class="content">
 <div class="container">
   <div class="row col-md-12">
@@ -13,8 +22,8 @@
 
         <br>
 		<div class="row">   
-			<div class="col-md-6">
-				<div class="panel panel-success">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="panel panel-primary">
 					<div class="panel-heading">
 						<h3 class="panel-title">Imprima seus Documentos!</h3>
 					</div>
