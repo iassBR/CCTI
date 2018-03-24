@@ -89,7 +89,12 @@
                         </table>                       
                     </div>               
                 </div>  
-            
+
+                <div class="alert alert-secondary col-md-12 col-md-offset-1" role="alert">
+                    <a href="{{ url()->previous() }}" class="btn btn-default">Voltar</a>
+                    <a href="#" class="btn btn-success"  >Finalizar Inscrição  </a>
+                </div>
+               
            
             
     </div>
